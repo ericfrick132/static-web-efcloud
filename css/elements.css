@@ -131,7 +131,7 @@ a{text-decoration: none;}
 }
 
 .ui-element .color-purple {
-    color: #6b30e9;
+    color: #508ABE;
 }
 
 @media screen and (max-width: 1199px) {
@@ -1913,7 +1913,7 @@ header.mega-elements  .fixed-menu.navbar-top-default .header-social a:hover {
     width: 40%;
     height: 30%;
     top: -4%;
-    background-color: #33c9dd;
+    background-color: #699FB0;
 }
 
 .ui-block-05.about .feature-item {
@@ -1988,7 +1988,7 @@ header.mega-elements  .fixed-menu.navbar-top-default .header-social a:hover {
 }
 
 .ui-block-05.about .text-blue{color: #5bbdbb;}
-.ui-block-05.about .text-purple{color: #6b30e9;}
+.ui-block-05.about .text-purple{color: #508ABE;}
 .ui-block-05.about .text-black{color: #202020;}
 .ui-block-05.about .text-pink{color: #e87ec1;}
 
@@ -2378,7 +2378,7 @@ header.mega-elements  .fixed-menu.navbar-top-default .header-social a:hover {
 .ui-block-08.about .colored_heading{
     font-family:'Open Sans', sans-serif;
     font-size: 18px;
-    color: #33c9dd;
+    color: #699FB0;
     margin-bottom: 0;
     letter-spacing: 0;
 }
@@ -2414,7 +2414,7 @@ header.mega-elements  .fixed-menu.navbar-top-default .header-social a:hover {
 
 .ui-block-08.about .btn.btn-rounded {border-radius: 50px;}
 .ui-block-08.about .btn.btn-medium {font-size:16px; padding: 10px 48px; line-height: 1.8em}
-.ui-block-08.about .btn.btn-blue {background: #33c9dd; border-color: #33c9dd; color: #ffffff}
+.ui-block-08.about .btn.btn-blue {background: #699FB0; border-color: #699FB0; color: #ffffff}
 .ui-block-08.about .btn.btn-blue:hover {background: #81a109 !important; border-color: #81a109; color: #ffffff !important}
 .ui-block-08.about .btn {-webkit-appearance: initial; overflow: hidden;position: -webkit-sticky;position: sticky; z-index: 2; display:inline-block; font-size: 15px; border:2px solid transparent; letter-spacing: .5px; line-height: inherit; border-radius: 0; text-transform:capitalize; width: auto;font-family: 'Raleway', sans-serif; font-weight: normal; -webkit-transition: all .5s ease;-o-transition: all .5s ease !important;transition: all .5s ease !important;}
 
@@ -4833,7 +4833,7 @@ header.mega-elements  .fixed-menu.navbar-top-default .header-social a:hover {
     width: 60%;
     height: 67%;
     bottom: 1%;
-    background-color: #33c9dd;
+    background-color: #699FB0;
 }
 
 .ui-block-22.about .colored_heading{
@@ -4905,7 +4905,7 @@ header.mega-elements  .fixed-menu.navbar-top-default .header-social a:hover {
         width: 60%;
         height: 67%;
         bottom: 1%;
-        background-color: #33c9dd;
+        background-color: #699FB0;
     }
     .ui-block-22.about .about-heading{
         margin-top: auto;
@@ -9306,7 +9306,7 @@ section.ui-block-25 {
 }
 
 .ui-block-05.stats .stats-block-inner:hover i.text-purple {
-    background-color: #6b30e9;
+    background-color: #508ABE;
 }
 
 .ui-block-05.stats .stats-block-inner:hover i.text-pink {
@@ -9328,7 +9328,7 @@ section.ui-block-25 {
 }
 
 .ui-block-05.stats .text-blue{color: #5bbdbb;}
-.ui-block-05.stats .text-purple{color: #6b30e9;}
+.ui-block-05.stats .text-purple{color: #508ABE;}
 .ui-block-05.stats .text-black{color: #202020;}
 .ui-block-05.stats .text-pink{color: #e87ec1;}
 
@@ -17456,7 +17456,7 @@ section.ui-block-25 {
 
 .ui-block-09.blog .btn {-webkit-appearance: initial; overflow: hidden;position: -webkit-sticky;position: sticky; z-index: 2; display:inline-block; font-size: 15px; border:2px solid transparent; letter-spacing: .5px; line-height: inherit; border-radius: 0; text-transform:capitalize; width: auto;font-family: 'Raleway', sans-serif; font-weight: normal; -webkit-transition: all .5s ease;-o-transition: all .5s ease !important;transition: all .5s ease !important;}
 
-.ui-block-09.blog .btn.btn-blue {background: #33c9dd; border-color: #33c9dd; color: #ffffff}
+.ui-block-09.blog .btn.btn-blue {background: #699FB0; border-color: #699FB0; color: #ffffff}
 
 .ui-block-09.blog .btn.btn-blue:hover {background: #81a109 !important; border-color: #81a109; color: #ffffff !important}
 
@@ -23846,7 +23846,7 @@ section.ui-block-25 {
 ==================================== */
 .ui-block-09.testimonial-sec {
     padding: 200px 0;
-    background-color: #33c9dd;
+    background-color: #699FB0;
 }
 
 .ui-block-09.testimonial-sec #testimonial-header-svg{
@@ -27101,7 +27101,7 @@ section,.section-padding {position: relative;padding: 7.5rem 0;overflow: hidden;
 .ui-block-17.quote .colored_heading {
     font-family: 'Open Sans', sans-serif;
     font-size: 18px;
-    color: #33c9dd;
+    color: #699FB0;
     margin-bottom: 0;
     letter-spacing: 0;
 }
@@ -27131,7 +27131,7 @@ section,.section-padding {position: relative;padding: 7.5rem 0;overflow: hidden;
     border-radius: 50px;
 }
 
-.ui-block-17.quote .btn.btn-blue {background: #33c9dd; border-color: #33c9dd; color: #ffffff}
+.ui-block-17.quote .btn.btn-blue {background: #699FB0; border-color: #699FB0; color: #ffffff}
 .ui-block-17.quote .btn.btn-blue:hover {background: #81a109 !important; border-color: #81a109; color: #ffffff !important}
 .ui-block-17.quote .btn {-webkit-appearance: initial; overflow: hidden;position: -webkit-sticky;position: sticky; z-index: 2; display:inline-block; font-size: 15px; border:2px solid transparent; letter-spacing: .5px; line-height: inherit; border-radius: 0; text-transform:capitalize; width: auto;font-family: 'Raleway', sans-serif; font-weight: normal; -webkit-transition: all .5s ease;-o-transition: all .5s ease !important;transition: all .5s ease !important;}
 
@@ -28777,8 +28777,8 @@ section,.section-padding {position: relative;padding: 7.5rem 0;overflow: hidden;
 }
 .ui-block-16.footer.footer-sec .footer-icons a i.la-twitter:hover, .footer-sec .footer-icons  a i.la-twitter:focus {
     color: #ffffff;
-    -webkit-box-shadow: 0 0 15px 30px #33c9dd inset;
-    box-shadow: 0 0 15px 30px #33c9dd inset;
+    -webkit-box-shadow: 0 0 15px 30px #699FB0 inset;
+    box-shadow: 0 0 15px 30px #699FB0 inset;
 }
 .ui-block-16.footer.footer-sec .footer-icons a i.la-google:hover, .footer-sec .footer-icons  a i.la-google:focus {
     color: #ffffff;

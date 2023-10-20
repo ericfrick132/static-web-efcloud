@@ -92,18 +92,18 @@ section {padding: 7.5rem 0;}
 
 /* Pink button */
 .btn.btn-pink {background: #e87ec1; border-color: #e87ec1; color: #ffffff}
-.btn.btn-pink:hover {background: #6b30e9 !important; border-color: #6b30e9; color: #ffffff !important}
+.btn.btn-pink:hover {background: #508ABE !important; border-color: #508ABE; color: #ffffff !important}
 
 /* Background Color */
 .bg-blue{background-color: #5bbdbb;}
-.bg-purple{background-color: #6b30e9;}
+.bg-purple{background-color: #508ABE;}
 .bg-black{background-color: #202020;}
 .bg-pink{background-color: #e87ec1;}
 .bg-grey{background-color: #f2f2f2;}
 
 /* Text Color */
 .text-blue{color: #5bbdbb;}
-.text-purple{color: #6b30e9;}
+.text-purple{color: #508ABE;}
 .text-black{color: #202020;}
 .text-pink{color: #e87ec1;}
 
@@ -241,7 +241,7 @@ header .main-navigation nav .navbar-nav .nav-link{
 
 .navbar-social a:hover {
     background: #ffffff;
-    color: #6b30e9;
+    color: #508ABE;
     transition: .5s ease;
 }
 
@@ -255,7 +255,7 @@ header .main-navigation nav .navbar-nav .nav-link{
     right: 0;
     top:0;
     z-index: 1111;
-    background-color: #6b30e9;
+    background-color: #508ABE;
     -webkit-animation-name: animationFade;
     animation-name: animationFade;
     -webkit-animation-duration: 1s;
@@ -336,7 +336,7 @@ header .main-navigation nav .navbar-nav .nav-link{
     right: 0;
     top: 0;
     bottom:0;
-    background: #6b30e9;
+    background: #508ABE;
     z-index: 1114 !important;
     height: 100%;
     -webkit-transform: translate3d(0, 100%, 0);
@@ -801,7 +801,7 @@ header .main-navigation nav .navbar-nav .nav-link{
     width: 40%;
     height: 30%;
     top: -4%;
-    background-color: #33c9dd;
+    background-color: #699FB0;
 }
 
 .feature-item {
@@ -883,7 +883,7 @@ header .main-navigation nav .navbar-nav .nav-link{
 }
 
 .stats-block-inner:hover i.text-purple {
-    background-color: #6b30e9;
+    background-color: #508ABE;
 }
 
 .stats-block-inner:hover i.text-pink {
@@ -957,9 +957,9 @@ header .main-navigation nav .navbar-nav .nav-link{
 }
 
 .portfolio-sec .cbp-l-filters-button .cbp-filter-item.cbp-filter-item-active {
-    color: #33c9dd;
+    color: #699FB0;
     background: transparent;
-    border-bottom: solid 3px #33c9dd;
+    border-bottom: solid 3px #699FB0;
 }
 
 .portfolio-sec .cbp-l-filters-button .cbp-filter-item,
@@ -979,7 +979,7 @@ header .main-navigation nav .navbar-nav .nav-link{
 
 .portfolio-sec .cbp-l-filters-button .cbp-filter-item:hover {
     color: #202020;
-    border-color: #33c9dd;
+    border-color: #699FB0;
 }
 
 .portfolio-sec .cbp-l-caption-title {
@@ -1086,7 +1086,7 @@ header .main-navigation nav .navbar-nav .nav-link{
 }
 
 .pink-and-purple-btn{font-size: 12px;font-family: 'Roboto', sans-serif;padding: 12px 48px;color:#ffffff;font-weight: 600;background-color:#e87ec1;border:1px solid transparent;border-radius: 0;}
-.pink-and-purple-btn:hover{color: #ffffff !important;background-color: #6b30e9 !important;border: 1px solid transparent;}
+.pink-and-purple-btn:hover{color: #ffffff !important;background-color: #508ABE !important;border: 1px solid transparent;}
 
 /* ===================================
     Testimonials Section
@@ -1094,7 +1094,7 @@ header .main-navigation nav .navbar-nav .nav-link{
 
 .testimonial-sec{
     padding: 200px 0;
-    background-color: #33c9dd;
+    background-color: #699FB0;
 }
 
 #testimonial-header-svg{
@@ -1310,7 +1310,7 @@ header .main-navigation nav .navbar-nav .nav-link{
 }
 
 .contact-sec .contact-details ul li i.addr{
-    color: #6b30e9;
+    color: #508ABE;
 }
 
 .contact-sec .contact-details ul li i.phone{
@@ -1372,7 +1372,7 @@ header .main-navigation nav .navbar-nav .nav-link{
 }
 
 .footer-social li a:hover{
-    background: #6b30e9;
+    background: #508ABE;
     color: #ffffff;
 }
 
@@ -1553,7 +1553,7 @@ header .main-navigation nav .navbar-nav .nav-link{
     bottom: 15px;
     right: 15px;
     color: #ffffff;
-    background-color: #6b30e9;
+    background-color: #508ABE;
     z-index: 4;
     width: 40px;
     text-align: center;
@@ -1650,7 +1650,7 @@ header .main-navigation nav .navbar-nav .nav-link{
     width: 100%;
     z-index: 1111;
     overflow-x:hidden;
-    background: #6b30e9;
+    background: #508ABE;
 }
 
 .loader-inner {
@@ -1978,7 +1978,7 @@ header .main-navigation nav .navbar-nav .nav-link{
         padding: 4.5rem 0;
     }
     .inner-header {
-        background-color: #6b30e9;
+        background-color: #508ABE;
     }
     #banner-header-svg {
         display: none;
@@ -2141,7 +2141,7 @@ header .main-navigation nav .navbar-nav .nav-link{
         padding: 15px 0;
     }
     .inner-header {
-        background-color: #6b30e9;
+        background-color: #508ABE;
     }
     .banner-slider .heading-area {
         padding-top: 0;

@@ -289,6 +289,40 @@
 
             </section> <!-- end services -->
 
+            <!-- Who We Are Section -->
+            <section id="who-we-are" class="s-who-we-are target-section">
+                <div class="row s-who-we-are__content" data-animate-block>
+                    <div class="column lg-12">
+                        <h2 class="text-pretitle" data-animate-el>Who We Are</h2>
+                        <p class="lead" data-animate-el>
+                            Meet the minds behind our innovative solutions.
+                        </p>
+                    </div>
+
+                    <!-- Team Member 1 -->
+                    <div class="column lg-6 md-12">
+                        <div class="member">
+                            <h3 class="member__name">Eric Frick</h3>
+                            <p class="member__position">Co-founder & CEO</p>
+                            <p class="member__info">
+                                Jane leads our company with over 15 years of experience in software development and a passion for driving technology forward.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 2 -->
+                    <div class="column lg-6 md-12">
+                        <div class="member">
+                            <h3 class="member__name">Alejo Garcia Bonaderko</h3>
+                            <p class="member__position">Co-founder - Data & AI </p>
+                            <p class="member__info">
+                                Alejo architects our software solutions, specializing in Data and AI challenges.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- portfolio
             ----------------------------------------------- -->
             <section id="portfolio" class="s-portfolio">
@@ -299,10 +333,10 @@
                         <div class="column lg-12">
                             
                             <h3 class="text-pretitle">Showcase</h3>
-                            <h1 class="text-display-title">See Our Featured Projects.</h1>
+                            <h1 class="text-display-title">Case Studies.</h1>
                             
                             <p class="lead">
-                                Explore our portfolio of standout projects to see the real-world impact of our solutions. From innovative software developments to strategic staff augmentations, each featured project showcases our commitment to excellence and client success. Dive in to discover how we've helped businesses achieve their technological ambitions.
+                                Explore our collection of detailed case studies to understand the real-world impact of our solutions. From innovative software developments to strategic staff augmentations, each case study illustrates our commitment to excellence and client success. Dive in to discover how we've enabled businesses to achieve their technological ambitions through our focused interventions.
                             </p>
                             
                         </div> <!-- end column -->
@@ -532,6 +566,10 @@
 
             </section> <!-- end portfolio -->
 
+          
+
+
+
             <!-- contact
             ----------------------------------------------- -->
             <section id="contact" class="s-contact target-section">
@@ -543,7 +581,7 @@
                         <h1 class="text-display-title">
                             Have an idea or an epic project in mind? Talk to us. 
                             Let’s work together and make something great. 
-                            Drop us a line at <a href="mailto:#0">eric.frick@efcloud.tech</a>
+                            Drop us a line at <a onclick="copyToClipboard(event)">eric.frick@efcloud.tech</a>
                         </h1>
                         
                     </div> <!-- end column -->
@@ -575,7 +613,7 @@
                         <h5 class="with-top-line">Contact Us</h5>
         
                         <ul class="s-contact__list">
-                            <li><a href="mailto:#0">eric.frick@efcloud.tech</a></li>
+                            <li><a onclick="copyToClipboard(event)">eric.frick@efcloud.tech</a></li>
                             <li><a href="tel:1-689-256-4251">+1 689 256 4251</a></li>
                         </ul>
                     </div>
@@ -585,7 +623,7 @@
                 <div class="row s-contact__bottom">
     
                     <div class="column lg-5 tab-12 s-contact__mail-block">
-                        <a href="mailto:#0" class="btn btn--stroke btn--mail">
+                        <a onclick="copyToClipboard(event)" class="btn btn--stroke btn--mail">
                             Let's Talk 
                         </a>
                     </div>
@@ -676,6 +714,20 @@
     ================================================== -->
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        function copyToClipboard(event) {
+            var target = event.target;
+            var copyText = target.nextElementSibling;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if(!emailRegex.test(copyText)){
+                copyText = 'eric.frick@efcloud.tech';
+            }
+
+            navigator.clipboard.writeText(copyText.value);
+
+            alert("Copied: " + copyText.value);
+        }
+    </script>
 
 </body>
 </html>

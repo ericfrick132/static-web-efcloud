@@ -4337,3 +4337,28 @@ img.u-pull-left {
         display : none;
     }
 }
+
+.s-who-we-are__content {
+    padding: 50px 0;
+}
+
+.member {
+    text-align: center;
+    padding: 10px;
+}
+
+.member__name {
+    font-size: 30px;
+    color: #333;
+}
+
+.member__position {
+    font-size: 18px;
+    color: #555;
+}
+
+.member__info {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+}

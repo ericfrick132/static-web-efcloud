@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FootTrack - Advanced Football Analytics</title>
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+        document.documentElement.classList.add('js');
+    </script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&display=swap" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <style>
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.1s ease-in-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+        }
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .img-responsive {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .img-responsive:hover {
+            transform: scale(1.05);
+        }
+        .header {
+            background-color: rgba(255, 255, 255, 0.9);
+            height: 80px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+            font-family: Graphik, "IBM Plex Sans Arabic", serif;
+        }
+        .header.scrolled {
+            height: 60px;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 100%;
+        }
+        .header-logo img {
+            height: 50px;
+            transition: height 0.3s ease-in-out;
+        }
+        .header.scrolled .header-logo img {
+            height: 40px;
+        }
+        .header-nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .header-nav li {
+            margin-left: 30px;
+        }
+        .header-nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .header-nav a:hover {
+            color: #8e44ad;
+        }
+        body {
+            color: #333;
+            background-color: #f8f8f8;
+            font-family: Graphik, "IBM Plex Sans Arabic", serif;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .text-pretitle, .text-display-title, .lead {
+            color: #2c3e50;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .s-hero, .s-features, .s-contact {
+            background-color: #ffffff;
+            padding: 80px 0;
+        }
+        .s-hero .text-pretitle, .s-hero .text-display-title, .s-hero .lead,
+        .s-features .text-pretitle, .s-features .text-display-title,
+        .s-contact .text-pretitle, .s-contact .text-display-title {
+            color: #2c3e50;
+        }
+        .btn {
+            background-color: #8e44ad;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #6c3483;
+        }
+        .item-content-app {
+            /* Styles specific to app items */
+        }
+        .item-content-feature {
+            height: 720px;
+            /* Styles specific to feature items */
+        }
+    </style>
+</head>
+<body id="top">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="loader" class="animate__animated animate__pulse animate__infinite"></div>
+    </div>
+
+    <!-- Page Wrap -->
+    <div id="page" class="s-pagewrap">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-logo">
+                    <a href="index.html">
+                        <!-- <img src="imagenes/canva/futbol/1.webp" alt="FootTrack Logo"> -->
+                    </a>
+                </div>
+                <nav class="header-nav">
+                    <ul>
+                        <li><a href="#features" class="smoothscroll">Features</a></li>
+                        <li><a href="#benefits" class="smoothscroll">Benefits</a></li>
+                        <li><a href="#testimonials" class="smoothscroll">Testimonials</a></li>
+                        <li><a href="#contact" class="smoothscroll">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="hero" class="s-hero target-section parallax" style="background-image: url('imagenes/canva/futbol/1.webp'); padding-top: 120px; background-color: rgba(255, 255, 255, 0.3); background-blend-mode: overlay;">
+            <div class="row section-header has-bottom-sep fade-in visible" data-animate-block>
+                <div class="column lg-12">
+                    <h3 class="text-pretitle animate__animated animate__fadeInUp">Welcome to FootTrack</h3>
+                    <h1 class="text-display-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Elevate Your Game with Advanced Analytics</h1>
+                    <p class="lead animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">FootTrack offers cutting-edge GPS tracking and analytics for football clubs and athletes</p>
+                    <a href="#features" class="btn btn--stroke btn--small smoothscroll animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">Discover Features</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FootTrack App Section -->
+        <section id="foottrack-app" class="s-foottrack-app target-section">
+            <div class="row section-header has-bottom-sep fade-in visible" data-animate-block>
+                <div class="column lg-12">
+                    <h3 class="text-pretitle animate__animated animate__fadeInUp">FootTrack App</h3>
+                    <h1 class="text-display-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Revolutionizing Football Analysis</h1>
+                    <p class="lead animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">FootTrack is a tablet app that allows the technical staff of La Liga's first and second division teams to view and analyze real-time and historical match and player statistics.</p>
+                </div>
+            </div>
+            <div class="row app-content block-lg-one-third block-md-one-half block-tab-whole" data-animate-block>
+                <!-- Gadget 1 -->
+                <div class="column app-item fade-in visible" data-animate-el>
+                    <div class="item-content-app animate__animated animate__zoomIn">
+                        <h3 class="h3">What Does the FootTrack App Offer?</h3>
+                        <p>Whether you're a football fanatic or not, you've probably seen the typical image of the assistant coach with a tablet. Ever wondered what's on that tablet? It's none other than the FootTrack App.</p>
+                    </div>
+                </div>
+                <!-- Gadget 2 -->
+                <div class="column app-item fade-in visible" data-animate-el>
+                    <div class="item-content-app animate__animated animate__zoomIn" style="animation-delay: 0.1s;">
+                        <h3 class="h3">Cutting-Edge Video Analysis</h3>
+                        <p>The app is a next-generation video analysis solution designed by and for professional coaches of La Liga's 1st and 2nd divisions. It's the secret tool used by coaches, a powerful data and video analysis system that helps understand player limits better.</p>
+                    </div>
+                </div>
+                <!-- Gadget 3 -->
+                <div class="column app-item fade-in visible" data-animate-el>
+                    <div class="item-content-app animate__animated animate__zoomIn" style="animation-delay: 0.2s;">
+                        <h3 class="h3">Immediate and Precise Information</h3>
+                        <p>A high-tech solution with numerous quantifiable and manageable parameters through a simple and intuitive interface.</p>
+                    </div>
+                </div>
+                <!-- Gadget 4 -->
+                <div class="column app-item fade-in visible" data-animate-el>
+                    <div class="item-content-app animate__animated animate__zoomIn" style="animation-delay: 0.3s;">
+                        <h3 class="h3">Evaluate Performance</h3>
+                        <p>A solution that allows collecting physical and tactical data in real-time, to study our own team or the opponent.</p>
+                    </div>
+                </div>
+                <!-- Gadget 5 -->
+                <div class="column app-item fade-in visible" data-animate-el>
+                    <div class="item-content-app animate__animated animate__zoomIn" style="animation-delay: 0.4s;">
+                        <h3 class="h3">Reports and Statistics Instantly</h3>
+                        <p>FootTrack generates videos, reports, and statistics easily and comprehensibly. Data can be exported to different formats, such as PDF or Excel.</p>
+                    </div>
+                </div>
+                <!-- Gadget 6 -->
+                <div class="column app-item fade-in visible" data-animate-el>
+                    <div class="item-content-app animate__animated animate__zoomIn" style="animation-delay: 0.5s;">
+                        <h3 class="h3">Make the Best Decisions</h3>
+                        <p>Coaches and analysts have access to data from the entire competition, including pre and post-match analysis. Almost unlimited analysis possibilities to always make the best decision.</p>
+                    </div>
+                </div>
+                <!-- Gadget 7 -->
+                <div class="column app-item fade-in visible" data-animate-el>
+                    <div class="item-content-app animate__animated animate__zoomIn" style="animation-delay: 0.6s;">
+                        <h3 class="h3">Decision-Making Dashboard</h3>
+                        <p>The coach, along with the tablet, has a dashboard for decision-making during the match. Thanks to FootTrack, analysts and technical members can save time when cutting match videos, with information before (FootTrack Desktop), during (FootTrack Live), and after the matches (FootTrack Portal).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="s-features target-section">
+            <div class="row section-header has-bottom-sep fade-in visible" data-animate-block>
+                <div class="column lg-12">
+                    <h3 class="text-pretitle animate__animated animate__fadeInUp">Features</h3>
+                    <h1 class="text-display-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Powerful Tools for Performance</h1>
+                    <p class="lead animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">FootTrack offers cutting-edge features to analyze and improve player performance.</p>
+                </div>
+            </div>
+            <div class="row features-content block-lg-one-third block-md-one-half block-tab-whole" data-animate-block>
+                <!-- Feature 1 -->
+                <div class="column feature-item fade-in visible" data-animate-el>
+                    <div class="item-content-feature animate__animated animate__zoomIn">
+                        <img src="imagenes/canva/futbol/3.webp" alt="Real-time GPS Tracking" class="img-responsive">
+                        <h3 class="h3">Real-time GPS Tracking</h3>
+                        <p>Monitor player movements and positioning during matches and training sessions with precision.</p>
+                    </div>
+                </div>
+                <!-- Feature 2 -->
+                <div class="column feature-item fade-in visible" data-animate-el>
+                    <div class="item-content-feature animate__animated animate__zoomIn" style="animation-delay: 0.1s;">
+                        <img src="imagenes/canva/futbol/4.webp" alt="Performance Analytics" class="img-responsive">
+                        <h3 class="h3">Performance Analytics</h3>
+                        <p>Gain insights into player speed, distance covered, acceleration, and other key metrics.</p>
+                    </div>
+                </div>
+                <!-- Feature 3 -->
+                <div class="column feature-item fade-in visible" data-animate-el>
+                    <div class="item-content-feature animate__animated animate__zoomIn" style="animation-delay: 0.2s;">
+                        <img src="imagenes/canva/futbol/5.jpeg" alt="Tactical Analysis" class="img-responsive">
+                        <h3 class="h3">Tactical Analysis</h3>
+                        <p>Visualize team formations, player heat maps, and passing networks to optimize strategies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section id="benefits" class="s-benefits target-section parallax" style="background-image: url('/imagenes/canva/futbol/6.webp');">
+            <div class="row section-header has-bottom-sep fade-in visible" data-animate-block>
+                <div class="column lg-12">
+                    <h3 class="text-pretitle animate__animated animate__fadeInUp">Benefits</h3>
+                    <h1 class="text-display-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Unlock Your Team's Potential</h1>
+                    <p class="lead animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">FootTrack empowers coaches and players to achieve peak performance.</p>
+                </div>
+            </div>
+            <div class="row benefits-content block-lg-one-half block-md-one-half block-tab-whole" data-animate-block>
+                <!-- Benefit 1 -->
+                <div class="column benefit-item fade-in visible" data-animate-el>
+                    <div class="item-content-app animate__animated animate__zoomIn">
+                        <img src="/imagenes/canva/futbol/7.webp" alt="Injury Prevention" class="img-responsive">
+                        <h3 class="h3">Injury Prevention</h3>
+                        <p>Monitor player workload and fatigue levels to reduce the risk of injuries and optimize recovery.</p>
+                    </div>
+                </div>
+                <!-- Benefit 2 -->
+                <div class="column benefit-item fade-in visible" data-animate-el>
+                    <div class="item-content-app animate__animated animate__zoomIn" style="animation-delay: 0.1s;">
+                        <img src="/imagenes/canva/futbol/8.webp" alt="Data-Driven Decisions" class="img-responsive">
+                        <h3 class="h3">Data-Driven Decisions</h3>
+                        <p>Make informed choices about player selection, substitutions, and training plans based on objective data.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="s-testimonials target-section">
+            <div class="row section-header has-bottom-sep fade-in visible" data-animate-block>
+                <div class="column lg-12">
+                    <h3 class="text-pretitle animate__animated animate__fadeInUp">Testimonials</h3>
+                    <h1 class="text-display-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">What Our Clients Say</h1>
+                </div>
+            </div>
+            <div class="row testimonials-content block-lg-one-half block-md-one-half block-tab-whole" data-animate-block>
+                <!-- Testimonial 1 -->
+                <div class="column testimonial-item fade-in visible" data-animate-el>
+                    <div class="item-content-app animate__animated animate__zoomIn">
+                        <img src="/imagenes/canva/futbol/9.webp" alt="Coach testimonial" class="img-responsive">
+                        <p>"FootTrack has revolutionized our training approach. The insights we gain are invaluable for player development and match preparation."</p>
+                        <div class="testimonial-author">
+                            <span class="name">John Smith</span>
+                            <span class="position">Head Coach, FC United</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add spacing between testimonials -->
+                <div style="height: 20px;"></div>
+                <!-- Testimonial 2 -->
+                <div class="column testimonial-item fade-in visible" data-animate-el>
+                    <div class="item-content-app animate__animated animate__zoomIn" style="animation-delay: 0.1s;">
+                        <img src="/imagenes/canva/futbol/10.webp" alt="Player testimonial">
+                        <p>"Using FootTrack has helped me understand my performance on a deeper level. I can see my progress and focus on areas for improvement."</p>
+                        <div class="testimonial-author">
+                            <span class="name">Sarah Johnson</span>
+                            <span class="position">Professional Player, National Team</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <!-- Footer -->
+        <footer class="s-footer">
+            <div class="row">
+                <div class="column lg-6 md-12">
+                    <p>&copy; 2023 FootTrack. All rights reserved.</p>
+                </div>
+                <div class="column lg-6 md-12">
+                    <ul class="footer-social">
+                        <li><a href="#0">Facebook</a></li>
+                        <li><a href="#0">Twitter</a></li>
+                        <li><a href="#0">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div> <!-- end s-pagewrap -->
+
+    <!-- Java Script -->
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

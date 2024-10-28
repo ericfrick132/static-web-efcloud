@@ -3585,6 +3585,50 @@ img.u-pull-left {
     fill : var(--color-1);
 }
 
+/* Solutions */
+.s-solutions {
+    background-color: white;
+    padding-top: var(--vspace-5);
+    padding-bottom: var(--vspace-5);
+}
+
+.solutions-content {
+    margin-top: var(--vspace-3);
+}
+
+.solution-item {
+    margin-bottom: var(--vspace-2_5);
+}
+
+.item-content {
+    background-color: var(--color-gray-4);
+    padding: var(--vspace-2);
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    height: 590px;
+
+}
+
+.item-content:hover {
+    background-color: var(--color-gray-5);
+}
+
+.item-content h3 {
+    margin-top: 0;
+    margin-bottom: var(--vspace-1);
+    color: var(--color-text-dark);
+}
+
+.item-content p {
+    margin-bottom: var(--vspace-1_5);
+    color: var(--color-text);
+}
+
+.item-content .btn {
+    margin-top: var(--vspace-0_5);
+}
+
+
 /* ------------------------------------------------------------------- 
  * responsive:
  * services

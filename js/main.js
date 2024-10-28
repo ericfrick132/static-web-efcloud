@@ -35,8 +35,11 @@
         targets: '#preloader',
         opacity: 0,
         complete: function(anim) {
-            document.querySelector("#preloader").style.visibility = "hidden";
-            document.querySelector("#preloader").style.display = "none";
+            const preloader = document.querySelector("#preloader");
+            if (preloader) {
+                preloader.style.visibility = "hidden";
+                preloader.style.display = "none";
+            }
         }
     })
     .add({
@@ -88,8 +91,9 @@
     const ssMenuOnScrolldown = function() {
 
         const menuToggle = document.querySelector('.s-header__menu-toggle');
-        const triggerHeight = 150;
+        if (!menuToggle) return;
 
+        const triggerHeight = 150;
 
         window.addEventListener('scroll', function () {
 
@@ -115,7 +119,7 @@
         const closeButton = document.querySelector('.s-header__nav-close-btn');
         const siteBody    = document.querySelector('body');
 
-        if (!(menuToggle && nav)) return;
+        if (!(menuToggle && nav && closeButton && siteBody)) return;
 
         menuToggle.addEventListener('click', function(e) {
             e.preventDefault();
@@ -307,7 +311,7 @@
 
         });
 
-    };  // end ssPhotoSwipe
+    };  // end ssPhotoswipe
 
 
    /* mailchimp form

@@ -1,0 +1,162 @@
+Project 1: FuertaFit Application Enhancements
+Client: FuertaFit
+Region: Spain
+Project Link: FuertaFit
+Overview:
+Undertook critical functionality enhancements for FuertaFit’s iOS and Android applications. The project involved a complete overhaul of the authentication system, resulting in significant infrastructure cost savings. Additionally, new features were developed to enrich the app's offerings.
+
+Achievements:
+
+Improved app ratings on both the Play Store and App Store through enhanced user experience and stability.
+Achieved substantial cost reductions by optimizing the authentication system.
+Technologies Used:
+
+Android and iOS development platforms
+Advanced authentication technologies
+This initiative not only bolstered FuertaFit’s market position but also enhanced user satisfaction by providing a more reliable and feature-rich fitness tracking experience.
+
+Project 2: Briq Platform Enhancements
+Client: Briq
+Region: USA
+Project Link: Briq
+Overview:
+Implemented new features to automate customer-facing processes for Briq, a financial management platform aimed at construction companies. The project enhanced system efficiency and user experience, enabling Briq to streamline operations and improve service delivery.
+
+Achievements:
+
+Enhanced process automation directly facing clients.
+Facilitated smoother, faster user interactions and transactions.
+Technologies Used:
+
+Proprietary Briq software
+Automation tools
+The enhancements contributed to Briq’s capability to handle complex financial tasks effortlessly, promoting a better user experience and operational efficiency.
+
+Project 3: Eversource File Management System
+Client: Eversource Energy
+Region: USA
+Project Link: Eversource
+Overview:
+Developed functionalities for Eversource Energy, focusing on efficient file management to aid end-users in handling documents and data effectively. The solutions provided streamlined operations and improved data handling capabilities across the organization.
+
+Achievements:
+
+Improved file management and operational efficiency.
+Enhanced user experience in document handling and processing.
+Technologies Used:
+
+File management systems
+User interface enhancements
+This project significantly boosted productivity by optimizing how Eversource manages and processes user documents, aligning with its commitment to operational excellence and customer satisfaction.
+
+
+Project 4: HealthHero MVP Development
+Client: HealthHero
+Region: Europe
+Project Link: HealthHero
+Overview:
+Developed a Minimum Viable Product (MVP) tailored for HealthHero, Europe’s leading digital-first healthcare provider. The MVP leveraged wearable technology to enable real-time health monitoring, focusing on critical metrics such as heart rate and sleep patterns. This initiative not only facilitated immediate healthcare interventions but also aligned with HealthHero's mission to simplify healthcare by integrating smart technology with clinical expertise.
+
+Achievements:
+
+Enhanced patient engagement by providing instant access to health stats.
+Supported HealthHero’s objective to make high-quality healthcare accessible and preventive.
+Technologies Used:
+
+Real-time data processing from wearables
+Integration with HealthHero’s digital healthcare platform
+This project exemplified the synergy between advanced technology and healthcare, offering a scalable solution that supports both individual health management and broader organizational health strategies.
+
+
+
+
+
+Project 5: System Audit and Performance Improvements at Noodle
+Client: Noodle
+Scope: Comprehensive system audit and performance enhancements
+Outcome: Significantly enhanced system reliability and efficiency
+
+Description:
+Undertook a thorough audit of Noodle's technological infrastructure, aimed at identifying and rectifying inefficiencies. This project was pivotal in streamlining operations, notably improving system performance to support Noodle's extensive suite of services which include strategy, learning design, and technology solutions tailored for higher education. The enhancements implemented not only bolstered system reliability but also optimized resource utilization, resulting in a more robust and responsive service delivery framework.
+
+Impact:
+The improvements led to a more stable system environment, enabling Noodle to deliver high-quality educational technology services more efficiently. This project supported Noodle's mission of empowering universities with innovative solutions, thereby enhancing the educational journey for thousands of students worldwide.
+
+Technologies Used:
+Advanced auditing tools and custom-designed performance enhancement solutions tailored to the unique demands of Noodle's expansive service offerings.
+
+For further details on Noodle’s services and mission, visit Noodle's About Page.
+
+
+Project 6: Molo - Marina Management Transformation
+
+Client: Molo
+Industry: Marina Management
+Project Overview:
+Our team spearheaded the technological overhaul of Molo, a comprehensive marina management system. The project involved migrating their legacy system from an outdated .NET framework to a modern, cloud-native .NET Core architecture. This transition not only streamlined operations but also leveraged the scalability and reliability of cloud services.
+
+Key Contributions:
+
+Cloud Migration: Transitioned the entire infrastructure to a cloud-native environment, enhancing operational efficiency and reducing overhead costs.
+Development Process Optimization: Implemented Agile methodologies, defining the SDLC and organizing work into structured sprints. This shift drastically improved project transparency and team productivity.
+Marina Management Solutions: Our developments supported the diverse needs of marinas, boatyards, and yacht clubs, enabling them to manage slips, dry racks, and storage buildings effectively.
+Service and Repair Management: Enhanced the service management tools to facilitate small boat repairs and megayacht refits, incorporating features for managing work orders, job estimates, and parts inventory.
+Outcomes:
+The modernization of Molo has not only revitalized their operational workflow but also empowered them to handle marina management with unprecedented efficiency. Our work has positioned Molo as a leader in the industry, significantly enhancing their service delivery and customer satisfaction.
+
+For more detailed insights into Molo's services and features, you can visit their website here.
+
+Project 7: Pillar Markets Inc.
+Client: Pillar Markets Inc.
+Project Brief: Enhanced the AI-powered enterprise portfolio management software for institutional commercial real estate by expanding functionality through a proof of concept.
+Outcome: Successfully integrated advanced data aggregation and analytics features to optimize capital management across the deal lifecycle, improving decision-making processes and operational efficiencies.
+Technologies Used: AI-driven analytics, CRM integration, real-time data visualization.
+Achievements: The project facilitated better insights for property management and investor relations, significantly enhancing user engagement and satisfaction.
+
+This summary reflects the extensive capabilities and strategic innovations employed in enhancing Pillar Markets Inc.'s software platform, focusing on maximizing the utility and efficiency of their commercial real estate management tools. For further details about Pillar Markets, visit their website.
+
+
+
+
+Client: Katoen Natie
+Location: Belgium
+Industry: Logistics and Applied Engineering
+Website: Katoen Natie
+
+Project Overview:
+Katoen Natie, a global leader in logistics and engineering solutions, required enhancements to their railyard operations to improve functionality and efficiency. The project involved the expansion of railyard capabilities and the integration of new features using .NET technology.
+
+Challenges:
+The existing system operated on an outdated .NET framework which limited operational flexibility and efficiency. The client sought to modernize their infrastructure to enhance service delivery and accommodate growth.
+
+Solutions:
+
+Migration to Azure: Transitioned from an older .NET framework to Azure to leverage cloud scalability and improve system reliability.
+Feature Expansion: Developed and integrated new features into the railyard management system to increase operational capabilities.
+Impact:
+This project significantly boosted the logistical operations at Katoen Natie's Tarragona site, which serves as a major import/export and distribution hub in Spain. The site benefits from enhanced multimodal transport connections and optimized cost-to-market conditions for the Iberian Peninsula. The modernized system supports Katoen Natie’s commitment to delivering tailored logistics solutions and maintaining a competitive edge in the market.
+
+Additional Information:
+Katoen Natie specializes in providing logistics solutions across various sectors, including petrochemicals and consumer goods, with a strong emphasis on technology-driven services. The company operates a comprehensive network of logistics platforms and specialized facilities globally, ensuring high standards of supply chain efficiency and operational excellence. For more details, visit Katoen Natie's website.
+
+
+Project 9: ABS (American Bureau of Shipping)
+Client: American Bureau of Shipping (ABS)
+
+Objective: Develop the foundation for ABS’s new primary system for monitoring maritime vessels.
+
+Overview:
+
+Developed critical features for live tracking of ships, including fuel consumption monitoring, tracking deviations from expected routes, and providing real-time locations and estimated times of arrival (ETAs).
+The system is designed to enhance operational efficiencies and ensure regulatory compliance across global shipping operations.
+Technologies Used:
+
+Advanced geospatial tracking systems
+Real-time data analytics platforms
+Impact:
+
+Enhanced the capability of ABS to monitor ship performance and operational status on a global scale.
+Provided robust data to optimize route planning and fuel usage, significantly reducing operational costs and environmental impact.
+Additional Information: The American Bureau of Shipping is a maritime classification society established in 1862, dedicated to promoting the security of life, property, and the natural environment. They are a leading provider of classification and technical advisory services to the marine and offshore industries. More about ABS.
+
+

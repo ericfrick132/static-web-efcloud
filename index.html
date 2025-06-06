@@ -25,6 +25,158 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
 
+    <style>
+    /* Reset y visibilidad para case studies */
+    .s-portfolio .folio-item[data-animate-el],
+    .s-portfolio .folio-list.bricks,
+    #portfolio [data-animate-el],
+    .s-portfolio__content [data-animate-el] {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+        animation: none !important;
+    }
+    
+    /* Galería simple y elegante */
+    .folio-list.bricks {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 40px 0;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .brick.folio-item {
+        background: #1a1a1a;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+        position: relative;
+    }
+    
+    .brick.folio-item:hover {
+        transform: translateY(-5px);
+    }
+    
+    .folio-item__thumb {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .folio-item__thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    
+    .folio-item:hover .folio-item__thumb img {
+        transform: scale(1.05);
+    }
+    
+    .folio-item__info {
+        padding: 20px;
+    }
+    
+    .folio-item__cat {
+        color: #4EFAEC;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+    
+    .folio-item__title {
+        color: white;
+        font-size: 18px;
+        margin: 0;
+        font-weight: 600;
+    }
+    
+    .folio-item__caption {
+        padding: 0 20px 20px;
+        color: #cccccc;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    
+    .folio-item__project-link {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 10;
+        text-decoration: none;
+    }
+    
+    .folio-item:hover .folio-item__project-link {
+        opacity: 1;
+    }
+    
+    .folio-item__project-link svg {
+        width: 20px;
+        height: 20px;
+        fill: #333;
+    }
+    
+    .folio-item__project-link:hover {
+        background: white;
+        transform: scale(1.1);
+    }
+    
+    /* Evitar que el link del proyecto interfiera con el click del div */
+    .folio-item__project-link {
+        pointer-events: auto;
+    }
+    
+    .folio-item__thumb-link {
+        pointer-events: none;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .folio-list.bricks {
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+    }
+
+    /* Mostrar inmediatamente el título principal sin animaciones */
+    .s-intro__title {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+        animation: none !important;
+    }
+
+    .s-intro__pretitle {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+        animation: none !important;
+    }
+
+    .s-intro__content-inner {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+        animation: none !important;
+    }
+    </style>
+
 </head>
 
 
@@ -75,25 +227,13 @@
 
                 <ul class="s-header__social">
                     <li>
-                        <a href="#0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M20,3H4C3.447,3,3,3.448,3,4v16c0,0.552,0.447,1,1,1h8.615v-6.96h-2.338v-2.725h2.338v-2c0-2.325,1.42-3.592,3.5-3.592 c0.699-0.002,1.399,0.034,2.095,0.107v2.42h-1.435c-1.128,0-1.348,0.538-1.348,1.325v1.735h2.697l-0.35,2.725h-2.348V21H20 c0.553,0,1-0.448,1-1V4C21,3.448,20.553,3,20,3z"></path></svg>
-                            <span class="u-screen-reader-text">Facebook</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M19.633,7.997c0.013,0.175,0.013,0.349,0.013,0.523c0,5.325-4.053,11.461-11.46,11.461c-2.282,0-4.402-0.661-6.186-1.809 c0.324,0.037,0.636,0.05,0.973,0.05c1.883,0,3.616-0.636,5.001-1.721c-1.771-0.037-3.255-1.197-3.767-2.793 c0.249,0.037,0.499,0.062,0.761,0.062c0.361,0,0.724-0.05,1.061-0.137c-1.847-0.374-3.23-1.995-3.23-3.953v-0.05 c0.537,0.299,1.16,0.486,1.82,0.511C3.534,9.419,2.823,8.184,2.823,6.787c0-0.748,0.199-1.434,0.548-2.032 c1.983,2.443,4.964,4.04,8.306,4.215c-0.062-0.3-0.1-0.611-0.1-0.923c0-2.22,1.796-4.028,4.028-4.028 c1.16,0,2.207,0.486,2.943,1.272c0.91-0.175,1.782-0.512,2.556-0.973c-0.299,0.935-0.936,1.721-1.771,2.22 c0.811-0.088,1.597-0.312,2.319-0.624C21.104,6.712,20.419,7.423,19.633,7.997z"></path></svg>
-                            <span class="u-screen-reader-text">Twitter</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#0">
+                        <a href="https://instagram.com/efcloud.tech">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M11.999,7.377c-2.554,0-4.623,2.07-4.623,4.623c0,2.554,2.069,4.624,4.623,4.624c2.552,0,4.623-2.07,4.623-4.624 C16.622,9.447,14.551,7.377,11.999,7.377L11.999,7.377z M11.999,15.004c-1.659,0-3.004-1.345-3.004-3.003 c0-1.659,1.345-3.003,3.004-3.003s3.002,1.344,3.002,3.003C15.001,13.659,13.658,15.004,11.999,15.004L11.999,15.004z"></path><circle cx="16.806" cy="7.207" r="1.078"></circle><path d="M20.533,6.111c-0.469-1.209-1.424-2.165-2.633-2.632c-0.699-0.263-1.438-0.404-2.186-0.42 c-0.963-0.042-1.268-0.054-3.71-0.054s-2.755,0-3.71,0.054C7.548,3.074,6.809,3.215,6.11,3.479C4.9,3.946,3.945,4.902,3.477,6.111 c-0.263,0.7-0.404,1.438-0.419,2.186c-0.043,0.962-0.056,1.267-0.056,3.71c0,2.442,0,2.753,0.056,3.71 c0.015,0.748,0.156,1.486,0.419,2.187c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45 c0.963,0.042,1.268,0.055,3.71,0.055s2.755,0,3.71-0.055c0.747-0.015,1.486-0.157,2.186-0.419c1.209-0.469,2.164-1.424,2.633-2.633 c0.263-0.7,0.404-1.438,0.419-2.186c0.043-0.962,0.056-1.267,0.056-3.71s0-2.753-0.056-3.71C20.941,7.57,20.801,6.819,20.533,6.111z M19.315,15.643c-0.007,0.576-0.111,1.147-0.311,1.688c-0.305,0.787-0.926,1.409-1.712,1.711c-0.535,0.199-1.099,0.303-1.67,0.311 c-0.95,0.044-1.218,0.055-3.654,0.055c-2.438,0-2.687,0-3.655-0.055c-0.569-0.007-1.135-0.112-1.669-0.311 c-0.789-0.301-1.414-0.923-1.719-1.711c-0.196-0.534-0.302-1.099-0.311-1.669c-0.043-0.95-0.053-1.218-0.053-3.654 c0-2.437,0-2.686,0.053-3.655c0.007-0.576,0.111-1.146,0.311-1.687c0.305-0.789,0.93-1.41,1.719-1.712 c0.534-0.198,1.1-0.303,1.669-0.311c0.951-0.043,1.218-0.055,3.655-0.055c2.437,0,2.687,0,3.654,0.055 c0.571,0.007,1.135,0.112,1.67,0.311c0.786,0.303,1.407,0.925,1.712,1.712c0.196,0.534,0.302,1.099,0.311,1.669 c0.043,0.951,0.054,1.218,0.054,3.655c0,2.436,0,2.698-0.043,3.654H19.315z"></path></svg>
                             <span class="u-screen-reader-text">Instagram</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#0">
+                        <a href="https://www.linkedin.com/company/ef-cloud/">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24" height="24" style="fill:rgba(0, 0, 0, 1);">
                                 <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.13 0 53.4 0 23.44 24.39 0 53.79 0c29.4 0 53.79 23.44 53.79 53.4 0 29.73-24.39 54.7-53.79 54.7zM447.9 448H355V302.4c0-34.7-12.48-58.3-43.75-58.3-23.9 0-38.17 16.09-44.41 31.56-2.28 5.56-2.84 13.34-2.84 21.12V448h-92.86V148.9h92.86v40.95c12.34-19.01 34.54-46.13 84.01-46.13 61.3 0 107.1 40.27 107.1 126.92V448z"/>
                               </svg>
@@ -137,19 +277,13 @@
 
                 <ul class="s-intro__social">
                     <li>
-                        <a href="#0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M19.633,7.997c0.013,0.175,0.013,0.349,0.013,0.523c0,5.325-4.053,11.461-11.46,11.461c-2.282,0-4.402-0.661-6.186-1.809 c0.324,0.037,0.636,0.05,0.973,0.05c1.883,0,3.616-0.636,5.001-1.721c-1.771-0.037-3.255-1.197-3.767-2.793 c0.249,0.037,0.499,0.062,0.761,0.062c0.361,0,0.724-0.05,1.061-0.137c-1.847-0.374-3.23-1.995-3.23-3.953v-0.05 c0.537,0.299,1.16,0.486,1.82,0.511C3.534,9.419,2.823,8.184,2.823,6.787c0-0.748,0.199-1.434,0.548-2.032 c1.983,2.443,4.964,4.04,8.306,4.215c-0.062-0.3-0.1-0.611-0.1-0.923c0-2.22,1.796-4.028,4.028-4.028 c1.16,0,2.207,0.486,2.943,1.272c0.91-0.175,1.782-0.512,2.556-0.973c-0.299,0.935-0.936,1.721-1.771,2.22 c0.811-0.088,1.597-0.312,2.319-0.624C21.104,6.712,20.419,7.423,19.633,7.997z"></path></svg>
-                            <span class="u-screen-reader-text">Twitter</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#0">
+                        <a href="https://instagram.com/efcloud.tech">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M11.999,7.377c-2.554,0-4.623,2.07-4.623,4.623c0,2.554,2.069,4.624,4.623,4.624c2.552,0,4.623-2.07,4.623-4.624 C16.622,9.447,14.551,7.377,11.999,7.377L11.999,7.377z M11.999,15.004c-1.659,0-3.004-1.345-3.004-3.003 c0-1.659,1.345-3.003,3.004-3.003s3.002,1.344,3.002,3.003C15.001,13.659,13.658,15.004,11.999,15.004L11.999,15.004z"></path><circle cx="16.806" cy="7.207" r="1.078"></circle><path d="M20.533,6.111c-0.469-1.209-1.424-2.165-2.633-2.632c-0.699-0.263-1.438-0.404-2.186-0.42 c-0.963-0.042-1.268-0.054-3.71-0.054s-2.755,0-3.71,0.054C7.548,3.074,6.809,3.215,6.11,3.479C4.9,3.946,3.945,4.902,3.477,6.111 c-0.263,0.7-0.404,1.438-0.419,2.186c-0.043,0.962-0.056,1.267-0.056,3.71c0,2.442,0,2.753,0.056,3.71 c0.015,0.748,0.156,1.486,0.419,2.187c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45 c0.963,0.042,1.268,0.055,3.71,0.055s2.755,0,3.71-0.055c0.747-0.015,1.486-0.157,2.186-0.419c1.209-0.469,2.164-1.424,2.633-2.633 c0.263-0.7,0.404-1.438,0.419-2.186c0.043-0.962,0.056-1.267,0.056-3.71s0-2.753-0.056-3.71C20.941,7.57,20.801,6.819,20.533,6.111z M19.315,15.643c-0.007,0.576-0.111,1.147-0.311,1.688c-0.305,0.787-0.926,1.409-1.712,1.711c-0.535,0.199-1.099,0.303-1.67,0.311 c-0.95,0.044-1.218,0.055-3.654,0.055c-2.438,0-2.687,0-3.655-0.055c-0.569-0.007-1.135-0.112-1.669-0.311 c-0.789-0.301-1.414-0.923-1.719-1.711c-0.196-0.534-0.302-1.099-0.311-1.669c-0.043-0.95-0.053-1.218-0.053-3.654 c0-2.437,0-2.686,0.053-3.655c0.007-0.576,0.111-1.146,0.311-1.687c0.305-0.789,0.93-1.41,1.719-1.712 c0.534-0.198,1.1-0.303,1.669-0.311c0.951-0.043,1.218-0.055,3.655-0.055c2.437,0,2.687,0,3.654,0.055 c0.571,0.007,1.135,0.112,1.67,0.311c0.786,0.303,1.407,0.925,1.712,1.712c0.196,0.534,0.302,1.099,0.311,1.669 c0.043,0.951,0.054,1.218,0.054,3.655c0,2.436,0,2.698-0.043,3.654H19.315z"></path></svg>
                             <span class="u-screen-reader-text">Instagram</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#0">
+                        <a href="https://www.linkedin.com/company/ef-cloud/">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);">
                                 <path d="M20.447,3H3.553C2.696,3,2,3.691,2,4.538v14.923C2,20.31,2.696,21,3.553,21h16.895C21.304,21,22,20.31,22,19.462V4.538C22,3.691,21.304,3,20.447,3z M8.338,18.338H5.777V9.669h2.561V18.338z M7.057,8.586c-0.817,0-1.481-0.668-1.481-1.489c0-0.822,0.664-1.488,1.481-1.488c0.815,0,1.479,0.666,1.479,1.488C8.535,7.918,7.872,8.586,7.057,8.586z M18.338,18.338h-2.561v-4.775c0-1.138-0.022-2.602-1.587-2.602c-1.587,0-1.83,1.243-1.83,2.526v4.851H9.798V9.669h2.457v1.184h0.034c0.342-0.646,1.176-1.326,2.42-1.326c2.589,0,3.068,1.705,3.068,3.925V18.338z"/>
                               </svg>
@@ -277,100 +411,1531 @@
 
             </section> <!-- end services -->
 
-            <!-- products
-            ----------------------------------------------- -->
-            <section id="products" class="s-products">
-                <div class="s-products__bg"></div>
+            <!-- Work Process Section -->
+            <section id="process" class="s-process">
+                <div class="s-process__bg"></div>
 
                 <div class="row narrow section-header section-header--dark has-bottom-sep">
                     <div class="column lg-12">
-                        <h3 class="text-pretitle">Products</h3>
-                        <h1 class="text-display-title">Our Solutions</h1>
+                        <h3 class="text-pretitle">Work Process</h3>
+                        <h1 class="text-display-title">How We Work</h1>
                         <p class="lead">
-                            Discover our suite of innovative products designed to transform your business. 
-                            Each solution is crafted with cutting-edge technology to meet specific industry needs.
+                            Our work process is designed to ensure exceptional results and a smooth experience for our clients. From the first meeting to the final delivery, each step is carefully planned.
                         </p>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="column lg-12">
-                        <div class="products-list">
-                            <div class="product-item">
-                                <div class="product-content">
-                                    <div class="product-header">
-                                        <div class="product-icon-block">
-                                            <img src="images/boxhero-logo.png" alt="BoxHero Logo">
+                <div class="process-container">
+                    <div class="process-intro">
+                        <div class="process-intro__content">
+                            <h2 class="process-intro__title">Our Approach</h2>
+                            <p class="process-intro__text">
+                                We begin by meeting with the client to carefully listen to their needs and objectives. This initial phase is crucial for fully understanding the scope of the project.
+                            </p>
+                        </div>
+                        <div class="process-intro__image">
+                            <div class="process-intro__image-inner">
+                                <div class="dev-process-animation">
+                                    <div class="code-window">
+                                        <div class="window-header">
+                                            <span class="dot dot-red"></span>
+                                            <span class="dot dot-yellow"></span>
+                                            <span class="dot dot-green"></span>
                                         </div>
-                                        <h3 class="h4">BoxHero</h3>
-                                        <p class="product-subtitle">Complete Gym Management Solution</p>
+                                        <div class="code-content">
+                                            <div class="code-line"><span class="keyword">class</span> Project {</div>
+                                            <div class="code-line indent"><span class="keyword">constructor</span>() {</div>
+                                            <div class="code-line indent-2">this.quality = <span class="string">"premium"</span>;</div>
+                                            <div class="code-line indent-2">this.onTime = <span class="boolean">true</span>;</div>
+                                            <div class="code-line indent">}</div>
+                                            <div class="code-line">}</div>
+                                        </div>
                                     </div>
-
-                                    <p>
-                                        BoxHero is an all-in-one gym management platform that streamlines operations, 
-                                        enhances member experience, and drives business growth. From membership management 
-                                        to class scheduling, performance tracking to billing.
-                                    </p>
-
-                                    <ul class="product-features">
-                                        <li>Membership Management & Billing</li>
-                                        <li>Class Scheduling & Attendance</li>
-                                        <li>Performance Metrics & Progress</li>
-                                        <li>Mobile App for Members</li>
-                                        <li>Integrated Payment Processing</li>
-                                        <li>Real-time Analytics Dashboard</li>
-                                        <li>Automated Member Communications</li>
-                                        <li>Equipment Maintenance Tracking</li>
-                                    </ul>
-
-                                    <a href="https://boxhero.fit" class="btn btn--primary" target="_blank">Learn More</a>
+                                    <div class="floating-elements">
+                                        <div class="floating-icon">
+                                            <span class="tech-label">TypeScript</span>
+                                            <span class="tech-icon">{}</span>
+                                        </div>
+                                        <div class="floating-icon">
+                                            <span class="tech-label">.NET</span>
+                                            <span class="tech-icon">#</span>
+                                        </div>
+                                        <div class="floating-icon">
+                                            <span class="tech-label">React</span>
+                                            <span class="tech-icon">⚛️</span>
+                                        </div>
+                                        <div class="floating-icon">
+                                            <span class="tech-label">Azure</span>
+                                            <span class="tech-icon">☁️</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
 
-            <!-- portfolio
-            ----------------------------------------------- -->
-            <section id="portfolio" class="s-portfolio">
-
-                <div class="s-portfolio__header">
-
-                    <div class="row narrow section-header section-header--dark has-bottom-sep">
-                        <div class="column lg-12">
-                            
-                            <h3 class="text-pretitle">Showcase</h3>
-                            <h1 class="text-display-title">Case Studies.</h1>
-                            
-                            <p class="lead">
-                                Explore our collection of detailed case studies to understand the real-world impact of our solutions. From innovative software developments to strategic staff augmentations, each case study illustrates our commitment to excellence and client success. Dive in to discover how we've enabled businesses to achieve their technological ambitions through our focused interventions.
-                            </p>
-                            
-                        </div> <!-- end column -->
-                    </div> <!-- end section header -->
-
-                </div> <!-- end s-portfolio__header -->
-
-                <div class="row s-portfolio__content" data-animate-block>
-                    <div class="column lg-12">
-
+                    <div class="process-steps">
+                        <div class="process-step">
+                            <div class="process-step__number">
+                                <span>01</span>
+                            </div>
+                            <div class="process-step__content">
+                                <h3>Design and Prototyping</h3>
+                                <p>We create designs and prototypes based on your specific needs to visualize the final product.</p>
+                            </div>
+                            <div class="process-step__icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path d="M19 3h-14c-1.104 0-2 .896-2 2v14c0 1.104.896 2 2 2h14c1.104 0 2-.896 2-2v-14c0-1.104-.896-2-2-2zm-14 16v-14h14v14h-14zm12-3h-10v-1h10v1zm0-3h-10v-1h10v1zm0-3h-10v-1h10v1z"/></svg>
+                            </div>
+                        </div>
                         
+                        <div class="process-step">
+                            <div class="process-step__number">
+                                <span>02</span>
+                            </div>
+                            <div class="process-step__content">
+                                <h3>Feature Development</h3>
+                                <p>We implement all the required functionalities for your project with clean and efficient code.</p>
+                            </div>
+                            <div class="process-step__icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path d="M24 10.935v2.131l-8 3.947v-2.23l5.64-2.783-5.64-2.79v-2.223l8 3.948zm-16 3.848l-5.64-2.783 5.64-2.79v-2.223l-8 3.948v2.131l8 3.947v-2.23zm7.047-10.783h-2.078l-4.011 16h2.073l4.016-16z"/></svg>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="process-step__number">
+                                <span>03</span>
+                            </div>
+                            <div class="process-step__content">
+                                <h3>Testing</h3>
+                                <p>We conduct thorough testing to ensure optimal quality and performance of the product.</p>
+                            </div>
+                            <div class="process-step__icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path d="M12.015 7c4.751 0 8.063 3.012 9.504 4.636-1.401 1.837-4.713 5.364-9.504 5.364-4.42 0-7.93-3.536-9.478-5.407 1.493-1.647 4.817-4.593 9.478-4.593zm0-2c-7.569 0-12.015 6.551-12.015 6.551s4.835 7.449 12.015 7.449c7.733 0 11.985-7.449 11.985-7.449s-4.291-6.551-11.985-6.551zm-.015 3c-2.209 0-4 1.792-4 4 0 2.209 1.791 4 4 4s4-1.791 4-4c0-2.208-1.791-4-4-4z"/></svg>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="process-step__number">
+                                <span>04</span>
+                            </div>
+                            <div class="process-step__content">
+                                <h3>Project Delivery</h3>
+                                <p>We deliver the completed project and provide ongoing support to ensure your satisfaction.</p>
+                            </div>
+                            <div class="process-step__icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+                            </div>
+                        </div>
+                    </div>
 
-                        <div class="folio-list bricks">
-         
+                    <div class="payment-section">
+                        <div class="payment-section__content">
+                            <h2 class="payment-section__title">Payment Options</h2>
+                            <div class="payment-section__highlight">
+                                <div class="start-now-card">
+                                    <div class="percentage-display">
+                                        <div class="percentage-circle">
+                                            <svg viewBox="0 0 100 100" class="progress-circle">
+                                                <circle class="progress-circle-bg" cx="50" cy="50" r="45"/>
+                                                <circle class="progress-circle-path" cx="50" cy="50" r="45"/>
+                                            </svg>
+                                            <div class="percentage-content">
+                                                <span class="percentage-value">20</span>
+                                                <span class="percentage-symbol">%</span>
+                                            </div>
+                                        </div>
+                                        <div class="percentage-rays"></div>
+                                    </div>
+                                    <div class="start-now-content">
+                                        <h3>Kickstart Your Project</h3>
+                                        <p>Begin with just 20% down payment</p>
+                                        <div class="features-list">
+                                            <div class="feature-item">
+                                                <span class="feature-icon">✓</span>
+                                                <span>Immediate project initiation</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <span class="feature-icon">✓</span>
+                                                <span>Flexible payment schedule</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-methods">
+                                <div class="payment-method">
+                                    <div class="payment-method__icon">
+                                        <div class="card-animation">
+                                            <div class="card-chip"></div>
+                                            <div class="card-wave"></div>
+                                            <div class="card-wave"></div>
+                                            <div class="card-wave"></div>
+                                        </div>
+                                    </div>
+                                    <h4 class="payment-method__title">Credit/Debit Card</h4>
+                                </div>
+                                
+                                <div class="payment-method">
+                                    <div class="payment-method__icon">
+                                        <div class="bank-animation">
+                                            <div class="bank-building">
+                                                <div class="bank-column"></div>
+                                                <div class="bank-column"></div>
+                                                <div class="bank-column"></div>
+                                                <div class="bank-roof"></div>
+                                            </div>
+                                            <div class="bank-steps"></div>
+                                        </div>
+                                    </div>
+                                    <h4 class="payment-method__title">Bank Transfer</h4>
+                                </div>
+                                
+                                <div class="payment-method">
+                                    <div class="payment-method__icon">
+                                        <div class="stripe-animation">
+                                            <div class="stripe-line stripe-line-1"></div>
+                                            <div class="stripe-line stripe-line-2"></div>
+                                            <div class="stripe-line stripe-line-3"></div>
+                                        </div>
+                                    </div>
+                                    <h4 class="payment-method__title">Stripe</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="payment-section__image">
+                            <div class="payment-animation-container">
+                                <div class="payment-animation-scene">
+                                    <!-- 3D Credit Card -->
+                                    <div class="animated-card">
+                                        <div class="card-face card-front">
+                                            <div class="card-chip"></div>
+                                            <div class="card-logo">AMERICAN EXPRESS</div>
+                                            <div class="card-centurion">
+                                                <svg viewBox="0 0 24 24" width="40" height="40">
+                                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="#c0c0c0"/>
+                                                    <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" fill="#c0c0c0"/>
+                                                </svg>
+                                            </div>
+                                            <div class="card-number">3759 876543 21001</div>
+                                            <div class="card-holder">CENTURION MEMBER</div>
+                                            <div class="card-expiry">MEMBER SINCE 2023</div>
+                                        </div>
+                                        <div class="card-face card-back">
+                                            <div class="card-stripe"></div>
+                                            <div class="card-signature">
+                                                <div class="signature-line"></div>
+                                            </div>
+                                            <div class="card-info">
+                                                THE CENTURION® CARD
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Floating Payment Icons -->
+                                    <div class="floating-payment-icons">
+                                        <div class="payment-icon icon-paypal">
+                                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                                <path d="M20.067 8.478c.492.315.844.897.844 1.589 0 1.283-.888 2.56-2.434 2.56h-.31c-.19.495-.687.83-1.25.83H15.16l-.31 1.968h2.434c.43 0 .81-.275.93-.683l.124-.427h.933c2.247 0 3.853-1.653 3.853-3.809 0-1.093-.49-2.048-1.314-2.63-.826-.583-1.943-.868-3.107-.868h-5.273l-2.434 9.17h2.246l.372-1.968h1.376l.31-1.968h-1.376l.682-2.63h3.107c.933 0 1.438-.65 1.438-1.283 0-.34-.188-.65-.496-.83-.31-.18-.74-.272-1.19-.272h-2.31l-.31 1.968h2.434c.31 0 .557.09.683.272z" fill="#003087"/>
+                                                <path d="M7.826 10.446l-.372 1.968H5.64l-.31 1.968h1.813l-.372 1.968H4.513l2.434-9.17h5.273c1.162 0 2.28.285 3.106.868.825.582 1.314 1.537 1.314 2.63 0 2.156-1.605 3.809-3.853 3.809h-.933l-.124.427c-.12.408-.5.683-.93.683H8.136l.31-1.968h1.752c.564 0 1.063-.335 1.252-.83h.31c1.545 0 2.433-1.277 2.433-2.56 0-.692-.352-1.274-.844-1.589-.126-.18-.373-.272-.682-.272H9.64l-.682 2.63H7.826z" fill="#0070E0"/>
+                                            </svg>
+                                        </div>
+                                        <div class="payment-icon icon-stripe">
+                                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                                <path d="M13.479 9.883c-1.626-.604-2.512-1.067-2.512-1.803 0-.622.513-1.024 1.437-1.024.95 0 1.722.398 2.437 1.024l.95-1.921C14.9 5.555 13.738 5 12.184 5 9.745 5 8.069 6.421 8.069 8.398c0 2.56 2.101 3.472 3.691 4.113 1.626.678 2.177 1.145 2.177 1.869 0 .714-.57 1.122-1.59 1.122-1.246 0-2.405-.533-3.064-1.122l-.95 1.921c.95.678 2.177 1.145 3.634 1.145 2.588 0 4.251-1.276 4.251-3.349-.038-2.598-2.177-3.51-3.729-4.151l-.01-.063zm-5.415 7.264c-.532.243-1.36.398-2.14.398-1.36 0-2.063-.533-2.063-1.421 0-.888.703-1.459 2.063-1.459.741 0 1.323.116 1.74.272l.4 2.21zm1.74-9.883l-1.74 8.995c-.038.155-.38.311-.38.466 0 .078 0 .155.38.233l-.38.155c-.38.155-.114.272-.228.35-.114.078-.266.116-.418.116-.342 0-.646-.155-.836-.427-.19-.272-.266-.622-.19-1.024l1.74-8.995h-2.33l-1.74 9.034c-.152.776-.38.427.38.854.76.427.228.776.418 1.067.19.311.456.544.76.699.304.155.646.233 1.018.233.57 0 1.094-.116 1.55-.311.456-.194.836-.466 1.132-.815.342.388.798.699 1.36.854.57.155 1.17.233 1.778.233.798 0 1.55-.116 2.215-.35.665-.233 1.208-.544 1.626-.932l-.95-1.92c-.342.31-.76.543-1.246.699-.494.155-1.018.233-1.55.233-.95 0-1.626-.272-1.93-.815-.304-.544-.342-1.26-.152-2.132l.342-1.803h3.14l.38-2.054h-3.14l.798-4.151h-2.33z" fill="#6772E5"/>
+                                            </svg>
+                                        </div>
+                                        <div class="payment-icon icon-bank">
+                                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                                <path d="M11.971 3.5L5 7.152V7.5h14v-.348L11.971 3.5zM6 9.5v7h3v-7H6zm4.5 0v7h3v-7h-3zm4.5 0v7h3v-7h-3zM4 18.5v2h16v-2H4z" fill="#4EFAEC"/>
+                                            </svg>
+                                        </div>
+                                        <div class="payment-icon icon-crypto">
+                                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                                <path d="M11.767 19.125c4.124 0 7.467-3.343 7.467-7.467C19.234 7.534 15.89 4.19 11.767 4.19c-4.124 0-7.467 3.344-7.467 7.468 0 4.124 3.343 7.467 7.467 7.467zm.15-13.67c3.431 0 6.213 2.783 6.213 6.214 0 3.431-2.782 6.213-6.214 6.213-3.43 0-6.213-2.782-6.213-6.213 0-3.43 2.783-6.214 6.213-6.214zm-.576 9.4l.002-5.463 1.42.002-.002 5.462h-1.42zm2.282-3.573c0-.227.054-.432.163-.614a1.17 1.17 0 0 1 .452-.425c.193-.102.414-.153.663-.153.248 0 .47.05.664.153.193.102.345.243.454.425.11.182.164.387.164.614 0 .227-.055.432-.164.614a1.17 1.17 0 0 1-.454.425 1.49 1.49 0 0 1-.664.153c-.25 0-.47-.05-.663-.153a1.17 1.17 0 0 1-.452-.425 1.22 1.22 0 0 1-.163-.614z" fill="#F7931A"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Animated Payment Processing -->
+                                    <div class="payment-processing">
+                                        <div class="processing-dots">
+                                            <div class="dot dot1"></div>
+                                            <div class="dot dot2"></div>
+                                            <div class="dot dot3"></div>
+                                        </div>
+                                        <div class="processing-status">Processing Payment</div>
+                                        <div class="processing-progress">
+                                            <div class="progress-bar"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Success Checkmark -->
+                                    <div class="payment-success">
+                                        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                            <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                                            <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                                        </svg>
+                                        <div class="success-message">Payment Successful!</div>
+                                    </div>
+                                    
+                                    <!-- Particles Effect -->
+                                    <div class="particles-container"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Update the CSS styles to match the website's color scheme -->
+                    <style>
+                        .s-process {
+                            background-color: #0c0c0c;
+                            padding: 10rem 0;
+                            position: relative;
+                            overflow: hidden;
+                        }
+
+                        .s-process__bg {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: linear-gradient(135deg, rgba(12,12,12,0.97) 0%, rgba(20,20,20,0.95) 100%);
+                            z-index: -1;
+                        }
+
+                        .process-container {
+                            max-width: 1200px;
+                            margin: 0 auto;
+                            padding: 0 2rem;
+                        }
+
+                        .process-intro {
+                            display: flex;
+                            align-items: center;
+                            margin-bottom: 6rem;
+                            background: #151515;
+                            border-radius: 12px;
+                            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+                            overflow: hidden;
+                        }
+
+                        .process-intro__content {
+                            flex: 1;
+                            padding: 4rem;
+                        }
+
+                        .process-intro__title {
+                            font-size: 3.2rem;
+                            margin-bottom: 2rem;
+                            color: #ffffff;
+                            position: relative;
+                        }
+
+                        .process-intro__title:after {
+                            content: '';
+                            position: absolute;
+                            bottom: -1rem;
+                            left: 0;
+                            width: 80px;
+                            height: 4px;
+                            background: #39b54a;
+                            border-radius: 2px;
+                        }
+
+                        .process-intro__text {
+                            font-size: 1.8rem;
+                            line-height: 1.6;
+                            color: #cccccc;
+                        }
+
+                        .process-intro__image {
+                            flex: 1;
+                            min-height: 400px;
+                            position: relative;
+                            overflow: hidden;
+                        }
+
+                        .process-intro__image-inner {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                        }
+
+                        .process-intro__image img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            object-position: center;
+                        }
+
+                        .process-steps {
+                            display: grid;
+                            grid-template-columns: repeat(4, 1fr);
+                            gap: 2rem;
+                            margin-bottom: 6rem;
+                        }
+
+                        .process-step {
+                            background: #151515;
+                            padding: 3rem;
+                            border-radius: 12px;
+                            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+                            position: relative;
+                            transition: transform 0.3s ease, box-shadow 0.3s ease;
+                            overflow: hidden;
+                            display: flex;
+                            flex-direction: column;
+                            height: 100%;
+                            min-height: 300px; /* Establece una altura mínima para todas las cards */
+                        }
+
+                        .process-step:hover {
+                            transform: translateY(-10px);
+                            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+                        }
+
+                        .process-step:before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 5px;
+                            background: #39b54a;
+                        }
+
+                        .process-step__number {
+                            position: absolute;
+                            top: 2rem;
+                            right: 2rem;
+                            font-size: 5rem;
+                            font-weight: 700;
+                            color: rgba(57, 181, 74, 0.15);
+                            line-height: 1;
+                        }
+
+                        .process-step__content {
+                            position: relative;
+                            z-index: 1;
+                            flex-grow: 1; /* Permite que el contenido ocupe el espacio disponible */
+                        }
+
+                        .process-step__content h3 {
+                            font-size: 2.2rem;
+                            margin-bottom: 1.5rem;
+                            color: #ffffff;
+                        }
+
+                        .process-step__content p {
+                            font-size: 1.6rem;
+                            line-height: 1.6;
+                            color: #cccccc;
+                        }
+
+                        .process-step__icon {
+                            margin-top: auto; /* Empuja el icono hacia abajo */
+                            padding-top: 2rem;
+                        }
+
+                        .process-step__icon svg {
+                            fill: #39b54a;
+                        }
+
+                        .payment-section {
+                            display: flex;
+                            background: #151515;
+                            border-radius: 12px;
+                            overflow: hidden;
+                            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+                        }
+
+                        .payment-section__content {
+                            flex: 1;
+                            padding: 4rem;
+                        }
+
+                        .payment-section__title {
+                            font-size: 3.2rem;
+                            margin-bottom: 3rem;
+                            color: #ffffff;
+                            position: relative;
+                        }
+
+                        .payment-section__title:after {
+                            content: '';
+                            position: absolute;
+                            bottom: -1rem;
+                            left: 0;
+                            width: 80px;
+                            height: 4px;
+                            background: #39b54a;
+                            border-radius: 2px;
+                        }
+
+                        .payment-section__highlight {
+                            background: #1e1e1e;
+                            border-radius: 8px;
+                            margin-bottom: 3rem;
+                            overflow: hidden;
+                        }
+
+                        .payment-section__highlight-inner {
+                            padding: 3rem;
+                            color: white;
+                        }
+
+                        .payment-section__highlight-inner h3 {
+                            font-size: 2.4rem;
+                            margin-bottom: 1.5rem;
+                        }
+
+                        .payment-section__highlight-inner p {
+                            font-size: 1.6rem;
+                            line-height: 1.6;
+                        }
+
+                        .payment-methods {
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 2rem;
+                        }
+
+                        .payment-method {
+                            text-align: center;
+                            padding: 2rem;
+                            border-radius: 8px;
+                            transition: transform 0.3s ease, box-shadow 0.3s ease;
+                            background: rgba(57, 181, 74, 0.05);
+                            border: 1px solid rgba(57, 181, 74, 0.1);
+                        }
+
+                        .payment-method:hover {
+                            transform: translateY(-5px);
+                            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+                        }
+
+                        .payment-method__icon {
+                            margin-bottom: 1.5rem;
+                            height: 80px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+
+                        .payment-method__title {
+                            font-size: 1.8rem;
+                            color: #ffffff;
+                            margin-top: 1rem;
+                        }
+
+                        .payment-section__image {
+                            flex: 1;
+                            min-height: 500px;
+                            position: relative;
+                            overflow: hidden;
+                        }
+
+                        .payment-section__image img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            object-position: center;
+                        }
+
+                        @media screen and (max-width: 992px) {
+                            .process-intro, .payment-section {
+                                flex-direction: column;
+                            }
+                            
+                            .process-intro__image, .payment-section__image {
+                                height: 300px;
+                            }
+                            
+                            .process-steps {
+                                grid-template-columns: 1fr 1fr;
+                            }
+                        }
+
+                        @media screen and (max-width: 768px) {
+                            .process-steps {
+                                grid-template-columns: 1fr;
+                            }
+                            
+                            .payment-methods {
+                                grid-template-columns: 1fr;
+                            }
+                        }
+                    </style>
+
+                    <style>
+                    /* Estilos para la animación del proceso de desarrollo */
+                    .dev-process-animation {
+                        width: 100%;
+                        height: 100%;
+                        background: #151515;
+                        position: relative;
+                        overflow: hidden;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    .code-window {
+                        width: 80%;
+                        background: #1e1e1e;
+                        border-radius: 8px;
+                        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                        overflow: hidden;
+                        z-index: 2;
+                    }
+
+                    .window-header {
+                        background: #252525;
+                        padding: 10px;
+                        display: flex;
+                        gap: 8px;
+                    }
+
+                    .dot {
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 50%;
+                    }
+
+                    .dot-red { background: #ff5f56; }
+                    .dot-yellow { background: #ffbd2e; }
+                    .dot-green { background: #27c93f; }
+
+                    .code-content {
+                        padding: 20px;
+                        font-family: 'Monaco', 'Consolas', monospace;
+                        font-size: 14px;
+                        line-height: 1.6;
+                    }
+
+                    .code-line {
+                        color: #cccccc;
+                        margin: 5px 0;
+                        opacity: 0;
+                        transform: translateY(10px);
+                        transition: opacity 0.5s ease, transform 0.5s ease;
+                    }
+
+                    .code-line.is-visible {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+
+                    .indent { padding-left: 20px; }
+                    .indent-2 { padding-left: 40px; }
+
+                    .keyword { color: #4EFAEC; }
+                    .string { color: #ce9178; }
+                    .boolean { color: #569cd6; }
+
+                    .floating-elements {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        pointer-events: none;
+                    }
+
+                    .floating-icon {
+                        position: absolute;
+                        padding: 12px 20px;
+                        background: rgba(78, 250, 236, 0.1);
+                        border: 1px solid rgba(78, 250, 236, 0.2);
+                        backdrop-filter: blur(4px);
+                        border-radius: 8px;
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        animation: float 6s infinite;
+                    }
+
+                    .tech-label {
+                        color: #ffffff;
+                        font-size: 14px;
+                        font-weight: 500;
+                        letter-spacing: 0.5px;
+                    }
+
+                    .tech-icon {
+                        font-size: 16px;
+                        color: #4EFAEC;
+                    }
+
+                    /* Posicionamiento y animación personalizada para cada icono */
+                    .floating-icon:nth-child(1) {
+                        top: 15%;
+                        left: 10%;
+                        animation-delay: 0s;
+                    }
+
+                    .floating-icon:nth-child(2) {
+                        top: 65%;
+                        left: 15%;
+                        animation-delay: 1.5s;
+                    }
+
+                    .floating-icon:nth-child(3) {
+                        top: 25%;
+                        right: 12%;
+                        animation-delay: 1s;
+                    }
+
+                    .floating-icon:nth-child(4) {
+                        top: 75%;
+                        right: 15%;
+                        animation-delay: 2.5s;
+                    }
+
+                    @keyframes float {
+                        0%, 100% {
+                            transform: translateY(0) translateX(0);
+                        }
+                        50% {
+                            transform: translateY(-15px) translateX(5px);
+                        }
+                    }
+                    </style>
+
+                    <style>
+                    /* Card Animation */
+                    .card-animation {
+                        width: 60px;
+                        height: 40px;
+                        background: #151515;
+                        border-radius: 6px;
+                        position: relative;
+                        border: 1px solid #4EFAEC;
+                        overflow: hidden;
+                    }
+
+                    .card-chip {
+                        width: 12px;
+                        height: 12px;
+                        background: #4EFAEC;
+                        position: absolute;
+                        left: 10px;
+                        top: 14px;
+                        border-radius: 2px;
+                    }
+
+                    .card-wave {
+                        position: absolute;
+                        height: 50px;
+                        width: 50px;
+                        border: 2px solid #4EFAEC;
+                        border-radius: 50%;
+                        bottom: -25px;
+                        right: -25px;
+                        opacity: 0;
+                        animation: cardWave 3s infinite;
+                    }
+
+                    .card-wave:nth-child(2) { animation-delay: 0.3s; }
+                    .card-wave:nth-child(3) { animation-delay: 0.6s; }
+
+                    @keyframes cardWave {
+                        0% {
+                            transform: scale(0);
+                            opacity: 0.5;
+                        }
+                        100% {
+                            transform: scale(1);
+                            opacity: 0;
+                        }
+                    }
+
+                    /* Bank Animation */
+                    .bank-animation {
+                        position: relative;
+                        width: 60px;
+                        height: 50px;
+                    }
+
+                    .bank-building {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: flex-end;
+                        width: 100%;
+                        height: 35px;
+                        position: relative;
+                    }
+
+                    .bank-column {
+                        width: 12px;
+                        height: 0;
+                        background: #4EFAEC;
+                        animation: columnRise 1.5s ease-out forwards;
+                    }
+
+                    .bank-column:nth-child(1) { animation-delay: 0s; }
+                    .bank-column:nth-child(2) { animation-delay: 0.2s; }
+                    .bank-column:nth-child(3) { animation-delay: 0.4s; }
+
+                    .bank-roof {
+                        position: absolute;
+                        top: -10px;
+                        left: 0;
+                        width: 100%;
+                        height: 12px;
+                        background: #4EFAEC;
+                        clip-path: polygon(0 100%, 50% 0, 100% 100%);
+                        transform: scaleY(0);
+                        animation: roofDrop 0.5s ease-out 0.6s forwards;
+                    }
+
+                    .bank-steps {
+                        width: 40px;
+                        height: 8px;
+                        margin: 2px auto 0;
+                        background: #4EFAEC;
+                        transform: scaleX(0);
+                        animation: stepsExpand 0.3s ease-out 0.8s forwards;
+                    }
+
+                    @keyframes columnRise {
+                        to { height: 35px; }
+                    }
+
+                    @keyframes roofDrop {
+                        to { transform: scaleY(1); }
+                    }
+
+                    @keyframes stepsExpand {
+                        to { transform: scaleX(1); }
+                    }
+
+                    /* Stripe Animation */
+                    .stripe-animation {
+                        width: 60px;
+                        height: 40px;
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        gap: 6px;
+                    }
+
+                    .stripe-line {
+                        height: 4px;
+                        background: #4EFAEC;
+                        border-radius: 2px;
+                        transform-origin: left;
+                    }
+
+                    .stripe-line-1 {
+                        width: 100%;
+                        animation: stripeLine 2s infinite;
+                    }
+
+                    .stripe-line-2 {
+                        width: 70%;
+                        animation: stripeLine 2s infinite 0.2s;
+                    }
+
+                    .stripe-line-3 {
+                        width: 40%;
+                        animation: stripeLine 2s infinite 0.4s;
+                    }
+
+                    @keyframes stripeLine {
+                        0%, 100% {
+                            transform: scaleX(1);
+                            opacity: 1;
+                        }
+                        50% {
+                            transform: scaleX(0.7);
+                            opacity: 0.5;
+                        }
+                    }
+                    </style>
+
+                    <style>
+                    .payment-section__highlight {
+                        margin-bottom: 4rem;
+                    }
+
+                    .start-now-card {
+                        background: #151515;
+                        border: 1px solid #252525;
+                        border-radius: 16px;
+                        padding: 3rem;
+                        display: flex;
+                        align-items: center;
+                        gap: 4rem;
+                        position: relative;
+                        overflow: hidden;
+                        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                    }
+
+                    .percentage-display {
+                        position: relative;
+                        width: 180px;
+                        height: 180px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    .percentage-circle {
+                        width: 150px;
+                        height: 150px;
+                        position: relative;
+                        z-index: 2;
+                    }
+
+                    .progress-circle {
+                        transform: rotate(-90deg);
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    .progress-circle-bg,
+                    .progress-circle-path {
+                        fill: none;
+                        stroke-width: 4;
+                        stroke-linecap: round;
+                    }
+
+                    .progress-circle-bg {
+                        stroke: rgba(78, 250, 236, 0.1);
+                    }
+
+                    .progress-circle-path {
+                        stroke: #4EFAEC;
+                        stroke-dasharray: 283;
+                        stroke-dashoffset: 283;
+                        animation: progressAnimation 2s ease forwards;
+                    }
+
+                    .percentage-content {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        display: flex;
+                        align-items: baseline;
+                        color: #ffffff;
+                    }
+
+                    .percentage-value {
+                        font-size: 4rem;
+                        font-weight: 600;
+                        line-height: 1;
+                    }
+
+                    .percentage-symbol {
+                        font-size: 2rem;
+                        margin-left: 2px;
+                    }
+
+                    .start-now-content h3 {
+                        font-size: 2.8rem;
+                        color: #ffffff;
+                        margin-bottom: 1rem;
+                    }
+
+                    .start-now-content p {
+                        font-size: 1.8rem;
+                        color: #cccccc;
+                        margin-bottom: 2rem;
+                    }
+
+                    .feature-item {
+                        color: #ffffff;
+                    }
+
+                    .feature-icon {
+                        color: #ffffff;
+                        font-weight: bold;
+                    }
+
+                    /* Hover effects */
+                    .start-now-card:hover {
+                        transform: translateY(-5px);
+                        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+                        transition: all 0.3s ease;
+                    }
+
+                    .start-now-content {
+                        flex: 1;
+                    }
+
+                    .start-now-content h3 {
+                        font-size: 2.8rem;
+                        color: #ffffff;
+                        margin-bottom: 1rem;
+                    }
+
+                    .start-now-content p {
+                        font-size: 1.8rem;
+                        color: #cccccc;
+                        margin-bottom: 2rem;
+                    }
+
+                    .features-list {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1.2rem;
+                    }
+
+                    .feature-item {
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                        font-size: 1.6rem;
+                        color: #ffffff;
+                    }
+
+                    .feature-icon {
+                        color: #ffffff;
+                        font-weight: bold;
+                    }
+
+                    @keyframes progressAnimation {
+                        to {
+                            stroke-dashoffset: 269; /* 283 - (283 * 0.05) */
+                        }
+                    }
+
+                    @keyframes rotateRays {
+                        from {
+                            transform: rotate(0deg);
+                        }
+                        to {
+                            transform: rotate(360deg);
+                        }
+                    }
+
+                    /* Hover effects */
+                    .start-now-card:hover {
+                        transform: translateY(-5px);
+                        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+                        transition: all 0.3s ease;
+                    }
+
+                    .start-now-card:hover .percentage-rays {
+                        animation-duration: 5s;
+                    }
+
+                    /* Responsive design */
+                    @media screen and (max-width: 768px) {
+                        .start-now-card {
+                            flex-direction: column;
+                            padding: 2rem;
+                            gap: 2rem;
+                            text-align: center;
+                        }
+
+                        .features-list {
+                            align-items: center;
+                        }
+                    }
+
+                    /* Payment Animation Styles */
+                    .payment-animation-container {
+                        width: 100%;
+                        height: 100%;
+                        position: relative;
+                        overflow: hidden;
+                        background: linear-gradient(135deg, #151515 0%, #252525 100%);
+                        border-radius: 12px;
+                        min-height: 500px;
+                    }
+
+                    .payment-animation-scene {
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        perspective: 1500px;
+                    }
+
+                    /* 3D Credit Card */
+                    .animated-card {
+                        width: 320px;
+                        height: 200px;
+                        position: relative;
+                        transform-style: preserve-3d;
+                        transition: transform 1s ease;
+                        animation: cardFloat 6s ease-in-out infinite;
+                        transform-origin: center center;
+                        z-index: 10;
+                    }
+
+                    @keyframes cardFloat {
+                        0%, 100% {
+                            transform: translateY(0) rotateY(0);
+                        }
+                        25% {
+                            transform: translateY(-15px) rotateY(15deg);
+                        }
+                        50% {
+                            transform: translateY(0) rotateY(180deg);
+                        }
+                        75% {
+                            transform: translateY(0) rotateY(165deg);
+                        }
+                    }
+
+                    .card-face {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        backface-visibility: hidden;
+                        border-radius: 16px;
+                        overflow: hidden;
+                        display: flex;
+                        flex-direction: column;
+                        padding: 20px;
+                        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+                    }
+
+                    .card-front {
+                        background: #000000;
+                        color: white;
+                        z-index: 2;
+                        position: relative;
+                        overflow: hidden;
+                        transform: translateZ(1px);
+                    }
+                    
+                    .card-front::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: linear-gradient(135deg, rgba(50, 50, 50, 0.3) 0%, rgba(0, 0, 0, 0) 50%, rgba(100, 100, 100, 0.2) 100%);
+                        z-index: 0;
+                    }
+
+                    .card-back {
+                        background: #000000;
+                        color: white;
+                        transform: rotateY(180deg) translateZ(1px);
+                        position: relative;
+                    }
+                    
+                    .card-back::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: linear-gradient(135deg, rgba(50, 50, 50, 0.3) 0%, rgba(0, 0, 0, 0) 50%, rgba(100, 100, 100, 0.2) 100%);
+                        z-index: 0;
+                    }
+
+                    .card-chip {
+                        width: 50px;
+                        height: 40px;
+                        background: linear-gradient(135deg, #e6b980 0%, #eacda3 100%);
+                        border-radius: 8px;
+                        margin-bottom: 20px;
+                        position: relative;
+                        overflow: hidden;
+                    }
+
+                    .card-chip::before {
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        width: 80%;
+                        height: 70%;
+                        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+                        transform: translate(-50%, -50%);
+                    }
+
+                    .card-chip::after {
+                        content: '';
+                        position: absolute;
+                        width: 100%;
+                        height: 1px;
+                        background: rgba(0,0,0,0.3);
+                        top: 50%;
+                    }
+
+                    .card-logo {
+                        font-size: 16px;
+                        font-weight: bold;
+                        margin-left: auto;
+                        letter-spacing: 1px;
+                        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+                        color: #c0c0c0;
+                        position: relative;
+                        z-index: 1;
+                    }
+                    
+                    .card-centurion {
+                        position: absolute;
+                        right: 20px;
+                        top: 60px;
+                        z-index: 1;
+                    }
+
+                    .card-number {
+                        font-size: 18px;
+                        letter-spacing: 2px;
+                        margin-top: auto;
+                        margin-bottom: 20px;
+                        color: #c0c0c0;
+                        position: relative;
+                        z-index: 1;
+                    }
+
+                    .card-holder {
+                        font-size: 14px;
+                        margin-bottom: 5px;
+                        color: #c0c0c0;
+                        position: relative;
+                        z-index: 1;
+                    }
+
+                    .card-expiry {
+                        font-size: 12px;
+                        color: #c0c0c0;
+                        position: relative;
+                        z-index: 1;
+                    }
+
+                    .card-stripe {
+                        width: 100%;
+                        height: 50px;
+                        background: #333;
+                        margin: 20px 0;
+                        position: relative;
+                        z-index: 1;
+                    }
+
+                    .card-signature {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 20px;
+                        position: relative;
+                        z-index: 1;
+                    }
+
+                    .signature-line {
+                        flex: 1;
+                        height: 40px;
+                        background: #222;
+                        border-radius: 4px;
+                        position: relative;
+                        overflow: hidden;
+                    }
+
+                    .signature-line::before {
+                        content: '';
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(192,192,192,0.1) 10px, rgba(192,192,192,0.1) 20px);
+                    }
+
+                    .card-info {
+                        font-size: 12px;
+                        text-align: center;
+                        color: #c0c0c0;
+                        position: relative;
+                        z-index: 1;
+                        font-weight: bold;
+                    }
+
+                    /* Floating Payment Icons */
+                    .floating-payment-icons {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        pointer-events: none;
+                    }
+
+                    .payment-icon {
+                        position: absolute;
+                        width: 50px;
+                        height: 50px;
+                        background: rgba(255,255,255,0.1);
+                        backdrop-filter: blur(5px);
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                    }
+
+                    .icon-paypal {
+                        top: 20%;
+                        left: 15%;
+                        animation: floatIcon 8s ease-in-out infinite;
+                    }
+
+                    .icon-stripe {
+                        top: 60%;
+                        left: 20%;
+                        animation: floatIcon 7s ease-in-out infinite 1s;
+                    }
+
+                    .icon-bank {
+                        top: 30%;
+                        right: 15%;
+                        animation: floatIcon 9s ease-in-out infinite 2s;
+                    }
+
+                    .icon-crypto {
+                        top: 70%;
+                        right: 20%;
+                        animation: floatIcon 6s ease-in-out infinite 3s;
+                    }
+
+                    @keyframes floatIcon {
+                        0%, 100% {
+                            transform: translateY(0) scale(1);
+                        }
+                        50% {
+                            transform: translateY(-20px) scale(1.1);
+                        }
+                    }
+
+                    /* Payment Processing Animation */
+                    .payment-processing {
+                        position: absolute;
+                        bottom: 40px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        background: rgba(0,0,0,0.7);
+                        backdrop-filter: blur(10px);
+                        padding: 20px;
+                        border-radius: 10px;
+                        width: 80%;
+                        max-width: 400px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        opacity: 0;
+                        animation: processingAppear 12s ease-in-out infinite;
+                        z-index: 5;
+                    }
+
+                    @keyframes processingAppear {
+                        0%, 100% {
+                            opacity: 0;
+                            transform: translateX(-50%) translateY(20px);
+                        }
+                        25%, 75% {
+                            opacity: 1;
+                            transform: translateX(-50%) translateY(0);
+                        }
+                    }
+
+                    .processing-dots {
+                        display: flex;
+                        gap: 8px;
+                        margin-bottom: 10px;
+                    }
+
+                    .processing-dots .dot {
+                        width: 12px;
+                        height: 12px;
+                        background: #4EFAEC;
+                        border-radius: 50%;
+                    }
+
+                    .dot1 {
+                        animation: dotPulse 1.5s infinite;
+                    }
+
+                    .dot2 {
+                        animation: dotPulse 1.5s infinite 0.3s;
+                    }
+
+                    .dot3 {
+                        animation: dotPulse 1.5s infinite 0.6s;
+                    }
+
+                    @keyframes dotPulse {
+                        0%, 100% {
+                            transform: scale(1);
+                            opacity: 0.5;
+                        }
+                        50% {
+                            transform: scale(1.5);
+                            opacity: 1;
+                        }
+                    }
+
+                    .processing-status {
+                        color: white;
+                        font-size: 16px;
+                        margin-bottom: 15px;
+                    }
+
+                    .processing-progress {
+                        width: 100%;
+                        height: 6px;
+                        background: rgba(255,255,255,0.2);
+                        border-radius: 3px;
+                        overflow: hidden;
+                    }
+
+                    .progress-bar {
+                        height: 100%;
+                        background: #4EFAEC;
+                        width: 0;
+                        animation: progressFill 3s ease-in-out infinite;
+                    }
+
+                    @keyframes progressFill {
+                        0% {
+                            width: 0;
+                        }
+                        100% {
+                            width: 100%;
+                        }
+                    }
+
+                    /* Success Animation */
+                    .payment-success {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        opacity: 0;
+                        animation: successAppear 12s ease-in-out infinite;
+                        z-index: 5;
+                    }
+
+                    @keyframes successAppear {
+                        0%, 70%, 100% {
+                            opacity: 0;
+                            transform: translate(-50%, -50%) scale(0.8);
+                        }
+                        80%, 95% {
+                            opacity: 1;
+                            transform: translate(-50%, -50%) scale(1);
+                        }
+                    }
+
+                    .checkmark {
+                        width: 80px;
+                        height: 80px;
+                    }
+
+                    .checkmark-circle {
+                        stroke: #4EFAEC;
+                        stroke-width: 2;
+                        stroke-dasharray: 166;
+                        stroke-dashoffset: 166;
+                        fill: none;
+                        animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards 0.5s;
+                    }
+
+                    .checkmark-check {
+                        stroke: #4EFAEC;
+                        stroke-width: 2;
+                        stroke-dasharray: 48;
+                        stroke-dashoffset: 48;
+                        animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) forwards 1.2s;
+                    }
+
+                    @keyframes stroke {
+                        100% {
+                            stroke-dashoffset: 0;
+                        }
+                    }
+
+                    .success-message {
+                        color: white;
+                        font-size: 20px;
+                        margin-top: 20px;
+                        font-weight: bold;
+                    }
+
+                    /* Particles Effect */
+                    .particles-container {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        overflow: hidden;
+                    }
+                    </style>
+
+                    <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    entry.target.querySelector('.progress-circle-path').style.animation = 'progressAnimation 2s ease forwards';
+                                    observer.unobserve(entry.target);
+                                }
+                            });
+                        }, { threshold: 0.5 });
+
+                        const startNowCard = document.querySelector('.start-now-card');
+                        if (startNowCard) {
+                            observer.observe(startNowCard);
+                        }
+                    });
+                    </script>
+                </section>
+
+              
+                <!-- portfolio
+                ----------------------------------------------- -->
+                <section id="portfolio" class="s-portfolio">
+
+                    <div class="s-portfolio__header">
+
+                        <div class="row narrow section-header section-header--dark has-bottom-sep">
+                            <div class="column lg-12">
+                                
+                                <h3 class="text-pretitle">Showcase</h3>
+                                <h1 class="text-display-title">Case Studies.</h1>
+                                
+                                <p class="lead">
+                                    Explore our collection of detailed case studies to understand the real-world impact of our solutions. From innovative software developments to strategic staff augmentations, each case study illustrates our commitment to excellence and client success. Dive in to discover how we've enabled businesses to achieve their technological ambitions through our focused interventions.
+                                </p>
+                                
+                            </div> <!-- end column -->
+                        </div> <!-- end section header -->
+
+                    </div> <!-- end s-portfolio__header -->
+
+                    <div class="row s-portfolio__content" data-animate-block>
+                        <div class="column lg-12">
+
+                            
+
+                            <div class="folio-list bricks">
+     
        <!-- Project 1: FuertaFit Application Enhancements -->
     <div class="brick folio-item" data-animate-el>
         <div class="folio-item__thumb">
             <a class="folio-item__thumb-link" href="imagenes/fuertafit.webp" title="FuertaFit" data-size="1050x700">
-                <img src="imagenes/fuertafit.webp" srcset="imagenes/fuertafit.webp 1x, imagenes/fuertafit.webp@2x.jpg 2x" alt="">
+                <img src="imagenes/fuertafit.webp" alt="">
             </a>
         </div>
         <div class="folio-item__info">
             <div class="folio-item__cat">Mobile Apps + Software Architecture</div>
             <h4 class="folio-item__title">FuertaFit</h4>
         </div>
-        <a href="https://www.fuertafit.com" title="Project Link" class="folio-item__project-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M4.222 19.778a4.983 4.983 0 0 0 3.535 1.462 4.986 4.986 0 0 0 3.536-1.462l2.828-2.829-1.414-1.414-2.828 2.829a3.007 3.007 0 0 1-4.243 0 3.005 3.005 0 0 1 0-4.243l2.829-2.828-1.414-1.414-2.829 2.828a5.006 5.006 0 0 0 0 7.071zm15.556-8.485a5.008 5.008 0 0 0 0-7.071 5.006 5.006 0 0 0-7.071 0L9.879 7.051l1.414 1.414 2.828-2.829a3.007 3.007 0 0 1 4.243 0 3.005 3.005 0 0 1 0 4.243l-2.829 2.828 1.414 1.414 2.829-2.828z"></path><path d="m8.464 16.95-1.415-1.414 8.487-8.486 1.414 1.415z"></path></svg></a>
+        <a href="https://www.fuertafit.com" title="Project Link" class="folio-item__project-link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M4.222 19.778a4.983 4.983 0 0 0 3.535 1.462 4.986 4.986 0 0 0 3.536-1.462l2.828-2.829-1.414-1.414-2.828 2.829a3.007 3.007 0 0 1-4.243 0 3.005 3.005 0 0 1 0-4.243l2.829-2.828-1.414-1.414-2.829 2.828a5.006 5.006 0 0 0 0 7.071zm15.556-8.485a5.008 5.008 0 0 0 0-7.071 5.006 5.006 0 0 0-7.071 0L9.879 7.051l1.414 1.414 2.828-2.829a3.007 3.007 0 0 1 4.243 0 3.005 3.005 0 0 1 0 4.243l-2.829 2.828 1.414 1.414 2.829-2.828z"></path><path d="m8.464 16.95-1.415-1.414 8.487-8.486 1.414 1.415z"></path></svg></a>
         <div class="folio-item__caption">
             <p>Undertook critical functionality enhancements for FuertaFit's iOS and Android applications. The project involved a complete overhaul of the authentication system, resulting in significant infrastructure cost savings. Additionally, new features were developed to enrich the app's offerings.</p>
         </div>
@@ -380,7 +1945,7 @@
     <div class="brick folio-item" data-animate-el>
         <div class="folio-item__thumb">
             <a class="folio-item__thumb-link" href="imagenes/briq.png" title="Briq" data-size="1050x700">
-                <img src="imagenes/briq.png" srcset="imagenes/briq.png 1x, imagenes/briq.png@2x.jpg 2x" alt="">
+                <img src="imagenes/briq.png" alt="">
             </a>
         </div>
         <div class="folio-item__info">
@@ -397,7 +1962,7 @@
     <div class="brick folio-item" data-animate-el>
         <div class="folio-item__thumb">
             <a class="folio-item__thumb-link" href="imagenes/eversource.png" title="Eversource" data-size="1050x700">
-                <img src="imagenes/eversource.png" srcset="imagenes/eversource.png 1x, imagenes/eversource.png@2x.png 2x" alt="">
+                <img src="imagenes/eversource.png" alt="">
             </a>
         </div>
         <div class="folio-item__info">
@@ -414,7 +1979,7 @@
     <div class="brick folio-item" data-animate-el>
         <div class="folio-item__thumb">
             <a class="folio-item__thumb-link" href="imagenes/HH.jpg" title="Salad" data-size="1050x700">
-                <img src="imagenes/HH.jpg" srcset="imagenes/HH.jpg 1x, imagenes/HH.jpg@2x.jpg 2x" alt="">
+                <img src="imagenes/HH.jpg" alt="">
             </a>
         </div>
         <div class="folio-item__info">
@@ -431,7 +1996,7 @@
     <div class="brick folio-item" data-animate-el>
         <div class="folio-item__thumb">
             <a class="folio-item__thumb-link" href="imagenes/noodle.jpg" title="Salad" data-size="1050x700">
-                <img src="imagenes/noodle.jpg" srcset="imagenes/noodle.jpg 1x, imagenes/noodle.jpg@2x.jpg 2x" alt="">
+                <img src="imagenes/noodle.jpg" alt="">
             </a>
         </div>
         <div class="folio-item__info">
@@ -448,7 +2013,7 @@
     <div class="brick folio-item" data-animate-el>
         <div class="folio-item__thumb">
             <a class="folio-item__thumb-link" href="imagenes/getmolo.webp" title="Salad" data-size="1050x700">
-                <img src="imagenes/getmolo.webp" srcset="imagenes/getmolo.webp 1x, imagenes/getmolo.webp@2x.jpg 2x" alt="">
+                <img src="imagenes/getmolo.webp" alt="">
             </a>
         </div>
         <div class="folio-item__info">
@@ -465,7 +2030,7 @@
     <div class="brick folio-item" data-animate-el>
         <div class="folio-item__thumb">
             <a class="folio-item__thumb-link" href="imagenes/pillar.png" title="Salad" data-size="1050x700">
-                <img src="imagenes/pillar.png" srcset="imagenes/pillar.png 1x, imagenes/pillar.png@2x.jpg 2x" alt="">
+                <img src="imagenes/pillar.png" alt="">
             </a>
         </div>
         <div class="folio-item__info">
@@ -483,7 +2048,7 @@
      <div class="brick folio-item" data-animate-el>
         <div class="folio-item__thumb">
             <a class="folio-item__thumb-link" href="imagenes/ktn.jpg" title="Salad" data-size="1050x700">
-                <img src="imagenes/ktn.jpg" srcset="imagenes/ktn.jpg 1x, imagenes/ktn.jpg@2x.jpg 2x" alt="">
+                <img src="imagenes/ktn.jpg" alt="">
             </a>
         </div>
         <div class="folio-item__info">
@@ -501,7 +2066,7 @@
     <div class="brick folio-item" data-animate-el>
         <div class="folio-item__thumb">
             <a class="folio-item__thumb-link" href="imagenes/abs.png" title="Salad" data-size="1050x700">
-                <img src="imagenes/abs.png" srcset="imagenes/abs.png 1x, imagenes/abs.png@2x.jpg 2x" alt="">
+                <img src="imagenes/abs.png" alt="">
             </a>
         </div>
         <div class="folio-item__info">
@@ -514,16 +2079,35 @@
         <div class="folio-item__caption">
             <p>Developed the foundation for ABS's new primary system for monitoring maritime vessels, including features for live tracking of ships, fuel consumption monitoring, tracking deviations from expected routes, and providing real-time locations and estimated times of arrival (ETAs).</p>
         </div>
-    </div> <!-- end brick -->
+    </div> 
+    
+    <div class="brick folio-item" data-animate-el>
+        <div class="folio-item__thumb">
+            <a class="folio-item__thumb-link" href="imagenes/simplus-web.gif" title="Simulations Plus" data-size="1050x700">
+                <img src="imagenes/simplus-web.gif" alt="">
+            </a>
+        </div>
+        <div class="folio-item__info">
+            <div class="folio-item__cat">Software Development</div>
+            <h4 class="folio-item__title">Simulations Plus</h4>
+        </div>
+        <a href="https://www.simulations-plus.com/" title="Project Link" class="folio-item__project-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M4.222 19.778a4.983 4.983 0 0 0 3.535 1.462 4.986 4.986 0 0 0 3.536-1.462l2.828-2.829-1.414-1.414-2.828 2.829a3.007 3.007 0 0 1-4.243 0 3.005 3.005 0 0 1 0-4.243l2.829-2.828-1.414-1.414-2.829 2.828a5.006 5.006 0 0 0 0 7.071zm15.556-8.485a5.008 5.008 0 0 0 0-7.071 5.006 5.006 0 0 0-7.071 0L9.879 7.051l1.414 1.414 2.828-2.829a3.007 3.007 0 0 1 4.243 0 3.005 3.005 0 0 1 0 4.243l-2.829 2.828 1.414 1.414 2.829-2.828z"></path><path d="m8.464 16.95-1.415-1.414 8.487-8.486 1.414 1.415z"></path></svg>
+        </a>
+        <div class="folio-item__caption">
+            <p>Developed innovative software solutions for drug discovery and clinical development research, leveraging 25+ years of expertise in ADMET property prediction, PBPK modeling, and pharmacometrics to support pharmaceutical research and regulatory submissions.</p>
+        </div>
+    </div>
+    <!-- end brick -->
          
 
-                        </div> <!-- end folio-list, bricks -->
+                            </div> <!-- end folio-list, bricks -->
 
-                    </div> <!-- end column  -->
-                </div> <!-- end s-portfolio__content -->
+                        </div> <!-- end column  -->
+                    </div> <!-- end s-portfolio__content -->
 
-                <div class="row testimonials">
-                    <div class="column lg-12" data-animate-block>
+                    <div class="row testimonials">
+                        <div class="column lg-12" data-animate-block>
 
                         <h2 class="text-pretitle" data-animate-el>What They Say About Us</h2>
         
@@ -536,55 +2120,38 @@
                                         Working with EFCLOUD has been a game-changer for our business. Their team not only delivered a custom software solution that perfectly fits our needs, but also provided outstanding support throughout the process. We couldn't be happier with the results!
                                     </p>
                                     <div class="testimonial-slider__author">
-                                        <img src="images/avatars/user-02.jpg" alt="Author image" class="testimonial-slider__avatar">
+                                        <img src="images/alex.jpg" alt="Author image" class="testimonial-slider__avatar">
                                         <cite class="testimonial-slider__cite">
-                                            <strong>Alex F</strong>
+                                            <strong>Alex Park</strong>
                                             <span>CEO, ALR Partners</span>
                                         </cite>
                                     </div>
                                 </div>
                                 <div class="testimonial-slider__slide swiper-slide">
                                     <p>
-                                        Collaborating with EFCLOUD has revolutionized our operations. Their team not only crafted a bespoke software solution that seamlessly aligns with our requirements but also offered exceptional support throughout the project. We are thrilled with the outcomes and highly recommend their services
+                                        Collaborating with EFCLOUD has revolutionized our operations. Their team not only crafted a bespoke software solution that seamlessly aligns with our requirements but also offered exceptional support throughout the project. We are thrilled with the outcomes and highly recommend their services.
                                     </p>
                                     <div class="testimonial-slider__author">
-                                        <img src="images/avatars/user-02.jpg" alt="Author image" class="testimonial-slider__avatar">
+                                        <img src="images/victor.jpg" alt="Author image" class="testimonial-slider__avatar">
                                         <cite class="testimonial-slider__cite">
                                             <strong>Victor Senovilla</strong>
                                             <span>CTO, FuertaFit</span>
                                         </cite>
                                     </div>
                                 </div> <!-- end testimonial-slider__slide -->
-                
-                                <!-- <div class="testimonial-slider__slide swiper-slide">
-                                    <p>
-                                    Repellat dignissimos libero. Qui sed at corrupti expedita voluptas odit. Nihil ea quia nesciunt. Ducimus aut sed ipsam.  
-                                    Autem eaque officia cum exercitationem sunt voluptatum accusamus. Quasi voluptas eius distinctio.
-                                    Voluptatem dignissimos ut.
-                                    </p>
-                                    <div class="testimonial-slider__author">
-                                        <img src="images/avatars/user-01.jpg" alt="Author image" class="testimonial-slider__avatar">
-                                        <cite class="testimonial-slider__cite">
-                                            <strong>Satya Nadella</strong>
-                                            <span>CEO, Microsoft</span>
-                                        </cite>
-                                    </div>
-                                </div> 
-        
+
                                 <div class="testimonial-slider__slide swiper-slide">
                                     <p>
-                                    Nunc interdum lacus sit amet orci. Vestibulum dapibus nunc ac augue. Fusce vel dui. In ac felis 
-                                    quis tortor malesuada pretium. Curabitur vestibulum aliquam leo. Qui sed at corrupti expedita voluptas odit. 
-                                    Nihil ea quia nesciunt. Ducimus aut sed ipsam.
+                                        EFCLOUD has been an exceptional technology partner for Pitcheers. Their team perfectly understood our needs and delivered software solutions that exceeded our expectations. Their methodical approach, constant communication, and technical capability allowed us to transform our ideas into functional products in record time. We will definitely continue to rely on them for future developments.
                                     </p>
                                     <div class="testimonial-slider__author">
-                                        <img src="images/avatars/user-06.jpg" alt="Author image" class="testimonial-slider__avatar">
+                                        <img src="images/gastaldi.jpg" alt="Author image" class="testimonial-slider__avatar">
                                         <cite class="testimonial-slider__cite">
-                                            <strong>Jeff Bezos</strong>
-                                            <span>CEO, Amazon</span>
+                                            <strong>Santiago Gastaldi</strong>
+                                            <span>CEO, Pitcheers</span>
                                         </cite>
                                     </div>
-                                </div> -->
+                                </div> <!-- end testimonial-slider__slide -->
                                 
                             </div> <!-- end swiper-wrapper -->
         
@@ -651,15 +2218,20 @@
                         Dover, Delaware <br>
                         19901  US
                         </p>
+
+                        <p>
+                        ART Gallery Office 216 <br>
+                        Pilar, Buenos Aires <br>
+                        Argentina
+                        </p>
                     </div>
         
                     <div class="column lg-3 md-6 stack-on-900 s-contact__block-social">
                         <h5 class="with-top-line">Follow Us</h5>
         
                         <ul class="s-contact__list">
-                            <li><a href="#0">Facebook</a></li>
-                            <li><a href="#0">Twitter</a></li>
-                            <li><a href="#0">Instagram</a></li>
+                            <li><a href="https://instagram.com/efcloud.tech">Instagram</a></li>
+                            <li><a href="https://www.linkedin.com/company/ef-cloud/">LinkedIn</a></li>
                         </ul>
                     </div>
         
@@ -709,7 +2281,19 @@
         <footer id="colophon" class="s-footer">
             <div class="row">
                 <div class="column lg-12 ss-copyright">
-                    <span>© Copyright EFCloud 2024</span>
+                    <span>© Copyright EFCloud 2025</span>
+                    <span class="separator">|</span>
+                    <span>All Rights Reserved</span>
+                </div>
+            </div>
+
+            <div class="row footer-links">
+                <div class="column lg-12">
+                    <a href="/privacy">Privacy Policy</a>
+                    <span class="separator">|</span>
+                    <a href="/terms">Terms of Service</a>
+                    <span class="separator">|</span>
+                    <a href="/sitemap">Sitemap</a>
                 </div>
             </div>
 
@@ -768,8 +2352,238 @@
     ================================================== -->
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- Script para asegurar visibilidad de Case Studies -->
     <script>
+        // Ejecutar también inmediatamente (sin esperar DOMContentLoaded)
+        (function() {
+            const portfolioElements = document.querySelectorAll('#portfolio [data-animate-el], .s-portfolio [data-animate-el]');
+            portfolioElements.forEach(function(element) {
+                element.style.opacity = '1';
+                element.style.visibility = 'visible';
+                element.style.transform = 'none';
+            });
+        })();
         
+        // Función simple para hacer visibles los case studies
+        function showCaseStudies() {
+            // Seleccionar todos los elementos del portfolio
+            const portfolioElements = document.querySelectorAll('.folio-item, .folio-list, #portfolio [data-animate-el]');
+            
+            portfolioElements.forEach(function(element) {
+                element.style.opacity = '1';
+                element.style.visibility = 'visible';
+                element.style.transform = 'none';
+            });
+        }
+        
+        // Manejar clicks en los case studies para abrir carousel
+        function initPortfolioClicks() {
+            const folioItems = document.querySelectorAll('.folio-item');
+            
+            folioItems.forEach(function(item) {
+                item.addEventListener('click', function(e) {
+                    // Evitar que se ejecute si se hace click en el link del proyecto
+                    if (e.target.closest('.folio-item__project-link')) {
+                        return;
+                    }
+                    
+                    // Prevenir el comportamiento por defecto
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Buscar el link de la imagen para abrir el carousel
+                    const thumbLink = item.querySelector('.folio-item__thumb-link');
+                    if (thumbLink) {
+                        // Simular click en el link de la imagen para abrir el carousel
+                        thumbLink.click();
+                    }
+                });
+                
+                // Añadir cursor pointer al div principal
+                item.style.cursor = 'pointer';
+            });
+            
+            // Asegurar que los links de proyecto funcionen independientemente
+            const projectLinks = document.querySelectorAll('.folio-item__project-link');
+            projectLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Evitar que se propague al div padre
+                });
+            });
+        }
+        
+        // Manejar carga de imágenes del portfolio
+        function handlePortfolioImages() {
+            const portfolioImages = document.querySelectorAll('.folio-item__thumb img');
+            
+            portfolioImages.forEach(function(img) {
+                // Asegurar que la imagen sea visible
+                img.style.display = 'block';
+                img.style.opacity = '1';
+                
+                // Manejar errores de carga
+                img.onerror = function() {
+                    console.log('Error loading image:', img.src);
+                    // Opcional: mostrar imagen placeholder
+                    img.style.background = '#333';
+                    img.alt = 'Image not available';
+                };
+                
+                // Asegurar que la imagen se cargue
+                if (img.complete) {
+                    img.style.opacity = '1';
+                } else {
+                    img.onload = function() {
+                        img.style.opacity = '1';
+                    };
+                }
+            });
+        }
+        
+        // Ejecutar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', function() {
+            showCaseStudies();
+            handlePortfolioImages();
+            initPortfolioClicks();
+        });
+        
+        // Ejecutar también inmediatamente como respaldo
+        setTimeout(function() {
+            showCaseStudies();
+            handlePortfolioImages();
+            initPortfolioClicks();
+        }, 100);
+    </script>
+
+    <!-- Payment Animation JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create particles for the payment animation
+            const particlesContainer = document.querySelector('.particles-container');
+            if (particlesContainer) {
+                createParticles(particlesContainer, 30);
+            }
+            
+            // Initialize the animation sequence
+            initPaymentAnimation();
+        });
+
+        function createParticles(container, count) {
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random size between 3px and 8px
+                const size = Math.random() * 5 + 3;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random color
+                const hue = Math.random() * 60 + 160; // Blue to cyan range
+                particle.style.backgroundColor = `hsla(${hue}, 100%, 70%, ${Math.random() * 0.5 + 0.3})`;
+                
+                // Random animation duration and delay
+                const duration = Math.random() * 10 + 10;
+                const delay = Math.random() * 5;
+                particle.style.animation = `particleFloat ${duration}s ease-in-out ${delay}s infinite`;
+                
+                container.appendChild(particle);
+            }
+
+            // Add CSS for particles
+            const style = document.createElement('style');
+            style.textContent = `
+                .particle {
+                    position: absolute;
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 1;
+                    box-shadow: 0 0 10px currentColor;
+                }
+                
+                @keyframes particleFloat {
+                    0%, 100% {
+                        transform: translate(0, 0) scale(1);
+                        opacity: 0;
+                    }
+                    25% {
+                        opacity: 1;
+                    }
+                    50% {
+                        transform: translate(${Math.random() > 0.5 ? '' : '-'}${Math.random() * 100 + 50}px, 
+                                           ${Math.random() > 0.5 ? '' : '-'}${Math.random() * 100 + 50}px) 
+                                  scale(${Math.random() * 0.5 + 0.8});
+                        opacity: 0.8;
+                    }
+                    75% {
+                        opacity: 0.5;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        function initPaymentAnimation() {
+            // This function can be expanded to add more interactive elements
+            // or to synchronize the different animation components
+            
+            // For example, you could add event listeners to trigger specific animations
+            const card = document.querySelector('.animated-card');
+            if (card) {
+                card.addEventListener('click', function() {
+                    this.style.animation = 'none';
+                    setTimeout(() => {
+                        this.style.animation = 'cardFloat 6s ease-in-out infinite';
+                    }, 10);
+                });
+            }
+            
+            // Add a subtle pulse effect to the entire scene
+            const scene = document.querySelector('.payment-animation-scene');
+            if (scene) {
+                setInterval(() => {
+                    const icons = document.querySelectorAll('.payment-icon');
+                    icons.forEach(icon => {
+                        icon.style.transform = 'scale(1.1)';
+                        setTimeout(() => {
+                            icon.style.transform = '';
+                        }, 300);
+                    });
+                }, 5000);
+            }
+        }
+    </script>
+
+    <!-- Code Animation JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const codeLines = entry.target.querySelectorAll('.code-line');
+                        codeLines.forEach((line, index) => {
+                            setTimeout(() => {
+                                line.classList.add('is-visible');
+                            }, index * 200); // 200ms delay between each line
+                        });
+                        observer.unobserve(entry.target); // Stop observing once triggered
+                    }
+                });
+            }, {
+                threshold: 0.5 // Animation triggers when 50% of the element is visible
+            });
+
+            // Observe the code content container
+            const codeContent = document.querySelector('.code-content');
+            if (codeContent) {
+                observer.observe(codeContent);
+            }
+        });
     </script>
 
 </body>

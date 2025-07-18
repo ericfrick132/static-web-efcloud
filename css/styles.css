@@ -1621,6 +1621,10 @@ hr.fancy::before {
     color       : var(--color-text-light);
 }
 
+.lead{
+    color: white;
+}
+
 @media screen and (max-width: 500px) {
 
     .lead,
@@ -2937,6 +2941,7 @@ img.u-pull-left {
     text-transform : uppercase;
     letter-spacing : 0.3em;
     color          : white;
+    vertical-align : middle;
 }
 
 .s-header__menu-icon {

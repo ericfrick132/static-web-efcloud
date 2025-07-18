@@ -20,13 +20,13 @@
     * -------------------------------------------------- */
     const tl = anime.timeline( {
         easing: 'easeInOutCubic',
-        duration: 800,
+        duration: 300,
         autoplay: false
     })
     .add({
         targets: '#loader',
         opacity: 0,
-        duration: 1000,
+        duration: 300,
         begin: function(anim) {
             window.scrollTo(0, 0);
         }
@@ -45,18 +45,18 @@
     .add({
         targets: ['.s-header__logo', '.s-header__menu-toggle'],
         opacity: [0, 1]
-    }, '-=200')
+    }, '-=100')
     .add({
-        targets: ['.s-intro__pretitle', '.s-intro__title', '.s-intro__more'],
-        translateY: [100, 0],
+        targets: ['.s-intro__pretitle', '.s-intro__title', '.s-intro__more', '.s-intro__metrics'],
+        translateY: [50, 0],
         opacity: [0, 1],
-        delay: anime.stagger(200)
-    }, '-=400')
+        delay: anime.stagger(50)
+    }, '-=200')
     .add({
         targets: ['.s-intro__social', '.s-intro__scroll'],
         opacity: [0, 1],
-        delay: anime.stagger(200)
-    }, '-=200');
+        delay: anime.stagger(50)
+    }, '-=100');
 
 
    /* preloader
@@ -108,6 +108,30 @@
         });
 
     }; // menu on scrolldown
+
+
+   /* fixed navbar on scrolldown
+    * ------------------------------------------------------ */
+    const ssFixedNavbar = function() {
+
+        const navbar = document.querySelector('.fixed-navbar');
+        if (!navbar) return;
+
+        const triggerHeight = 300;
+
+        window.addEventListener('scroll', function () {
+
+            let loc = window.scrollY;
+
+            if (loc > triggerHeight) {
+                navbar.classList.add('show');
+            } else {
+                navbar.classList.remove('show');
+            }
+
+        });
+
+    }; // fixed navbar on scrolldown
 
 
    /* offcanvas menu
@@ -529,7 +553,7 @@
         const triggers = document.querySelectorAll('.smoothscroll');
         
         const moveTo = new MoveTo({
-            tolerance: 0,
+            tolerance: 70,
             duration: 1200,
             easing: 'easeInOutCubic',
             container: window,
@@ -540,8 +564,59 @@
             }
         }, easeFunctions);
 
+        // Custom smooth scroll implementation with easing
+        function smoothScrollTo(target, duration) {
+            const startPosition = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
+            const targetPosition = target.getBoundingClientRect().top + startPosition;
+            const offsetPosition = targetPosition - 70; // 70px offset for fixed navbar
+            const distance = offsetPosition - startPosition;
+            let startTime = null;
+
+            // Cancel any ongoing scroll
+            if (window.scrollAnimation) {
+                cancelAnimationFrame(window.scrollAnimation);
+            }
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const progress = Math.min(timeElapsed / duration, 1);
+                
+                // Ultra-smooth easing function (easeInOutQuint)
+                const easeInOutQuint = progress < 0.5
+                    ? 16 * progress * progress * progress * progress * progress
+                    : 1 - Math.pow(-2 * progress + 2, 5) / 2;
+                
+                const currentPosition = startPosition + (distance * easeInOutQuint);
+                
+                window.scrollTo(0, currentPosition);
+                
+                if (progress < 1) {
+                    window.scrollAnimation = requestAnimationFrame(animation);
+                } else {
+                    window.scrollAnimation = null;
+                }
+            }
+            
+            window.scrollAnimation = requestAnimationFrame(animation);
+        }
+
         triggers.forEach(function(trigger) {
-            moveTo.registerTrigger(trigger);
+            trigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Use custom smooth scroll with 1200ms duration for ultra-smooth effect
+                    smoothScrollTo(targetElement, 1200);
+                    
+                    // Close mobile menu if open
+                    if (siteBody.classList.contains('menu-is-open')) {
+                        siteBody.classList.remove('menu-is-open');
+                    }
+                }
+            });
         });
 
     }; // end ssMoveTo
@@ -554,6 +629,7 @@
         ssPreloader();
         ssParallax();
         ssMenuOnScrolldown();
+        ssFixedNavbar();
         ssAnimateOnScroll();
         ssOffCanvas();
         ssMasonry();

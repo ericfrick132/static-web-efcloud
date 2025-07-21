@@ -415,11 +415,77 @@
     .s-calendly {
         padding: 80px 0;
         background: #0a0a0a;
+        overflow: hidden;
+        position: relative;
     }
 
     .calendly-inline-widget {
         margin: 20px auto;
         max-width: 1000px;
+        overflow: hidden !important;
+        height: 1000px;
+        position: relative;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Ensure iframe inside Calendly widget doesn't overflow */
+    .calendly-inline-widget iframe {
+        width: 100% !important;
+        height: 100% !important;
+        overflow: hidden !important;
+        border: none !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+    }
+    
+    /* Hide scrollbars on Calendly widget */
+    .calendly-inline-widget {
+        -ms-overflow-style: none !important;  /* IE and Edge */
+        scrollbar-width: none !important;  /* Firefox */
+    }
+    
+    .calendly-inline-widget::-webkit-scrollbar {
+        display: none !important;  /* Chrome, Safari and Opera */
+    }
+    
+    /* Ensure no overflow on mobile */
+    .calendly-mobile {
+        overflow: hidden !important;
+        -webkit-overflow-scrolling: auto !important;
+    }
+    
+    /* Prevent page scroll from Calendly widget */
+    .s-calendly .row {
+        overflow: hidden;
+    }
+    
+    /* Calendly container wrapper */
+    .calendly-wrapper {
+        width: 100%;
+        overflow: hidden !important;
+        position: relative;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Additional mobile overflow prevention */
+    @media (max-width: 768px) {
+        .s-calendly {
+            max-width: 100vw;
+            overflow: hidden;
+            height: auto;
+        }
+        
+        .s-calendly .row {
+            margin: 0;
+            padding: 0 15px;
+        }
+        
+        .calendly-inline-widget {
+            width: 100%;
+            max-width: 100%;
+        }
     }
 
     @media (max-width: 768px) {
@@ -429,7 +495,26 @@
         
         .calendly-inline-widget {
             height: 600px !important;
-            margin: 20px auto;
+            margin: 10px auto;
+            overflow: hidden;
+            position: relative;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .s-calendly {
+            padding: 30px 0;
+        }
+        
+        .calendly-inline-widget {
+            height: 500px !important;
+            min-width: 100% !important;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .calendly-inline-widget {
+            height: 450px !important;
         }
     }
 
@@ -486,6 +571,122 @@
         transform: scale(2);
         margin-top: 30px;
 
+    }
+
+    /* Metrics Section Styles */
+    .s-intro__metrics {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        margin-top: 2rem;
+        color: white;
+        font-family: var(--font-2);
+    }
+
+    .metric {
+        text-align: center;
+    }
+
+    .metric-number {
+        display: block;
+        font-size: 3.2rem;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+        color: var(--color-1, #4EFAEC);
+    }
+
+    .metric-label {
+        display: block;
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: 1.2;
+        opacity: 0.9;
+    }
+
+    .metric-divider {
+        width: 1px;
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Mobile adjustments */
+    @media screen and (max-width: 800px) {
+        .s-intro__content {
+            padding-top: 12vh;
+            padding-bottom: 8rem;
+        }
+
+        .s-intro__title {
+            margin-bottom: var(--vspace-1_5);
+        }
+
+        .s-intro__more {
+            margin-bottom: var(--vspace-1);
+        }
+
+        .s-intro__metrics {
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .metric-number {
+            font-size: 2.4rem;
+        }
+
+        .metric-label {
+            font-size: 1.2rem;
+        }
+
+        .metric-divider {
+            height: 40px;
+        }
+    }
+
+    /* Small mobile adjustments */
+    @media screen and (max-width: 600px) {
+        .s-intro__content {
+            padding-top: 10vh;
+            padding-bottom: 6rem;
+        }
+
+        .s-intro__metrics {
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .metric-number {
+            font-size: 2rem;
+        }
+
+        .metric-label {
+            font-size: 1.1rem;
+        }
+
+        .metric-divider {
+            height: 35px;
+        }
+    }
+
+    /* Very small mobile adjustments */
+    @media screen and (max-width: 400px) {
+        .s-intro__content {
+            padding-top: 8vh;
+        }
+
+        .s-intro__metrics {
+            gap: 1rem;
+        }
+
+        .metric-number {
+            font-size: 1.8rem;
+        }
+
+        .metric-label {
+            font-size: 1rem;
+            max-width: 80px;
+        }
     }
     </style>
 
@@ -617,7 +818,7 @@
                 <ul class="s-intro__social">
                     <li>
                         <a href="https://instagram.com/efcloud.tech">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M11.999,7.377c-2.554,0-4.623,2.07-4.623,4.623c0,2.554,2.069,4.624,4.623,4.624c2.552,0,4.623-2.07,4.623-4.624 C16.622,9.447,14.551,7.377,11.999,7.377L11.999,7.377z M11.999,15.004c-1.659,0-3.004-1.345-3.004-3.003 c0-1.659,1.345-3.003,3.004-3.003s3.002,1.344,3.002,3.003C15.001,13.659,13.658,15.004,11.999,15.004L11.999,15.004z"></path><circle cx="16.806" cy="7.207" r="1.078"></circle><path d="M20.533,6.111c-0.469-1.209-1.424-2.165-2.633-2.632c-0.699-0.263-1.438-0.404-2.186-0.42 c-0.963-0.042-1.268-0.054-3.71-0.054s-2.755,0-3.71,0.054C7.548,3.074,6.809,3.215,6.11,3.479C4.9,3.946,3.945,4.902,3.477,6.111 c-0.263,0.7-0.404,1.438-0.419,2.186c-0.043,0.962-0.056,1.267-0.056,3.71c0,2.442,0,2.753,0.056,3.71 c0.015,0.748,0.156,1.486,0.419,2.187c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45 c0.963,0.042,1.268,0.055,3.71,0.055s2.755,0,3.71-0.055c0.747-0.015,1.486-0.157,2.186-0.419c1.209-0.469,2.164-1.424,2.633-2.633 c0.263-0.7,0.404-1.438,0.419-2.186c0.043-0.962,0.056-1.267,0.056-3.71s0-2.753-0.056-3.71C20.941,7.57,20.801,6.819,20.533,6.111z M19.315,15.643c-0.007,0.576-0.111,1.147-0.311,1.688c-0.305,0.787-0.926,1.409-1.712,1.711c-0.535,0.199-1.099,0.303-1.67,0.311 c-0.95,0.044-1.218,0.055-3.654,0.055c-2.438,0-2.687,0-3.655-0.055c-0.569-0.007-1.135-0.112-1.669-0.311 c-0.789-0.301-1.414-0.923-1.719-1.711c-0.196-0.534-0.302-1.099-0.311-1.669c-0.043-0.95-0.053-1.218-0.053-3.654 c0-2.437,0-2.686,0.053-3.655c0.007-0.576,0.111-1.146,0.311-1.687c0.305-0.789,0.93-1.41,1.719-1.712 c0.534-0.198,1.1-0.303,1.669-0.311c0.951-0.043,1.218-0.055,3.655-0.055c2.437,0,2.687,0,3.654,0.055 c0.571,0.007,1.135,0.112,1.67,0.311c0.786,0.303,1.407,0.925,1.712,1.712c0.196,0.534,0.302,1.099,0.311,1.669 c0.043,0.951,0.054,1.218,0.054,3.655c0,2.436,0,2.698-0.043,3.654H19.315z"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);"><path d="M11.999,7.377c-2.554,0-4.623,2.07-4.623,4.623c0,2.554,2.069,4.624,4.623,4.624c2.552,0,4.623-2.07,4.623-4.624 C16.622,9.447,14.551,7.377,11.999,7.377L11.999,7.377z M11.999,15.004c-1.659,0-3.004-1.345-3.004-3.003 c0-1.659,1.345-3.003,3.004-3.003s3.002,1.344,3.002,3.003C15.001,13.659,13.658,15.004,11.999,15.004L11.999,15.004z"></path><circle cx="16.806" cy="7.207" r="1.078"></circle><path d="M20.533,6.111c-0.469-1.209-1.424-2.165-2.633-2.632c-0.699-0.263-1.438-0.404-2.186-0.42 c-0.963-0.042-1.268-0.054-3.71-0.054s-2.755,0-3.71,0.054C7.548,3.074,6.809,3.215,6.11,3.479C4.9,3.946,3.945,4.902,3.477,6.111 c-0.263,0.7-0.404,1.438-0.419,2.186c-0.043,0.962-0.056,1.267-0.056,3.71c0,2.442,0,2.753,0.056,3.71 c0.015,0.748,0.156,1.486,0.419,2.187c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45 c0.963,0.042,1.268,0.055,3.71,0.055s2.755,0,3.71-0.055c0.747-0.015,1.486-0.157,2.186-0.419c1.209-0.469,2.164-1.424,2.633-2.633 c0.263-0.7,0.404-1.438,0.419-2.186c0.043-0.962,0.056-1.267,0.056-3.71s0-2.753-0.056-3.71C20.941,7.57,20.801,6.819,20.533,6.111z M19.315,15.643c-0.007,0.576-0.111,1.147-0.311,1.688c-0.305,0.787-0.926,1.409-1.712,1.711c-0.535,0.199-1.099,0.303-1.67,0.311 c-0.95,0.044-1.218,0.055-3.654,0.055c-2.438,0-2.687,0-3.655-0.055c-0.569-0.007-1.135-0.112-1.669-0.311 c-0.789-0.301-1.414-0.923-1.719-1.711c-0.196-0.534-0.302-1.099-0.311-1.669c-0.043-0.95-0.053-1.218-0.053-3.654 c0-2.437,0-2.686,0.053-3.655c0.007-0.576,0.111-1.146,0.311-1.687c0.305-0.789,0.93-1.41,1.719-1.712 c0.534-0.198,1.1-0.303,1.669-0.311c0.951-0.043,1.218-0.055,3.655-0.055c2.437,0,2.687,0,3.654,0.055 c0.571,0.007,1.135,0.112,1.67,0.311c0.786,0.303,1.407,0.925,1.712,1.712c0.196,0.534,0.302,1.099,0.311,1.669 c0.043,0.951,0.054,1.218,0.054,3.655c0,2.436,0,2.698-0.043,3.654H19.315z"></path></svg>
                             <span class="u-screen-reader-text">Instagram</span>
                         </a>
                     </li>
@@ -633,7 +834,7 @@
                 </ul>  <!-- s-intro__social -->
 
                 <div class="s-intro__scroll">
-                    <a href="#about" class="smoothscroll">
+                    <a href="#services" class="smoothscroll">
                         <span>Ver mas!</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: rotate(180deg);msFilter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);"><path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z"></path></svg>
                     </a>
@@ -773,10 +974,18 @@
                 <div class="process-container">
                     <div class="process-intro">
                         <div class="process-intro__content">
+                            <p class="process-intro__highlight-text">
+                                <h2 class="process-intro__title"> <strong>30-60 días</strong></h2>
+                                <p class="process-intro__text">
+                                es todo lo que necesitamos para transformar tu idea en una aplicación funcional. Nuestro enfoque ágil y equipo especializado nos permite entregar MVPs completos y aplicaciones empresariales en tiempo récord, sin comprometer la calidad.
+                            </p>
+
+                            </p>
                             <h2 class="process-intro__title">Nuestro Enfoque</h2>
                             <p class="process-intro__text">
-                                Comenzamos reuniéndonos con el cliente para escuchar cuidadosamente sus necesidades y objetivos. Esta fase inicial es crucial para comprender completamente el alcance del proyecto.
+                                Nos enfocamos en agregar valor rápidamente desde el primer día. Nuestro objetivo es tener un MVP funcional en producción lo antes posible, permitiendo que comiences a ver resultados tangibles mientras iteramos y mejoramos continuamente.
                             </p>
+                            
                         </div>
                         <div class="process-intro__image">
                             <div class="process-intro__image-inner">
@@ -819,7 +1028,7 @@
                         </div>
                     </div>
 
-                    <div class="process-steps">
+                    <!-- <div class="process-steps">
                         <div class="process-step">
                             <div class="process-step__number">
                                 <span>01</span>
@@ -871,7 +1080,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- <div class="payment-section">
                         <div class="payment-section__content">
@@ -1088,6 +1297,77 @@
                             font-size: 1.8rem;
                             line-height: 1.6;
                             color: #cccccc;
+                        }
+                        
+                        .process-intro__highlight {
+                            margin-top: 30px;
+                            padding: 30px;
+                            background: linear-gradient(135deg, rgba(78, 250, 236, 0.1) 0%, rgba(78, 250, 236, 0.05) 100%);
+                            border-radius: 12px;
+                            border: 1px solid rgba(78, 250, 236, 0.3);
+                            position: relative;
+                            overflow: hidden;
+                        }
+                        
+                        .process-intro__highlight::before {
+                            content: '';
+                            position: absolute;
+                            top: -2px;
+                            left: -2px;
+                            right: -2px;
+                            bottom: -2px;
+                            background: linear-gradient(45deg, #4EFAEC, transparent, #4EFAEC);
+                            border-radius: 12px;
+                            opacity: 0;
+                            animation: highlightPulse 3s ease-in-out infinite;
+                            z-index: -1;
+                        }
+                        
+                        @keyframes highlightPulse {
+                            0%, 100% { opacity: 0; }
+                            50% { opacity: 0.5; }
+                        }
+                        
+                        .process-intro__highlight-title {
+                            font-size: 2.4rem;
+                            font-weight: 700;
+                            color: #4EFAEC;
+                            margin-bottom: 15px;
+                        }
+                        
+                        .process-intro__highlight-text {
+                            font-size: 1.8rem;
+                            line-height: 1.6;
+                            color: #ffffff;
+                            margin: 0;
+                        }
+                        
+                        .process-intro__highlight-text strong {
+                            color: #4EFAEC;
+                            font-size: 3rem;
+                            font-weight: 900;
+                            display: block;
+                            margin-bottom: 10px;
+                            text-shadow: 0 0 20px rgba(78, 250, 236, 0.5);
+                        }
+                        
+                        @media (max-width: 768px) {
+                            .process-intro__highlight {
+                                margin-top: 20px;
+                                padding: 20px;
+                            }
+                            
+                            .process-intro__highlight-title {
+                                font-size: 2rem;
+                            }
+                            
+                            .process-intro__highlight-text {
+                                font-size: 1.6rem;
+                            }
+                            
+                            .process-intro__highlight-text strong {
+                                font-size: 2.4rem;
+                            }
                         }
 
                         .process-intro__image {
@@ -2227,7 +2507,31 @@
                     </script>
                 </section>
 
-              
+                <!-- calendly
+            ----------------------------------------------- -->
+            <section id="calendly" class="s-calendly target-section">
+                <div class="row narrow section-header has-bottom-sep">
+                    <div class="column lg-12">
+                        <h3 class="text-pretitle">Agendá una llamada</h3>
+                        <h1 class="text-display-title">
+                            Hablemos sobre tu próximo proyecto
+                        </h1>
+                        <p class="lead">
+                           30 minutos que pueden transformar tu negocio. En esta llamada te voy a mostrar el roadmap exacto 
+que necesitas para recuperar tu inversión en menos de 90 días.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="column lg-12">
+                        <div class="calendly-wrapper">
+                            <div class="calendly-inline-widget" data-url="https://calendly.com/efcloud/efcloud-meet" style="min-width:320px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section> <!-- end calendly -->
+
               
                 <!-- portfolio
                 ----------------------------------------------- -->
@@ -2283,7 +2587,7 @@
             <div class="folio-item__cat">Desarrollo Web</div>
             <h4 class="folio-item__title">Briq</h4>
         </div>
-        <a href="https://briq.com/" title="Project Link" class="folio-item__project-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M4.222 19.778a4.983 4.983 0 0 0 3.535 1.462 4.986 4.986 0 0 0 3.536-1.462l2.828-2.829-1.414-1.414-2.828 2.829a3.007 3.007 0 0 1-4.243 0 3.005 3.005 0 0 1 0-4.243l2.829-2.828-1.414-1.414-2.829 2.828a5.006 5.006 0 0 0 0 7.071zm15.556-8.485a5.008 5.008 0 0 0 0-7.071 5.006 5.006 0 0 0-7.071 0L9.879 7.051l1.414 1.414 2.828-2.829a3.007 3.007 0 0 1 4.243 0 3.005 3.005 0 0 1 0 4.243l-2.829 2.828 1.414 1.414 2.829-2.828z"></path><path d="m8.464 16.95-1.415-1.414 8.487-8.486 1.414 1.415z"></path></svg></a>
+        <a href="https://briq.com/" title="Project Link" class="folio-item__project-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M4.222 19.778a4.983 4.983 0 0 0 3.535 1.462 4.986 4.986 0 0 0 3.536-1.462l2.828-2.829-1.414-1.414-2.828 2.829a3.007 3.007 0 0 1-4.243 0 3.005 3.005 0 0 1 0-4.243l2.829-2.828-1.414-1.414-2.829 2.828a5.006 5.006 0 0 0 0 7.071zm15.556-8.485a5.008 5.008 0 0 0 0-7.071 5.006 5.006 0 0 0-7.071 0L9.879 7.051l1.414 1.414 2.828-2.829a3.007 3.007 0 0 1 4.243 0 3.005 3.005 0 0 1 0 4.243l-2.829 2.828 1.414 1.414 2.829-2.828z"></path><path d="m8.464 16.95-1.415-1.414 8.487-8.486 1.414 1.415z"></path></svg></a>
         <div class="folio-item__caption">
             <p>Implementamos nuevas características para automatizar procesos orientados al cliente para Briq, mejorando la eficiencia del sistema y la experiencia del usuario. Estas mejoras facilitaron interacciones y transacciones de usuario más fluidas y rápidas, optimizando las operaciones.</p>
         </div>
@@ -2300,7 +2604,7 @@
             <div class="folio-item__cat">Desarrollo Web</div>
             <h4 class="folio-item__title">Eversource</h4>
         </div>
-        <a href="https://www.eversource.com/content/residential" title="Project Link" class="folio-item__project-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M4.222 19.778a4.983 4.983 0 0 0 3.535 1.462 4.986 4.986 0 0 0 3.536-1.462l2.828-2.829-1.414-1.414-2.828 2.829a3.007 3.007 0 0 1-4.243 0 3.005 3.005 0 0 1 0-4.243l2.829-2.828-1.414-1.414-2.829 2.828a5.006 5.006 0 0 0 0 7.071zm15.556-8.485a5.008 5.008 0 0 0 0-7.071 5.006 5.006 0 0 0-7.071 0L9.879 7.051l1.414 1.414 2.828-2.829a3.007 3.007 0 0 1 4.243 0 3.005 3.005 0 0 1 0 4.243l-2.829 2.828 1.414 1.414 2.829-2.828z"></path><path d="m8.464 16.95-1.415-1.414 8.487-8.486 1.414 1.415z"></path></svg></a>
+        <a href="https://www.eversource.com/content/residential" title="Project Link" class="folio-item__project-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M4.222 19.778a4.983 4.983 0 0 0 3.535 1.462 4.986 4.986 0 0 0 3.536-1.462l2.828-2.829-1.414-1.414-2.828 2.829a3.007 3.007 0 0 1-4.243 0 3.005 3.005 0 0 1 0-4.243l2.829-2.828-1.414-1.414-2.829 2.828a5.006 5.006 0 0 0 0 7.071zm15.556-8.485a5.008 5.008 0 0 0 0-7.071 5.006 5.006 0 0 0-7.071 0L9.879 7.051l1.414 1.414 2.828-2.829a3.007 3.007 0 0 1 4.243 0 3.005 3.005 0 0 1 0 4.243l-2.829 2.828 1.414 1.414 2.829-2.828z"></path><path d="m8.464 16.95-1.415-1.414 8.487-8.486 1.414 1.415z"></path></svg></a>
         <div class="folio-item__caption">
             <p>Desarrollamos funcionalidades para Eversource Energy, centrándonos en la gestión eficiente de archivos para ayudar a los usuarios finales a manejar documentos y datos de manera efectiva. Las soluciones proporcionadas optimizaron las operaciones y mejoraron las capacidades de manejo de datos en toda la organización.</p>
         </div>
@@ -2317,7 +2621,7 @@
             <div class="folio-item__cat">Desarrollo MVP + Wearables</div>
             <h4 class="folio-item__title">HealthHero</h4>
         </div>
-        <a href="https://www.healthhero.com" title="Project Link" class="folio-item__project-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M4.222 19.778a4.983 4.983 0 0 0 3.535 1.462 4.986 4.986 0 0 0 3.536-1.462l2.828-2.829-1.414-1.414-2.828 2.829a3.007 3.007 0 0 1-4.243 0 3.005 3.005 0 0 1 0-4.243l2.829-2.828-1.414-1.414-2.829 2.828a5.006 5.006 0 0 0 0 7.071zm15.556-8.485a5.008 5.008 0 0 0 0-7.071 5.006 5.006 0 0 0-7.071 0L9.879 7.051l1.414 1.414 2.828-2.829a3.007 3.007 0 0 1 4.243 0 3.005 3.005 0 0 1 0 4.243l-2.829 2.828 1.414 1.414 2.829-2.828z"></path><path d="m8.464 16.95-1.415-1.414 8.487-8.486 1.414 1.415z"></path></svg></a>
+        <a href="https://www.healthhero.com" title="Project Link" class="folio-item__project-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M4.222 19.778a4.983 4.983 0 0 0 3.535 1.462 4.986 4.986 0 0 0 3.536-1.462l2.828-2.829-1.414-1.414-2.828 2.829a3.007 3.007 0 0 1-4.243 0 3.005 3.005 0 0 1 0-4.243l2.829-2.828-1.414-1.414-2.829 2.828a5.006 5.006 0 0 0 0 7.071zm15.556-8.485a5.008 5.008 0 0 0 0-7.071 5.006 5.006 0 0 0-7.071 0L9.879 7.051l1.414 1.414 2.828-2.829a3.007 3.007 0 0 1 4.243 0 3.005 3.005 0 0 1 0 4.243l-2.829 2.828 1.414 1.414 2.829-2.828z"></path><path d="m8.464 16.95-1.415-1.414 8.487-8.486 1.414 1.415z"></path></svg></a>
         <div class="folio-item__caption">
             <p>Desarrollamos un Producto Mínimo Viable (MVP) personalizado para HealthHero, el proveedor líder de atención médica digital en Europa. El MVP aprovechó la tecnología wearable para permitir el monitoreo de salud en tiempo real, centrándose en métricas críticas como la frecuencia cardíaca y los patrones de sueño. Esta iniciativa no solo facilitó intervenciones médicas inmediatas, sino que también se alineó con la misión de HealthHero de simplificar la atención médica mediante la integración de tecnología inteligente con experiencia clínica.</p>
         </div>
@@ -2439,6 +2743,16 @@
 
 
                     </div> <!-- end s-portfolio__header -->
+
+                    
+            <div class="row">
+                <div class="column lg-12 text-center" style="margin: 60px 0;">
+                    <a href="#calendly" class="btn btn--primary btn--large smoothscroll">
+                        Agendá una llamada
+                    </a>
+                </div>
+            </div>
+            
                 <div class="row testimonials">
                         <div class="column lg-12" data-animate-block>
 
@@ -2822,29 +3136,7 @@
                     </style>
                 </section> -->
 
-            <!-- calendly
-            ----------------------------------------------- -->
-            <section id="calendly" class="s-calendly target-section">
-                <div class="row narrow section-header has-bottom-sep">
-                    <div class="column lg-12">
-                        <h3 class="text-pretitle">Agendá una llamada</h3>
-                        <h1 class="text-display-title">
-                            Hablemos sobre tu próximo proyecto
-                        </h1>
-                        <p class="lead">
-                           30 minutos que pueden transformar tu negocio. En esta llamada te voy a mostrar el roadmap exacto 
-que necesitas para recuperar tu inversión en menos de 90 días.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="column lg-12">
-                        <div class="calendly-inline-widget" data-url="https://calendly.com/efcloud/efcloud-meet" style="min-width:320px;height:1000px;"></div>
-                    </div>
-                </div>
-            </section> <!-- end calendly -->
-
+          
           
 
 
@@ -3279,6 +3571,42 @@ que necesitas para recuperar tu inversión en menos de 90 días.
     
     <!-- Calendly widget script -->
     <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    
+    <!-- Fix Calendly iframe overflow -->
+    <script>
+        // Wait for Calendly widget to load
+        window.addEventListener('message', function(e) {
+            if (e.data.event && e.data.event.indexOf('calendly') === 0) {
+                // Find all Calendly iframes and remove scrolling
+                setTimeout(function() {
+                    const calendlyIframes = document.querySelectorAll('.calendly-inline-widget iframe');
+                    calendlyIframes.forEach(function(iframe) {
+                        iframe.scrolling = 'no';
+                        iframe.style.overflow = 'hidden';
+                        // Try to access iframe content if same origin
+                        try {
+                            if (iframe.contentDocument && iframe.contentDocument.body) {
+                                iframe.contentDocument.body.style.overflow = 'hidden';
+                            }
+                        } catch(e) {
+                            // Cross-origin, can't access
+                        }
+                    });
+                }, 1000);
+            }
+        });
+        
+        // Also check on load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                const calendlyIframes = document.querySelectorAll('.calendly-inline-widget iframe');
+                calendlyIframes.forEach(function(iframe) {
+                    iframe.scrolling = 'no';
+                    iframe.style.overflow = 'hidden';
+                });
+            }, 2000);
+        });
+    </script>
 
 </body>
 </html>

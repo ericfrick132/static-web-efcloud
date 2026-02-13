@@ -5,7 +5,11 @@
       "Bash(rg:*)",
       "Bash(find:*)",
       "Bash(git -C /mnt/d/code/efcloud/EFCloud-Website/static-web-efcloud log --oneline -10)",
-      "Bash(git -C /mnt/d/code/efcloud/EFCloud-Website/static-web-efcloud diff --name-only)"
+      "Bash(git -C /mnt/d/code/efcloud/EFCloud-Website/static-web-efcloud diff --name-only)",
+      "Bash(az account show:*)",
+      "Bash(gh auth:*)",
+      "Bash(az staticwebapp list:*)",
+      "Bash(az login:*)"
     ],
     "deny": []
   }

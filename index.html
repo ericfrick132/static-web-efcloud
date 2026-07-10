@@ -95,6 +95,20 @@ p { color: var(--text-2); }
 @media (max-width: 760px) { .nav-links a:not(.nav-cta) { display: none; } }
 
 /* ---------- hero ---------- */
+.hero-wrap { position: relative; overflow: hidden; }
+.hero-bg {
+  position: absolute; inset: -40px; z-index: -1;
+  background: url(images/hero-eric.jpg) center center / cover no-repeat;
+  filter: blur(5px);
+}
+.hero-bg::before {
+  content: ""; position: absolute; inset: 0;
+  background: rgba(10, 10, 12, 0.62);
+}
+.hero-bg::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(0deg, var(--bg) 4%, rgba(10,10,12,.35) 55%, rgba(10,10,12,.65) 100%);
+}
 .hero {
   max-width: 1180px; margin: 0 auto;
   padding: clamp(7.5rem, 17vh, 12rem) clamp(1.2rem, 4vw, 2.6rem) clamp(3rem, 7vh, 5rem);
@@ -146,6 +160,27 @@ p { color: var(--text-2); }
 .service p { font-size: .95rem; margin-top: .5rem; }
 .service .proof { margin-top: .9rem; font-size: .8rem; color: var(--text-3); }
 .service .proof b { color: var(--text-2); font-weight: 550; }
+
+/* por qué ahora / inversión */
+.value-band {
+  margin-top: clamp(1.6rem, 4vh, 2.6rem);
+  display: grid; gap: clamp(1rem, 2.4vw, 1.6rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+}
+.value {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: linear-gradient(165deg, var(--surface), #101014);
+  padding: 1.8rem 1.8rem 1.9rem;
+}
+.value .num {
+  font-size: .8rem; font-weight: 600; letter-spacing: .06em;
+  color: rgba(91,157,255,.75); font-variant-numeric: tabular-nums;
+}
+.value b {
+  display: block; font-size: clamp(1.15rem, 2vw, 1.35rem);
+  letter-spacing: -0.012em; line-height: 1.25; margin: .7rem 0 .6rem;
+}
+.value p { font-size: .93rem; }
 
 /* prueba / productos con screenshots */
 .showcase {
@@ -280,6 +315,8 @@ html.js .reveal.in { opacity: 1; transform: none; }
   </div>
 </nav>
 
+<div class="hero-wrap">
+<div class="hero-bg" aria-hidden="true"></div>
 <header class="hero">
   <p class="eyebrow">EFCloud · Buenos Aires → LATAM</p>
   <h1 class="display">Construimos el software que maneja tu negocio.</h1>
@@ -295,6 +332,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
     <div class="stat"><b>15</b><span>años de experiencia global</span></div>
   </div>
 </header>
+</div>
 
 <!-- ============ QUÉ HACEMOS ============ -->
 <section class="section" id="que-hacemos">
@@ -326,6 +364,30 @@ html.js .reveal.in { opacity: 1; transform: none; }
       <h3>Integraciones y automatización</h3>
       <p>Cobros automáticos y split payments con MercadoPago, agentes de WhatsApp con IA, scraping y generación de leads con n8n, control de acceso biométrico, GPS en tiempo real, protocolos industriales como OCPP para cargadores eléctricos.</p>
       <p class="proof"><b>Si tiene API, lo conectamos.</b> Y si no tiene, la construimos.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============ POR QUÉ AHORA ============ -->
+<section class="section" id="por-que-ahora">
+  <p class="eyebrow reveal">Por qué ahora</p>
+  <h2 class="reveal">Un sistema propio no es un gasto.<br>Es de las mejores inversiones de tu negocio.</h2>
+
+  <div class="value-band">
+    <article class="value reveal">
+      <span class="num">01</span>
+      <b>Se paga solo.</b>
+      <p>Cobros que entran automáticamente, menos morosos, menos horas de administración y menos turnos perdidos. Bien planteado, un sistema recupera lo que costó en los primeros meses — y después es todo margen.</p>
+    </article>
+    <article class="value reveal">
+      <span class="num">02</span>
+      <b>Vende mientras no estás.</b>
+      <p>Reservas online a cualquier hora, señas anticipadas, suscripciones que se renuevan solas. Tu negocio deja de depender de que alguien conteste el teléfono para facturar.</p>
+    </article>
+    <article class="value reveal">
+      <span class="num">03</span>
+      <b>Tu competencia ya está en esto.</b>
+      <p>El cliente que reserva en dos toques y paga desde el teléfono no vuelve al cuaderno ni al "te confirmo más tarde". La pregunta ya no es si tu rubro se digitaliza — es quién se queda con esos clientes.</p>
     </article>
   </div>
 </section>

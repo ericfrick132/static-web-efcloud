@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portfolio — EFCloud</title>
+<meta name="description" content="22 proyectos reales de EFCloud: SaaS multi-tenant, fintech, plataformas para clientes y apps móviles nativas. Diseñados, construidos y operados end-to-end.">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon.ico">
+<style>
+/* ============================================================
+   EFCloud Portfolio — dark, system type, fluid interactions
+   ============================================================ */
+:root {
+  --bg: #0a0a0c;
+  --surface: #141417;
+  --surface-2: #1c1c21;
+  --line: rgba(255,255,255,.08);
+  --text: #f5f5f7;
+  --text-2: rgba(235,235,245,.62);
+  --text-3: rgba(235,235,245,.38);
+  --accent: #5b9dff;
+  --accent-ink: #0a84ff;
+  --chrome: rgba(20,20,24,.72);
+  --radius: 18px;
+  /* springs (critically damped — no overshoot; §4 del skill) */
+  --spring: cubic-bezier(.32,.72,.28,1);
+  --spring-fast: cubic-bezier(.25,.6,.3,1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 100%/1.55 -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", Roboto, sans-serif;
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+::selection { background: rgba(91,157,255,.32); }
+
+/* ---------- type scale: tracking y leading por tamaño (§15) ---------- */
+.display {
+  font-size: clamp(2.4rem, 6.5vw, 4.6rem);
+  line-height: 1.04;
+  letter-spacing: -0.022em;
+  font-weight: 700;
+}
+h2 {
+  font-size: clamp(1.6rem, 3.4vw, 2.3rem);
+  line-height: 1.1;
+  letter-spacing: -0.017em;
+  font-weight: 700;
+}
+h3 { font-size: 1.22rem; line-height: 1.25; letter-spacing: -0.01em; font-weight: 650; }
+.eyebrow {
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+p { color: var(--text-2); }
+
+/* ---------- chrome translúcido (§12): la nav es un material ---------- */
+.nav {
+  position: fixed; inset: 0 0 auto 0; z-index: 40;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .9rem clamp(1.2rem, 4vw, 2.6rem);
+  background: transparent;
+  transition: background .4s var(--spring);
+}
+.nav::after { /* scroll edge effect: gradiente, no borde duro */
+  content: ""; position: absolute; inset: auto 0 -1px 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+  opacity: 0; transition: opacity .4s ease;
+}
+.nav.scrolled { background: var(--chrome); -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%); }
+.nav.scrolled::after { opacity: 1; }
+.nav .brand { font-weight: 700; letter-spacing: -0.01em; color: var(--text); font-size: 1.05rem; }
+.nav .brand:hover { text-decoration: none; }
+.nav .brand span { color: var(--text-3); font-weight: 500; }
+.nav-links { display: flex; gap: 1.4rem; }
+.nav-links a {
+  color: var(--text-2); font-size: .88rem; font-weight: 500;
+  padding: .35rem .1rem; transition: color .25s ease;
+}
+.nav-links a:hover { color: var(--text); text-decoration: none; }
+@media (max-width: 720px) { .nav-links { display: none; } }
+
+/* ---------- hero ---------- */
+.hero {
+  max-width: 1180px; margin: 0 auto;
+  padding: clamp(7.5rem, 16vh, 11rem) clamp(1.2rem, 4vw, 2.6rem) clamp(3rem, 7vh, 5rem);
+}
+.hero .display { max-width: 15ch; margin: .9rem 0 1.3rem; }
+.hero .lede { font-size: clamp(1.05rem, 1.8vw, 1.25rem); max-width: 56ch; line-height: 1.55; }
+.stats {
+  display: flex; flex-wrap: wrap; gap: clamp(1.6rem, 4vw, 3.4rem);
+  margin-top: clamp(2.2rem, 5vh, 3.4rem);
+}
+.stat b { display: block; font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+.stat span { font-size: .85rem; color: var(--text-3); }
+
+/* ---------- filtros: chips que responden al pointer-down (§1, §10) ---------- */
+.filters {
+  position: sticky; top: 3.4rem; z-index: 30;
+  display: flex; gap: .5rem; flex-wrap: wrap;
+  max-width: 1180px; margin: 0 auto;
+  padding: .8rem clamp(1.2rem, 4vw, 2.6rem);
+}
+.chip {
+  appearance: none; border: 1px solid var(--line); cursor: pointer;
+  background: var(--chrome);
+  -webkit-backdrop-filter: blur(16px) saturate(160%); backdrop-filter: blur(16px) saturate(160%);
+  color: var(--text-2);
+  font: 500 .87rem/1 inherit; font-family: inherit;
+  letter-spacing: .01em;
+  padding: .58rem 1.05rem; border-radius: 999px;
+  transition: transform .12s ease-out, background .25s var(--spring), color .25s var(--spring), border-color .25s var(--spring);
+  touch-action: manipulation;
+}
+.chip:active { transform: scale(.95); transition-duration: .06s; }
+.chip[aria-pressed="true"] { background: var(--text); color: #0a0a0c; border-color: transparent; font-weight: 600; }
+.chip:hover:not([aria-pressed="true"]) { color: var(--text); border-color: rgba(255,255,255,.18); }
+
+/* ---------- secciones ---------- */
+.section { max-width: 1180px; margin: 0 auto; padding: clamp(2.6rem, 7vh, 4.6rem) clamp(1.2rem, 4vw, 2.6rem) 0; }
+.section > p.intro { margin: .7rem 0 0; max-width: 60ch; }
+.section-head { display: flex; align-items: baseline; gap: 1rem; }
+.section-head .count { color: var(--text-3); font-size: .95rem; font-variant-numeric: tabular-nums; }
+
+/* ---------- grid de proyectos ---------- */
+.grid {
+  display: grid; gap: clamp(1.2rem, 2.6vw, 1.8rem);
+  grid-template-columns: repeat(auto-fill, minmax(min(430px, 100%), 1fr));
+  margin-top: clamp(1.4rem, 3vh, 2.2rem);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform .45s var(--spring), border-color .45s var(--spring), opacity .45s var(--spring);
+}
+@media (hover: hover) {
+  .card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.16); }
+}
+.card.hidden-cat { display: none; }
+
+/* media: frame de browser + phone flotante */
+.card-media {
+  position: relative; display: block; width: 100%;
+  aspect-ratio: 16 / 10.4;
+  background: var(--surface-2);
+  border: 0; padding: 0; cursor: zoom-in; overflow: hidden;
+  transition: transform .12s ease-out;
+}
+.card-media:active { transform: scale(.985); transition-duration: .06s; }
+.card-media .desktop-frame {
+  position: absolute; inset: 8% -6% auto 7%;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.07);
+  background: #202027;
+}
+.card-media .desktop-frame::before {
+  content: ""; display: block; height: 22px;
+  background: linear-gradient(#2a2a31, #232329);
+  background-repeat: no-repeat;
+}
+.card-media .desktop-frame::after {
+  content: ""; position: absolute; top: 7px; left: 10px; width: 38px; height: 8px;
+  background:
+    radial-gradient(circle 4px at 4px 4px, #ff5f57 4px, transparent 4.5px),
+    radial-gradient(circle 4px at 19px 4px, #febc2e 4px, transparent 4.5px),
+    radial-gradient(circle 4px at 34px 4px, #28c840 4px, transparent 4.5px);
+}
+.card-media .desktop-frame img { width: 100%; aspect-ratio: 1440 / 830; object-fit: cover; object-position: top; }
+.card-media .phone-frame {
+  position: absolute; right: 5.5%; bottom: -14%;
+  width: 21%;
+  border-radius: 14% / 6.5%;
+  overflow: hidden;
+  box-shadow: 0 18px 44px rgba(0,0,0,.55), 0 0 0 2.5px #35353c, 0 0 0 3.5px rgba(255,255,255,.1);
+  transition: transform .5s var(--spring);
+  background: #000;
+}
+@media (hover: hover) {
+  .card:hover .phone-frame { transform: translateY(-6px); }
+}
+.card-media .phone-frame img { width: 100%; aspect-ratio: 390 / 800; object-fit: cover; object-position: top; }
+/* tarjetas sin screenshot: viñeta tipográfica */
+.card-media.no-shot { cursor: default; display: grid; place-items: center; }
+.card-media.no-shot .glyph {
+  font-size: clamp(2.6rem, 5vw, 3.6rem); font-weight: 700; letter-spacing: -0.03em;
+  color: var(--text-3);
+}
+
+.card-body { padding: 1.25rem 1.35rem 1.45rem; display: flex; flex-direction: column; gap: .55rem; flex: 1; }
+.card-body .tagline { color: var(--text); font-weight: 600; font-size: .98rem; letter-spacing: -0.005em; }
+.card-body h3 { display: flex; align-items: center; gap: .55rem; flex-wrap: wrap; }
+.card-body p.desc { font-size: .92rem; line-height: 1.55; }
+.badge {
+  font-size: .68rem; font-weight: 600; letter-spacing: .04em;
+  padding: .18rem .5rem; border-radius: 6px;
+  background: rgba(91,157,255,.14); color: var(--accent);
+}
+.badge.neutral { background: rgba(255,255,255,.08); color: var(--text-2); }
+.stack { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .25rem; }
+.stack li {
+  list-style: none; font-size: .74rem; font-weight: 500;
+  color: var(--text-3); border: 1px solid var(--line);
+  padding: .22rem .55rem; border-radius: 999px;
+}
+.card-foot { margin-top: auto; padding-top: .7rem; display: flex; gap: 1rem; align-items: center; }
+.card-foot .visit { font-size: .88rem; font-weight: 600; }
+.card-foot .visit::after { content: " ↗"; font-weight: 400; }
+.card-foot .offline { font-size: .82rem; color: var(--text-3); }
+
+/* ---------- banda mobile ---------- */
+.mobile-band {
+  margin-top: clamp(1.4rem, 3vh, 2.2rem);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: linear-gradient(160deg, var(--surface), var(--surface-2));
+  padding: clamp(1.4rem, 3.5vw, 2.4rem);
+  display: grid; gap: 1.6rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.mobile-band .apps { display: flex; flex-wrap: wrap; gap: .5rem; align-content: start; }
+.mobile-band .apps span {
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: .45rem .9rem; font-size: .86rem; font-weight: 550; color: var(--text-2);
+}
+.platforms { display: flex; gap: 1.6rem; margin-top: 1rem; }
+.platforms div b { display: block; font-size: .95rem; }
+.platforms div span { font-size: .8rem; color: var(--text-3); }
+
+/* ---------- experiencia ---------- */
+.xp { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(min(420px,100%), 1fr)); margin-top: 1.6rem; }
+.xp article { border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem 1.6rem; background: var(--surface); }
+.xp article p { font-size: .92rem; margin-top: .5rem; }
+.xp article .eyebrow { margin-bottom: .3rem; }
+
+/* ---------- footer ---------- */
+footer {
+  max-width: 1180px; margin: clamp(3rem, 8vh, 6rem) auto 0;
+  padding: 0 clamp(1.2rem, 4vw, 2.6rem) 4rem;
+}
+.cta {
+  border: 1px solid var(--line); border-radius: calc(var(--radius) + 6px);
+  background: linear-gradient(170deg, var(--surface), #101014);
+  padding: clamp(2rem, 6vw, 3.6rem);
+  text-align: center;
+}
+.cta h2 { max-width: 22ch; margin: 0 auto; }
+.cta p { margin: 1rem auto 1.8rem; max-width: 46ch; }
+.cta-actions { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: .45rem;
+  border-radius: 999px; padding: .8rem 1.5rem;
+  font-weight: 600; font-size: .95rem;
+  transition: transform .12s ease-out, opacity .25s ease;
+  touch-action: manipulation;
+}
+.btn:active { transform: scale(.96); transition-duration: .06s; }
+.btn:hover { text-decoration: none; opacity: .9; }
+.btn.primary { background: var(--text); color: #0a0a0c; }
+.btn.ghost { border: 1px solid rgba(255,255,255,.18); color: var(--text); }
+.foot-meta { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 2.4rem; font-size: .84rem; color: var(--text-3); }
+.foot-meta a { color: var(--text-3); }
+.foot-meta a:hover { color: var(--text); text-decoration: none; }
+
+/* ---------- lightbox (§7: entra y sale por el mismo camino) ---------- */
+dialog.lightbox {
+  border: 1px solid var(--line); border-radius: 22px;
+  background: var(--surface);
+  color: var(--text);
+  padding: 0;
+  width: min(1060px, calc(100vw - 2rem));
+  max-height: calc(100dvh - 3rem);
+  overflow: hidden auto;
+  overscroll-behavior: contain;
+}
+dialog.lightbox::backdrop { background: rgba(0,0,0,.55); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+dialog.lightbox[open] { animation: lb-in .42s var(--spring); }
+dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
+@keyframes lb-in  { from { opacity: 0; transform: scale(.94) translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes lb-out { from { opacity: 1; transform: none; } to { opacity: 0; transform: scale(.94) translateY(14px); } }
+.lb-head {
+  position: sticky; top: 0; z-index: 2;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1.05rem 1.4rem;
+  background: var(--chrome);
+  -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%);
+}
+.lb-head h3 { font-size: 1.1rem; }
+.lb-head .actions { display: flex; align-items: center; gap: .9rem; }
+.lb-head .visit { font-size: .88rem; font-weight: 600; white-space: nowrap; }
+.lb-close {
+  appearance: none; border: 0; cursor: pointer;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(255,255,255,.1); color: var(--text-2);
+  font-size: 1rem; line-height: 1;
+  transition: transform .12s ease-out, background .25s ease;
+}
+.lb-close:active { transform: scale(.9); transition-duration: .06s; }
+.lb-close:hover { background: rgba(255,255,255,.18); color: var(--text); }
+.lb-body { padding: 1.4rem; display: grid; gap: 1.4rem; grid-template-columns: 2.2fr 1fr; align-items: start; }
+@media (max-width: 760px) { .lb-body { grid-template-columns: 1fr; } }
+.lb-body img { border-radius: 12px; border: 1px solid var(--line); width: 100%; height: auto; }
+.lb-desc { grid-column: 1 / -1; max-width: 70ch; }
+.lb-desc p { font-size: .95rem; }
+
+/* ---------- reveal on scroll (solo si hay JS; sin JS todo queda visible) ---------- */
+html.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s var(--spring), transform .7s var(--spring); }
+html.js .reveal.in { opacity: 1; transform: none; }
+
+/* ---------- accesibilidad (§14) ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  html.js .reveal { opacity: 1; transform: none; transition: none; }
+  .card, .card:hover, .phone-frame, .card:hover .phone-frame { transform: none !important; transition: none; }
+  dialog.lightbox[open], dialog.lightbox.closing { animation: lb-fade .2s ease both; }
+  @keyframes lb-fade { from { opacity: 0; } to { opacity: 1; } }
+  dialog.lightbox.closing { animation-direction: reverse; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .nav.scrolled, .chip, .lb-head { background: #141417; -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+@media (prefers-contrast: more) {
+  :root { --line: rgba(255,255,255,.28); --text-2: rgba(240,240,248,.85); --text-3: rgba(240,240,248,.7); }
+}
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav" aria-label="Principal">
+  <a class="brand" href="index.html">EFCloud <span>/ Portfolio</span></a>
+  <div class="nav-links">
+    <a href="#saas">Productos</a>
+    <a href="#clientes">Clientes</a>
+    <a href="#interno">Interno</a>
+    <a href="#mobile">Mobile</a>
+    <a href="#experiencia">Experiencia</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <p class="eyebrow">EFCloud · Buenos Aires → LATAM</p>
+  <h1 class="display">Software que ya está funcionando.</h1>
+  <p class="lede">Veintidós proyectos reales — SaaS multi-tenant, fintech, plataformas a medida para clientes y apps móviles nativas — diseñados, construidos, deployados y operados de punta a punta.</p>
+  <div class="stats">
+    <div class="stat"><b>22</b><span>proyectos</span></div>
+    <div class="stat"><b>16</b><span>en producción</span></div>
+    <div class="stat"><b>7</b><span>SaaS multi-tenant propios</span></div>
+    <div class="stat"><b>12</b><span>builds móviles nativos</span></div>
+  </div>
+</header>
+
+<div class="filters" role="group" aria-label="Filtrar proyectos">
+  <button class="chip" aria-pressed="true" data-filter="all">Todos</button>
+  <button class="chip" aria-pressed="false" data-filter="saas">SaaS propios</button>
+  <button class="chip" aria-pressed="false" data-filter="client">Para clientes</button>
+  <button class="chip" aria-pressed="false" data-filter="internal">Herramientas internas</button>
+</div>
+
+<!-- ============================ SAAS ============================ -->
+<section class="section" id="saas">
+  <div class="section-head reveal"><h2>Productos propios</h2><span class="count">7 SaaS</span></div>
+  <p class="intro reveal">Suite de SaaS multi-tenant construida sobre una misma columna vertebral — .NET 8, React + TypeScript, PostgreSQL, MercadoPago — cada uno atacando un vertical distinto.</p>
+
+  <div class="grid" id="grid-saas">
+
+    <article class="card reveal" data-cat="saas" data-slug="gymhero" data-name="GymHero" data-url="https://gymhero.fitness" data-urllabel="gymhero.fitness">
+      <button class="card-media" aria-label="Ver capturas de GymHero">
+        <span class="desktop-frame"><img src="images/portfolio/gymhero-desktop.jpg" alt="Landing de GymHero en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/gymhero-mobile.jpg" alt="GymHero en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>GymHero <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
+        <p class="tagline">El gimnasio que cobra solo.</p>
+        <p class="desc">Gestión completa para gimnasios y boxes: agenda y reservas de clases, cobros automáticos con MercadoPago, semáforo de morosos en recepción y control de acceso por QR, huella o reconocimiento facial.</p>
+        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MercadoPago</li><li>Next.js</li><li>Biometría</li></ul>
+        <div class="card-foot"><a class="visit" href="https://gymhero.fitness" target="_blank" rel="noopener">gymhero.fitness</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="saas" data-slug="turnospro" data-name="TurnosPro" data-url="https://turnos-pro.com" data-urllabel="turnos-pro.com">
+      <button class="card-media" aria-label="Ver capturas de TurnosPro">
+        <span class="desktop-frame"><img src="images/portfolio/turnospro-desktop.jpg" alt="Landing de TurnosPro en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/turnospro-mobile.jpg" alt="TurnosPro en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>TurnosPro <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
+        <p class="tagline">Turnos con IA para barberías, peluquerías y estética.</p>
+        <p class="desc">Sitio de reservas propio para cada negocio, señas anticipadas con MercadoPago y un agente de IA que confirma turnos por WhatsApp. Tres verticales con tema, terminología y servicios propios; cada tenant vive en su subdominio o dominio.</p>
+        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MercadoPago</li><li>WhatsApp</li><li>IA</li></ul>
+        <div class="card-foot"><a class="visit" href="https://turnos-pro.com" target="_blank" rel="noopener">turnos-pro.com</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="saas" data-slug="bunker" data-name="BUNKER" data-url="https://bunker-app.com" data-urllabel="bunker-app.com">
+      <button class="card-media" aria-label="Ver capturas de BUNKER">
+        <span class="desktop-frame"><img src="images/portfolio/bunker-desktop.jpg" alt="Landing de BUNKER en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/bunker-mobile.jpg" alt="BUNKER en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>BUNKER <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
+        <p class="tagline">Atletas, coaches y gimnasios en una sola plataforma.</p>
+        <p class="desc">Planificación de entrenamientos individuales y por equipos con ciclos anuales, biblioteca de ejercicios con video, semáforo de lesiones, métricas de fatiga y asistencia, y mensajería interna entre coach y atleta.</p>
+        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>Google OAuth</li><li>MercadoPago</li></ul>
+        <div class="card-foot"><a class="visit" href="https://bunker-app.com" target="_blank" rel="noopener">bunker-app.com</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="saas" data-slug="playcrew" data-name="PlayCrew" data-url="https://playcrewpadel.com" data-urllabel="playcrewpadel.com">
+      <button class="card-media" aria-label="Ver capturas de PlayCrew">
+        <span class="desktop-frame"><img src="images/portfolio/playcrew-desktop.jpg" alt="Landing de PlayCrew en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/playcrew-mobile.jpg" alt="PlayCrew en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>PlayCrew <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
+        <p class="tagline">El sistema operativo del pádel.</p>
+        <p class="desc">Club manager con agenda de canchas, reservas y cobros; matchmaking de jugadores por nivel con chat; y software de torneos con fixtures y ranking. Marketplace sobre MercadoPago con split payments, suscripciones y onboarding OAuth de clubes.</p>
+        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MP Split Payments</li></ul>
+        <div class="card-foot"><a class="visit" href="https://playcrewpadel.com" target="_blank" rel="noopener">playcrewpadel.com</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="saas" data-slug="archicloud" data-name="ArchiCloud" data-url="https://archicloud.tech" data-urllabel="archicloud.tech">
+      <button class="card-media" aria-label="Ver capturas de ArchiCloud">
+        <span class="desktop-frame"><img src="images/portfolio/archicloud-desktop.jpg" alt="Landing de ArchiCloud en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/archicloud-mobile.jpg" alt="ArchiCloud en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>ArchiCloud <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
+        <p class="tagline">Gestión de obras para arquitectos y constructoras.</p>
+        <p class="desc">Gastos, presupuestos, planos, contratistas, avances y comunicación con clientes de la obra en un solo sistema, con roles de arquitecto y cliente. Pensado para estudios y constructoras de LATAM.</p>
+        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MercadoPago</li></ul>
+        <div class="card-foot"><a class="visit" href="https://archicloud.tech" target="_blank" rel="noopener">archicloud.tech</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="saas" data-slug="unistock" data-name="UniStock" data-url="https://unistock-zexev.ondigitalocean.app" data-urllabel="unistock · demo en vivo">
+      <button class="card-media" aria-label="Ver capturas de UniStock">
+        <span class="desktop-frame"><img src="images/portfolio/unistock-desktop.jpg" alt="UniStock en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/unistock-mobile.jpg" alt="UniStock en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>UniStock <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
+        <p class="tagline">Inventario multicanal para pymes.</p>
+        <p class="desc">Control de stock con alertas de mínimos, dashboard de métricas y ventas, y sincronización multicanal con MercadoLibre y Tienda Nube en el roadmap. Modo SaaS por subdominio y modo Enterprise con dominio propio.</p>
+        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MercadoLibre</li><li>Tienda Nube</li></ul>
+        <div class="card-foot"><a class="visit" href="https://unistock-zexev.ondigitalocean.app" target="_blank" rel="noopener">Demo en vivo</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="saas" data-slug="paseoya" data-name="PaseoYa" data-url="https://paseadores-app-m4wgc.ondigitalocean.app" data-urllabel="PaseoYa · demo en vivo">
+      <button class="card-media" aria-label="Ver capturas de PaseoYa">
+        <span class="desktop-frame"><img src="images/portfolio/paseoya-desktop.jpg" alt="PaseoYa en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/paseoya-mobile.jpg" alt="PaseoYa en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>PaseoYa <span class="badge">Multi-tenant</span></h3>
+        <p class="tagline">La plataforma de los paseadores de perros.</p>
+        <p class="desc">Cada paseador gestiona su cartera de clientes, perros y packs de paseos, con seguimiento GPS del paseo en tiempo real (SignalR) visible para el dueño, y dos flujos de cobro: suscripción del paseador y pago del pack.</p>
+        <ul class="stack"><li>.NET 8</li><li>SignalR</li><li>React + TS</li><li>Next.js</li><li>PostgreSQL</li></ul>
+        <div class="card-foot"><a class="visit" href="https://paseadores-app-m4wgc.ondigitalocean.app" target="_blank" rel="noopener">Demo en vivo</a></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================ CLIENTES ============================ -->
+<section class="section" id="clientes">
+  <div class="section-head reveal"><h2>Proyectos para clientes</h2><span class="count">10 entregas</span></div>
+  <p class="intro reveal">Desde fintech regulada hasta ERPs operativos a medida: software llave en mano, entregado y corriendo en producción.</p>
+
+  <div class="grid" id="grid-clientes">
+
+    <article class="card reveal" data-cat="client" data-slug="zoro" data-name="Zoro" data-url="https://zoro.la" data-urllabel="zoro.la">
+      <button class="card-media" aria-label="Ver capturas de Zoro">
+        <span class="desktop-frame"><img src="images/portfolio/zoro-desktop.jpg" alt="Landing de Zoro en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/zoro-mobile.jpg" alt="Zoro en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>Zoro <span class="badge">Fintech</span></h3>
+        <p class="tagline">Pagos internacionales para PyMEs argentinas.</p>
+        <p class="desc">Plataforma B2B para pagar importaciones con SWIFT en menos de 48 horas: onboarding con KYC, 2FA, gestión de beneficiarios, sub-cuentas con CVU propio y panel admin con ledger centralizado. Construida sobre la API de Vita Wallet.</p>
+        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>Vita Wallet</li><li>KYC / 2FA</li></ul>
+        <div class="card-foot"><a class="visit" href="https://zoro.la" target="_blank" rel="noopener">zoro.la</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="client" data-slug="ctrlauditor" data-name="CTRL+Auditor" data-url="https://estudiobertoncini.com" data-urllabel="estudiobertoncini.com">
+      <button class="card-media" aria-label="Ver capturas de CTRL+Auditor">
+        <span class="desktop-frame"><img src="images/portfolio/ctrlauditor-desktop.jpg" alt="CTRL+Auditor en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/ctrlauditor-mobile.jpg" alt="CTRL+Auditor en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>CTRL+Auditor <span class="badge">Multi-tenant</span></h3>
+        <p class="tagline">Análisis contable automatizado para estudios.</p>
+        <p class="desc">Carga sumas y saldos y balances (Excel/PDF), aplica criterios profesionales (RT 8/11/17/41, NIC 29, ajuste por inflación), calcula ratios, emite alertas y genera informes técnicos descargables. Integración con ARCA/AFIP y dashboards BCRA.</p>
+        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>ARCA / AFIP</li></ul>
+        <div class="card-foot"><a class="visit" href="https://estudiobertoncini.com" target="_blank" rel="noopener">estudiobertoncini.com</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="client" data-slug="canje-envases" data-name="Canje de Envases" data-url="https://canje-envases-sskl2.ondigitalocean.app" data-urllabel="app en producción">
+      <button class="card-media" aria-label="Ver capturas de Canje de Envases">
+        <span class="desktop-frame"><img src="images/portfolio/canje-envases-desktop.jpg" alt="Canje de Envases en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/canje-envases-mobile.jpg" alt="Canje de Envases en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>Canje de Envases <span class="badge neutral">B2B</span></h3>
+        <p class="tagline">Trazabilidad de garrafas entre fraccionadoras.</p>
+        <p class="desc">Sistema multi-empresa para el rubro del gas envasado: cuentas corrientes de envases entre marcas, depósitos y fletes, stock por sucursal, rutas en mapa y auditoría completa del ciclo de canje.</p>
+        <ul class="stack"><li>.NET 8</li><li>React 19</li><li>PostgreSQL</li><li>Leaflet</li></ul>
+        <div class="card-foot"><a class="visit" href="https://canje-envases-sskl2.ondigitalocean.app" target="_blank" rel="noopener">App en producción</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="client" data-slug="limpiashift" data-name="CLE · LimpiaShift" data-url="https://limpiashift-r4h2d.ondigitalocean.app" data-urllabel="app en producción">
+      <button class="card-media" aria-label="Ver capturas de CLE LimpiaShift">
+        <span class="desktop-frame"><img src="images/portfolio/limpiashift-desktop.jpg" alt="CLE LimpiaShift en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/limpiashift-mobile.jpg" alt="CLE LimpiaShift en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>CLE · LimpiaShift <span class="badge neutral">ERP</span></h3>
+        <p class="tagline">El sistema operativo de una empresa de limpieza.</p>
+        <p class="desc">Digitaliza el parte diario, la programación semanal de turnos con detección de conflictos, compras con órdenes y recepción de mercadería, maquinaria, planillas ISO y trazabilidad de producción por lote.</p>
+        <ul class="stack"><li>.NET 8</li><li>React + Tailwind</li><li>shadcn/ui</li><li>PostgreSQL</li></ul>
+        <div class="card-foot"><a class="visit" href="https://limpiashift-r4h2d.ondigitalocean.app" target="_blank" rel="noopener">App en producción</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="client" data-slug="casafiore" data-name="Casa Fiore" data-url="https://casafiore.shop" data-urllabel="casafiore.shop">
+      <button class="card-media" aria-label="Ver capturas de Casa Fiore">
+        <span class="desktop-frame"><img src="images/portfolio/casafiore-desktop.jpg" alt="Casa Fiore en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/casafiore-mobile.jpg" alt="Casa Fiore en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>Casa Fiore</h3>
+        <p class="tagline">El hub digital de un grupo de belleza.</p>
+        <p class="desc">Portal que centraliza la reserva online de los cuatro negocios del grupo — NR Peluquería, OPI, Head Spa y Salón Fiore — con agenda dedicada para cada uno.</p>
+        <ul class="stack"><li>Reservas online</li><li>Multi-marca</li></ul>
+        <div class="card-foot"><a class="visit" href="https://casafiore.shop" target="_blank" rel="noopener">casafiore.shop</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="client" data-slug="arqhernandeluca" data-name="Arq. Hernán De Luca" data-url="https://arqhernandeluca.com" data-urllabel="arqhernandeluca.com">
+      <button class="card-media" aria-label="Ver capturas del sitio de Arq. Hernán De Luca">
+        <span class="desktop-frame"><img src="images/portfolio/arqhernandeluca-desktop.jpg" alt="Sitio de Arq. Hernán De Luca en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/arqhernandeluca-mobile.jpg" alt="Sitio de Arq. Hernán De Luca en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>Arq. Hernán De Luca</h3>
+        <p class="tagline">La vidriera de 40 años de arquitectura.</p>
+        <p class="desc">Sitio del estudio: portfolio de obras en Argentina, Uruguay y Estados Unidos — residencias, hoteles y condominios — con equipo, testimonios y contacto para nuevos proyectos.</p>
+        <ul class="stack"><li>Sitio institucional</li><li>Portfolio de obras</li></ul>
+        <div class="card-foot"><a class="visit" href="https://arqhernandeluca.com" target="_blank" rel="noopener">arqhernandeluca.com</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="client" data-slug="drokex" data-name="Drokex" data-url="https://drokex.com" data-urllabel="drokex.com">
+      <button class="card-media" aria-label="Ver capturas de Drokex">
+        <span class="desktop-frame"><img src="images/portfolio/drokex-desktop.jpg" alt="Drokex en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/drokex-mobile.jpg" alt="Drokex en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>Drokex <span class="badge">Multi-tenant</span></h3>
+        <p class="tagline">Marketplaces regionales para LATAM.</p>
+        <p class="desc">Plataforma que monta un marketplace independiente por país — Honduras, Guatemala, México y más — cada uno con su subdominio, admins de tenant y proveedores propios, bajo un super admin global.</p>
+        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li></ul>
+        <div class="card-foot"><a class="visit" href="https://drokex.com" target="_blank" rel="noopener">drokex.com</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="client" data-slug="garage-pueyrredon" data-name="Garage Pueyrredón" data-url="https://garage-pueyrredon-um5du.ondigitalocean.app" data-urllabel="app en producción">
+      <button class="card-media" aria-label="Ver capturas de Garage Pueyrredón">
+        <span class="desktop-frame"><img src="images/portfolio/garage-pueyrredon-desktop.jpg" alt="Garage Pueyrredón en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/garage-pueyrredon-mobile.jpg" alt="Garage Pueyrredón en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>Garage Pueyrredón</h3>
+        <p class="tagline">La caja diaria de un garage, sin Excel.</p>
+        <p class="desc">Registro simple de movimientos — efectivo, transferencias y gastos — con saldo automático y totalizadores por caja, para el día a día de un estacionamiento.</p>
+        <ul class="stack"><li>.NET 8</li><li>React</li><li>PostgreSQL</li></ul>
+        <div class="card-foot"><a class="visit" href="https://garage-pueyrredon-um5du.ondigitalocean.app" target="_blank" rel="noopener">App en producción</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="client" data-slug="casablanca" data-name="Casablanca BI">
+      <div class="card-media no-shot" aria-hidden="true"><span class="glyph">BI</span></div>
+      <div class="card-body">
+        <h3>Casablanca · Plataforma BI <span class="badge neutral">Data</span></h3>
+        <p class="tagline">Business intelligence multicanal sobre el ERP.</p>
+        <p class="desc">ETL que replica el ERP Tango Gestión (SQL Server) a un modelo estrella en Postgres y lo expone en dashboards por canal — venta directa, e-commerce propio, Mercado Libre, Tienda Nube y locales — y por sociedad.</p>
+        <ul class="stack"><li>.NET 8</li><li>ETL + Quartz</li><li>PostgreSQL 16</li><li>React + Tremor</li><li>AG Grid</li></ul>
+        <div class="card-foot"><span class="offline">Despliegue privado del cliente</span></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="client" data-slug="sevel" data-name="Sevel Energy">
+      <div class="card-media no-shot" aria-hidden="true"><span class="glyph">EV</span></div>
+      <div class="card-body">
+        <h3>Sevel Energy <span class="badge neutral">IoT</span></h3>
+        <p class="tagline">La red de carga de vehículos eléctricos, con su propio CSMS.</p>
+        <p class="desc">Servidor OCPP 1.6J sobre WebSocket para cargadores MADIC, backoffice de estaciones, conectores, tarifas y transacciones con roles, y app iOS nativa para conductores con mapa e historial de sesiones. Uruguay.</p>
+        <ul class="stack"><li>.NET 9</li><li>OCPP 1.6J</li><li>React 19</li><li>SwiftUI</li><li>PostgreSQL</li></ul>
+        <div class="card-foot"><span class="offline">En desarrollo — POC con cargadores reales</span></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================ INTERNO ============================ -->
+<section class="section" id="interno">
+  <div class="section-head reveal"><h2>Herramientas internas</h2><span class="count">la maquinaria detrás de los SaaS</span></div>
+
+  <div class="grid" id="grid-interno">
+
+    <article class="card reveal" data-cat="internal" data-slug="saleshub" data-name="SalesHub" data-url="https://sales.efcloud.tech" data-urllabel="sales.efcloud.tech">
+      <button class="card-media" aria-label="Ver capturas de SalesHub">
+        <span class="desktop-frame"><img src="images/portfolio/saleshub-desktop.jpg" alt="SalesHub en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/saleshub-mobile.jpg" alt="SalesHub en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>SalesHub</h3>
+        <p class="tagline">La máquina de ventas de EFCloud.</p>
+        <p class="desc">Orquesta scraping multi-fuente (Google Maps, Instagram, Meta Ads, TikTok vía Apify), deduplica y asigna leads round-robin al equipo de ventas, y envía WhatsApp humanizado — warmup, horarios activos, delays — vía Evolution API. Dashboards por vendedor y por producto.</p>
+        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>Apify</li><li>Evolution API</li><li>PostgreSQL 16</li></ul>
+        <div class="card-foot"><span class="offline">Uso interno · sales.efcloud.tech</span></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="internal" data-slug="leadgen" data-name="Lead-Gen Engine">
+      <div class="card-media no-shot" aria-hidden="true"><span class="glyph">n8n</span></div>
+      <div class="card-body">
+        <h3>Lead-Gen Engine</h3>
+        <p class="tagline">Generación de leads multi-producto y multi-país.</p>
+        <p class="desc">Workflow de n8n totalmente parametrizado desde Google Sheets: un algoritmo determinístico elige la próxima ciudad y categoría a scrapear según población y antigüedad, con dedupe por producto e instancias de WhatsApp separadas para evitar bans.</p>
+        <ul class="stack"><li>n8n</li><li>Google Sheets</li><li>Evolution API</li><li>Google Places</li></ul>
+        <div class="card-foot"><span class="offline">Uso interno</span></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="internal" data-slug="onboardingkit" data-name="Onboarding Kit">
+      <div class="card-media no-shot" aria-hidden="true"><span class="glyph">UX</span></div>
+      <div class="card-body">
+        <h3>Onboarding Kit</h3>
+        <p class="tagline">Un wizard de onboarding, seis productos.</p>
+        <p class="desc">Especificación canónica del wizard de onboarding compartido por toda la suite: anatomía, tokens de diseño, copy por producto y animaciones, con un componente React de referencia que cada SaaS copia y adapta.</p>
+        <ul class="stack"><li>React + TS</li><li>Design spec</li><li>Design tokens</li></ul>
+        <div class="card-foot"><span class="offline">Uso interno</span></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================ MOBILE ============================ -->
+<section class="section" id="mobile">
+  <div class="section-head reveal"><h2>Apps móviles nativas</h2><span class="count">6 productos × 2 plataformas</span></div>
+  <div class="mobile-band reveal">
+    <div>
+      <p class="eyebrow">Doble build nativo</p>
+      <p style="margin-top:.6rem; max-width:44ch;">Cada SaaS de la suite tiene su app compañera construida dos veces en nativo puro — nada de frameworks híbridos — hablando con el mismo backend multi-tenant.</p>
+      <div class="platforms">
+        <div><b>iOS</b><span>Swift + SwiftUI · iOS 16+</span></div>
+        <div><b>Android</b><span>Kotlin + Jetpack Compose</span></div>
+      </div>
+    </div>
+    <div class="apps" aria-label="Apps móviles">
+      <span>ArchiCloud — obra en el bolsillo</span>
+      <span>BUNKER — el plan del día del atleta</span>
+      <span>GymHero — socio y admin en una app</span>
+      <span>PlayCrew — encontrá partido cerca</span>
+      <span>TurnosPro — la agenda del dueño</span>
+      <span>UniStock — stock y ventas móvil</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ EXPERIENCIA ============================ -->
+<section class="section" id="experiencia">
+  <div class="section-head reveal"><h2>Experiencia enterprise</h2></div>
+  <div class="xp">
+    <article class="reveal">
+      <p class="eyebrow">Estados Unidos · Health-tech</p>
+      <h3>Homecare Homebase</h3>
+      <p>Dev lead en el ecosistema de facturación de la plataforma líder de home health y hospice: microservicios .NET que construyen y envían claims 837/X12 a través de clearinghouse, sobre un backoffice multi-tenant de escala nacional.</p>
+      <ul class="stack" style="margin-top:.8rem;"><li>.NET</li><li>SQL Server</li><li>X12 / EDI</li><li>Azure DevOps</li></ul>
+    </article>
+    <article class="reveal">
+      <p class="eyebrow">Estados Unidos · Sports-tech</p>
+      <h3>Titleist Performance Institute</h3>
+      <p>Desarrollo sobre la plataforma de assessment "Body-Swing Connection": microservicios .NET 10 y admin en Angular 20 que convierten evaluaciones físicas y de swing de golf en programas de ejercicios prescritos.</p>
+      <ul class="stack" style="margin-top:.8rem;"><li>.NET 10</li><li>Angular 20</li><li>EF Core</li><li>Datadog</li></ul>
+    </article>
+  </div>
+</section>
+
+<!-- ============================ CTA ============================ -->
+<footer id="contacto">
+  <div class="cta reveal">
+    <p class="eyebrow">¿Tenés un proyecto?</p>
+    <h2 style="margin-top:.8rem;">Construyamos lo que necesitás.</h2>
+    <p>Del primer boceto al deploy en producción — y todo lo que viene después.</p>
+    <div class="cta-actions">
+      <a class="btn primary" href="mailto:letstalk@efcloud.tech">letstalk@efcloud.tech</a>
+      <a class="btn ghost" href="https://wa.me/16892564251" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+  <div class="foot-meta">
+    <span>© EFCloud · Buenos Aires</span>
+    <span>
+      <a href="https://www.instagram.com/efcloud.tech" target="_blank" rel="noopener">Instagram</a> ·
+      <a href="https://www.linkedin.com/company/ef-cloud/" target="_blank" rel="noopener">LinkedIn</a> ·
+      <a href="index.html">efcloud.tech</a>
+    </span>
+  </div>
+</footer>
+
+<!-- ============================ LIGHTBOX ============================ -->
+<dialog class="lightbox" id="lightbox" aria-label="Capturas del proyecto">
+  <div class="lb-head">
+    <h3 id="lb-title"></h3>
+    <div class="actions">
+      <a class="visit" id="lb-visit" href="#" target="_blank" rel="noopener"></a>
+      <button class="lb-close" id="lb-close" aria-label="Cerrar">✕</button>
+    </div>
+  </div>
+  <div class="lb-body">
+    <img id="lb-desktop" alt="" decoding="async">
+    <img id="lb-mobile" alt="" decoding="async">
+    <div class="lb-desc"><p id="lb-text"></p></div>
+  </div>
+</dialog>
+
+<script>
+(() => {
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* nav: material aparece recién cuando el contenido pasa por debajo */
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', scrollY > 8);
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* reveal on scroll */
+  if (reduceMotion) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver(entries => {
+      for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  }
+
+  /* filtros */
+  const chips = document.querySelectorAll('.chip');
+  const cards = document.querySelectorAll('.card[data-cat]');
+  const sections = { saas: 'saas', client: 'clientes', internal: 'interno' };
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'));
+      const f = chip.dataset.filter;
+      cards.forEach(card => card.classList.toggle('hidden-cat', f !== 'all' && card.dataset.cat !== f));
+      for (const [cat, id] of Object.entries(sections)) {
+        document.getElementById(id).style.display = (f === 'all' || f === cat) ? '' : 'none';
+      }
+    });
+  });
+
+  /* lightbox — anclado a su origen (§7), animación espejada al cerrar */
+  const lb = document.getElementById('lightbox');
+  const lbTitle = document.getElementById('lb-title');
+  const lbVisit = document.getElementById('lb-visit');
+  const lbDesk = document.getElementById('lb-desktop');
+  const lbMob = document.getElementById('lb-mobile');
+  const lbText = document.getElementById('lb-text');
+
+  document.querySelectorAll('.card .card-media:not(.no-shot)').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.card');
+      const slug = card.dataset.slug;
+      lbTitle.textContent = card.dataset.name;
+      lbText.textContent = card.querySelector('.desc').textContent;
+      lbDesk.src = `images/portfolio/${slug}-desktop.jpg`;
+      lbDesk.alt = `${card.dataset.name} en desktop`;
+      lbMob.src = `images/portfolio/${slug}-mobile.jpg`;
+      lbMob.alt = `${card.dataset.name} en mobile`;
+      if (card.dataset.url) {
+        lbVisit.href = card.dataset.url;
+        lbVisit.textContent = card.dataset.urllabel || 'Visitar sitio';
+        lbVisit.style.display = '';
+      } else {
+        lbVisit.style.display = 'none';
+      }
+      /* origen espacial: el dialog escala desde el centro de la tarjeta que lo abrió */
+      const r = btn.getBoundingClientRect();
+      lb.style.transformOrigin = `${r.left + r.width / 2}px ${r.top + r.height / 2}px`;
+      lb.showModal();
+    });
+  });
+
+  const closeLb = () => {
+    if (lb.classList.contains('closing')) return;
+    lb.classList.add('closing');
+    lb.addEventListener('animationend', () => { lb.classList.remove('closing'); lb.close(); }, { once: true });
+  };
+  document.getElementById('lb-close').addEventListener('click', closeLb);
+  lb.addEventListener('cancel', e => { e.preventDefault(); closeLb(); });
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+})();
+</script>
+</body>
+</html>

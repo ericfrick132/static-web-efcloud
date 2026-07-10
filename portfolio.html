@@ -130,7 +130,7 @@ p { color: var(--text-2); }
 .chip:hover:not([aria-pressed="true"]) { color: var(--text); border-color: rgba(255,255,255,.18); }
 
 /* ---------- secciones ---------- */
-.section { max-width: 1180px; margin: 0 auto; padding: clamp(2.6rem, 7vh, 4.6rem) clamp(1.2rem, 4vw, 2.6rem) 0; }
+.section { max-width: 1180px; margin: 0 auto; padding: clamp(2.6rem, 7vh, 4.6rem) clamp(1.2rem, 4vw, 2.6rem) 0; scroll-margin-top: 6.5rem; }
 .section > p.intro { margin: .7rem 0 0; max-width: 60ch; }
 .section-head { display: flex; align-items: baseline; gap: 1rem; }
 .section-head .count { color: var(--text-3); font-size: .95rem; font-variant-numeric: tabular-nums; }
@@ -231,14 +231,22 @@ p { color: var(--text-2); }
   border: 1px solid var(--line); border-radius: var(--radius);
   background: linear-gradient(160deg, var(--surface), var(--surface-2));
   padding: clamp(1.4rem, 3.5vw, 2.4rem);
-  display: grid; gap: 1.6rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
-.mobile-band .apps { display: flex; flex-wrap: wrap; gap: .5rem; align-content: start; }
-.mobile-band .apps span {
-  border: 1px solid var(--line); border-radius: 999px;
-  padding: .45rem .9rem; font-size: .86rem; font-weight: 550; color: var(--text-2);
+.app-gallery {
+  display: grid; gap: clamp(.9rem, 2vw, 1.4rem);
+  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+  margin-top: clamp(1.6rem, 3.5vh, 2.4rem);
 }
+.app-gallery figure { margin: 0; }
+.app-gallery .phone-static {
+  display: block; border-radius: 22px; overflow: hidden; background: #000;
+  box-shadow: 0 14px 34px rgba(0,0,0,.5), 0 0 0 2.5px #35353c, 0 0 0 3.5px rgba(255,255,255,.1);
+  transition: transform .5s var(--spring);
+}
+@media (hover: hover) { .app-gallery figure:hover .phone-static { transform: translateY(-5px); } }
+.app-gallery img { width: 100%; aspect-ratio: 1178 / 2556; object-fit: cover; object-position: top; }
+.app-gallery figcaption { margin-top: .7rem; font-size: .86rem; font-weight: 600; letter-spacing: -0.005em; }
+.app-gallery figcaption span { display: block; font-weight: 400; font-size: .76rem; color: var(--text-3); margin-top: .15rem; }
 .platforms { display: flex; gap: 1.6rem; margin-top: 1rem; }
 .platforms div b { display: block; font-size: .95rem; }
 .platforms div span { font-size: .8rem; color: var(--text-3); }
@@ -677,19 +685,37 @@ html.js .reveal.in { opacity: 1; transform: none; }
   <div class="mobile-band reveal">
     <div>
       <p class="eyebrow">Doble build nativo</p>
-      <p style="margin-top:.6rem; max-width:44ch;">Cada SaaS de la suite tiene su app compañera construida dos veces en nativo puro — nada de frameworks híbridos — hablando con el mismo backend multi-tenant.</p>
+      <p style="margin-top:.6rem; max-width:52ch;">Cada SaaS de la suite tiene su app compañera construida dos veces en nativo puro — nada de frameworks híbridos — hablando con el mismo backend multi-tenant. Capturas reales, corriendo contra producción.</p>
       <div class="platforms">
         <div><b>iOS</b><span>Swift + SwiftUI · iOS 16+</span></div>
         <div><b>Android</b><span>Kotlin + Jetpack Compose</span></div>
       </div>
     </div>
-    <div class="apps" aria-label="Apps móviles">
-      <span>ArchiCloud — obra en el bolsillo</span>
-      <span>BUNKER — el plan del día del atleta</span>
-      <span>GymHero — socio y admin en una app</span>
-      <span>PlayCrew — encontrá partido cerca</span>
-      <span>TurnosPro — la agenda del dueño</span>
-      <span>UniStock — stock y ventas móvil</span>
+    <div class="app-gallery" aria-label="Capturas reales de las apps móviles">
+      <figure>
+        <span class="phone-static"><img src="images/portfolio/app-gymhero.jpg" alt="App iOS de GymHero — home del socio con membresía y accesos rápidos" loading="lazy" decoding="async"></span>
+        <figcaption>GymHero<span>Membresía, rutina y check-in del socio</span></figcaption>
+      </figure>
+      <figure>
+        <span class="phone-static"><img src="images/portfolio/app-turnospro.jpg" alt="App iOS de TurnosPro — agenda del dueño" loading="lazy" decoding="async"></span>
+        <figcaption>TurnosPro<span>Servicios y precios del negocio</span></figcaption>
+      </figure>
+      <figure>
+        <span class="phone-static"><img src="images/portfolio/app-bunker.jpg" alt="App iOS de BUNKER — el plan del día del atleta" loading="lazy" decoding="async"></span>
+        <figcaption>BUNKER<span>Métricas y progreso del atleta</span></figcaption>
+      </figure>
+      <figure>
+        <span class="phone-static"><img src="images/portfolio/app-playcrew.jpg" alt="App iOS de PlayCrew — buscador de partidos de pádel" loading="lazy" decoding="async"></span>
+        <figcaption>PlayCrew<span>Encontrá partido por nivel y zona</span></figcaption>
+      </figure>
+      <figure>
+        <span class="phone-static"><img src="images/portfolio/app-archicloud.jpg" alt="App iOS de ArchiCloud — listado de obras con avance" loading="lazy" decoding="async"></span>
+        <figcaption>ArchiCloud<span>La obra y su avance, en vivo</span></figcaption>
+      </figure>
+      <figure>
+        <span class="phone-static"><img src="images/portfolio/app-unistock.jpg" alt="App iOS de UniStock — inventario y ventas" loading="lazy" decoding="async"></span>
+        <figcaption>UniStock<span>Stock, ventas y reportes móvil</span></figcaption>
+      </figure>
     </div>
   </div>
 </section>

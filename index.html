@@ -161,6 +161,58 @@ p { color: var(--text-2); }
 .service .proof { margin-top: .9rem; font-size: .8rem; color: var(--text-3); }
 .service .proof b { color: var(--text-2); font-weight: 550; }
 
+/* logos de clientes */
+.logos-band { padding: clamp(2.2rem, 6vh, 3.6rem) 0 0; overflow: hidden; }
+.logos-band .eyebrow { text-align: center; margin-bottom: 1.6rem; }
+.logos-track-wrap {
+  display: flex; overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+.logos-track {
+  display: flex; gap: .9rem; padding: 0 .45rem;
+  flex-shrink: 0; min-width: 100%;
+  animation: marquee 45s linear infinite;
+}
+.logos-track-wrap:hover .logos-track { animation-play-state: paused; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+.logo-chip {
+  display: grid; place-items: center;
+  height: 68px; padding: 0 1.8rem;
+  background: #f4f4f6; border-radius: 14px;
+  flex-shrink: 0;
+}
+.logo-chip img { height: 32px; max-width: 130px; width: auto; object-fit: contain; }
+.logo-chip img.tall { height: 44px; }
+@media (prefers-reduced-motion: reduce) {
+  .logos-track { animation: none; flex-wrap: wrap; justify-content: center; }
+  .logos-track[aria-hidden="true"] { display: none; }
+  .logos-track-wrap { -webkit-mask-image: none; mask-image: none; }
+}
+
+/* testimonios */
+.testimonials {
+  display: grid; gap: clamp(1rem, 2.2vw, 1.4rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(330px, 100%), 1fr));
+  margin-top: clamp(1.6rem, 4vh, 2.6rem);
+}
+.t-card {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface); padding: 1.5rem 1.6rem;
+  display: flex; flex-direction: column; gap: 1.1rem;
+}
+.t-card blockquote { border: 0; margin: 0; font-size: .95rem; line-height: 1.6; color: var(--text-2); }
+.t-card blockquote::before { content: "“"; display: block; font-size: 2rem; line-height: 1; color: rgba(91,157,255,.6); margin-bottom: .4rem; font-family: Georgia, serif; }
+.t-foot { display: flex; align-items: center; gap: .8rem; margin-top: auto; }
+.t-foot img {
+  width: 42px; height: 42px; border-radius: 50%; object-fit: cover;
+  box-shadow: 0 0 0 2px rgba(255,255,255,.12);
+}
+.t-foot .duo { display: flex; }
+.t-foot .duo img + img { margin-left: -12px; }
+.t-foot b { display: block; font-size: .9rem; letter-spacing: -0.005em; }
+.t-foot span { font-size: .78rem; color: var(--text-3); }
+
 /* por qué ahora / inversión */
 .value-band {
   margin-top: clamp(1.6rem, 4vh, 2.6rem);
@@ -309,6 +361,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
   <div class="nav-links">
     <a href="#que-hacemos">Qué hacemos</a>
     <a href="#productos">Productos</a>
+    <a href="#clientes">Clientes</a>
     <a href="portfolio.html">Portfolio</a>
     <a href="#proceso">Proceso</a>
     <a class="nav-cta" href="https://wa.me/16892564251" target="_blank" rel="noopener">Hablemos</a>
@@ -333,6 +386,49 @@ html.js .reveal.in { opacity: 1; transform: none; }
   </div>
 </header>
 </div>
+
+<!-- ============ LOGOS ============ -->
+<section class="logos-band" aria-label="Empresas con las que trabajamos">
+  <p class="eyebrow">Empresas y productos que confiaron en nosotros</p>
+  <div class="logos-track-wrap">
+    <div class="logos-track">
+      <span class="logo-chip"><img src="images/images/clientes/hchb.svg" alt="Homecare Homebase" loading="lazy"></span>
+      <span class="logo-chip"><img class="tall" src="images/images/clientes/tpi.svg" alt="Titleist Performance Institute" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/sevel.svg" alt="Grupo Sevel" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/casablanca.png" alt="Casablanca" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/zoro.png" alt="Zoro" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/abs.png" alt="ABS" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/eversource.png" alt="Eversource" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/noodle.png" alt="Noodle" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/pro-ficiency.svg" alt="Pro-ficiency" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/health.png" alt="HealthHero" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/pillar.png" alt="Pillar Markets" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/briq.avif" alt="Briq" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/clrarance.png" alt="Clearance" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/auditor.pgn.png" alt="CTRL+Auditor" loading="lazy"></span>
+      <span class="logo-chip"><img class="tall" src="images/images/clientes/rafap.png" alt="República AFAP" loading="lazy"></span>
+      <span class="logo-chip"><img class="tall" src="images/images/clientes/fuertafit.png" alt="FuertaFit" loading="lazy"></span>
+    </div>
+    <div class="logos-track" aria-hidden="true">
+      <span class="logo-chip"><img src="images/images/clientes/hchb.svg" alt="" loading="lazy"></span>
+      <span class="logo-chip"><img class="tall" src="images/images/clientes/tpi.svg" alt="" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/sevel.svg" alt="" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/casablanca.png" alt="" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/zoro.png" alt="" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/abs.png" alt="" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/eversource.png" alt="" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/noodle.png" alt="" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/pro-ficiency.svg" alt="" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/health.png" alt="" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/pillar.png" alt="" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/briq.avif" alt="" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/clrarance.png" alt="" loading="lazy"></span>
+      <span class="logo-chip"><img src="images/images/clientes/auditor.pgn.png" alt="" loading="lazy"></span>
+      <span class="logo-chip"><img class="tall" src="images/images/clientes/rafap.png" alt="" loading="lazy"></span>
+      <span class="logo-chip"><img class="tall" src="images/images/clientes/fuertafit.png" alt="" loading="lazy"></span>
+    </div>
+  </div>
+</section>
 
 <!-- ============ QUÉ HACEMOS ============ -->
 <section class="section" id="que-hacemos">
@@ -455,6 +551,95 @@ html.js .reveal.in { opacity: 1; transform: none; }
   </div>
 
   <p class="showcase-foot reveal"><a href="portfolio.html">Ver los 22 proyectos en el portfolio completo</a></p>
+</section>
+
+<!-- ============ TESTIMONIOS ============ -->
+<section class="section" id="clientes">
+  <p class="eyebrow reveal">Lo que dicen</p>
+  <h2 class="reveal">Clientes que siguen siendo clientes.</h2>
+
+  <div class="testimonials">
+    <article class="t-card reveal">
+      <blockquote>Necesitábamos operar como una fintech sin tener un equipo de tecnología propio. EFCloud construyó la plataforma completa — KYC, cuentas, panel de operaciones — y la sigue operando con nosotros. Salimos a producción en tiempo récord.</blockquote>
+      <div class="t-foot">
+        <img src="images/testimonials/joaquin.jpg" alt="" loading="lazy">
+        <div><b>Joaquín</b><span>Fundador · Zoro</span></div>
+      </div>
+    </article>
+    <article class="t-card reveal">
+      <blockquote>Lo que antes nos llevaba días de Excel ahora sale en minutos. El sistema aplica nuestros criterios profesionales y los informes quedan listos para presentar. Cambió la forma de trabajar del estudio.</blockquote>
+      <div class="t-foot">
+        <img src="images/testimonials/soledad.jpg" alt="" loading="lazy">
+        <div><b>Soledad Bertoncini</b><span>Titular · Estudio Bertoncini — CTRL+Auditor</span></div>
+      </div>
+    </article>
+    <article class="t-card reveal">
+      <blockquote>Digitalizamos el parte diario, la programación de turnos y las compras de toda la operación. Hoy la empresa se maneja desde el sistema y no desde el cuaderno — y el equipo lo adoptó enseguida.</blockquote>
+      <div class="t-foot">
+        <img src="images/testimonials/fabian.jpg" alt="" loading="lazy">
+        <div><b>Fabián Bettiga</b><span>Dueño · Clearance — Sistema CLE</span></div>
+      </div>
+    </article>
+    <article class="t-card reveal">
+      <blockquote>El canje de envases entre empresas era imposible de auditar. Ahora cada garrafa tiene su historia, las cuentas corrientes se concilian solas y las diferencias se detectan al día.</blockquote>
+      <div class="t-foot">
+        <img src="images/testimonials/claudia.jpg" alt="" loading="lazy">
+        <div><b>Claudia</b><span>Canje de Envases</span></div>
+      </div>
+    </article>
+    <article class="t-card reveal">
+      <blockquote>Pasamos de esperar reportes del ERP a ver todos los canales — locales, e-commerce, Mercado Libre — en un solo dashboard. Las decisiones comerciales ahora se toman con los números del día.</blockquote>
+      <div class="t-foot">
+        <div class="duo">
+          <img src="images/testimonials/santacrocce.jpg" alt="" loading="lazy">
+          <img src="images/testimonials/russo.jpg" alt="" loading="lazy">
+        </div>
+        <div><b>Hernán Santacrocce y Diego Russo</b><span>Casablanca</span></div>
+      </div>
+    </article>
+    <article class="t-card reveal">
+      <blockquote>Nos acompañaron en algo que nadie había hecho acá: una red de carga para vehículos eléctricos con protocolo OCPP y app para los conductores. Entienden tanto del fierro como del software.</blockquote>
+      <div class="t-foot">
+        <img src="images/testimonials/micaela.jpg" alt="" loading="lazy">
+        <div><b>Micaela Quintana</b><span>Grupo Sevel · Sevel Energy</span></div>
+      </div>
+    </article>
+    <article class="t-card reveal">
+      <blockquote>Necesitábamos consolidar información que se cargaba a mano todos los días. El scraper que construyeron corre solo, valida los datos y le libera horas al equipo cada semana.</blockquote>
+      <div class="t-foot">
+        <img src="images/testimonials/romin.jpg" alt="" loading="lazy">
+        <div><b>Romin Silva García</b><span>República AFAP · Uruguay</span></div>
+      </div>
+    </article>
+    <article class="t-card reveal">
+      <blockquote>La app nativa quedó impecable y el proceso fue muy directo: iteraciones semanales, feedback por WhatsApp y cambios que se veían al día siguiente. Así da gusto construir producto.</blockquote>
+      <div class="t-foot">
+        <img src="images/testimonials/victor.jpg" alt="" loading="lazy">
+        <div><b>Víctor Senovilla</b><span>FuertaFit</span></div>
+      </div>
+    </article>
+    <article class="t-card reveal">
+      <blockquote>Necesitaba mostrar cuarenta años de obras y que un cliente nuevo pudiera contactarme en dos clics. El sitio quedó elegante y me llegan consultas todas las semanas.</blockquote>
+      <div class="t-foot">
+        <img src="images/testimonials/deluca.jpg" alt="" loading="lazy">
+        <div><b>Hernán De Luca</b><span>Arquitecto · Estudio De Luca</span></div>
+      </div>
+    </article>
+    <article class="t-card reveal">
+      <blockquote>Centralizamos las reservas de nuestros cuatro locales en un solo lugar. Los clientes agendan solos, a cualquier hora, y el teléfono dejó de ser un cuello de botella.</blockquote>
+      <div class="t-foot">
+        <img src="images/testimonials/natalia.jpg" alt="" loading="lazy">
+        <div><b>Natalia Rey</b><span>Casa Fiore</span></div>
+      </div>
+    </article>
+    <article class="t-card reveal">
+      <blockquote>Simple, como lo pedimos: la caja del garage cierra sola todos los días, con cada movimiento registrado. Cero Excel, cero dudas a fin de mes.</blockquote>
+      <div class="t-foot">
+        <img src="images/testimonials/juanmanuel.jpg" alt="" loading="lazy">
+        <div><b>Juan Manuel Corral</b><span>Garage Pueyrredón</span></div>
+      </div>
+    </article>
+  </div>
 </section>
 
 <!-- ============ PROCESO ============ -->

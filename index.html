@@ -1291,6 +1291,21 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
   </div>
 </footer>
 
+<dialog class="lightbox" id="lightbox" aria-label="Capturas del proyecto">
+  <div class="lb-head">
+    <h3 id="lb-title"></h3>
+    <div class="actions">
+      <a class="visit" id="lb-visit" href="#" target="_blank" rel="noopener"></a>
+      <button class="lb-close" id="lb-close" aria-label="Cerrar">✕</button>
+    </div>
+  </div>
+  <div class="lb-body">
+    <img id="lb-desktop" alt="" decoding="async">
+    <img id="lb-mobile" alt="" decoding="async">
+    <div class="lb-desc"><p id="lb-text"></p></div>
+  </div>
+</dialog>
+
 <script>
 (() => {
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1365,19 +1380,6 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
   lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
 })();
 </script>
-<dialog class="lightbox" id="lightbox" aria-label="Capturas del proyecto">
-  <div class="lb-head">
-    <h3 id="lb-title"></h3>
-    <div class="actions">
-      <a class="visit" id="lb-visit" href="#" target="_blank" rel="noopener"></a>
-      <button class="lb-close" id="lb-close" aria-label="Cerrar">✕</button>
-    </div>
-  </div>
-  <div class="lb-body">
-    <img id="lb-desktop" alt="" decoding="async">
-    <img id="lb-mobile" alt="" decoding="async">
-    <div class="lb-desc"><p id="lb-text"></p></div>
-  </div>
-</dialog>
+
 </body>
 </html>

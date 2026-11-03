@@ -493,7 +493,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
 
 <!-- ============================ CLIENTES ============================ -->
 <section class="section" id="clientes">
-  <div class="section-head reveal"><h2>Proyectos para clientes</h2><span class="count">11 entregas</span></div>
+  <div class="section-head reveal"><h2>Proyectos para clientes</h2><span class="count">12 entregas</span></div>
   <p class="intro reveal">Desde fintech regulada hasta ERPs operativos a medida: software llave en mano, entregado y corriendo en producción.</p>
 
   <div class="grid" id="grid-clientes">
@@ -636,13 +636,30 @@ html.js .reveal.in { opacity: 1; transform: none; }
     </article>
 
     <article class="card reveal" data-cat="client" data-slug="sevel" data-name="Sevel Energy">
-      <div class="card-media no-shot" aria-hidden="true"><span class="glyph">EV</span></div>
+      <button class="card-media" aria-label="Ver capturas de Sevel Energy">
+        <span class="desktop-frame"><img src="images/portfolio/sevel-desktop.jpg" alt="Backoffice de Sevel Energy en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/sevel-mobile.jpg" alt="App de Sevel Energy en mobile" loading="lazy" decoding="async"></span>
+      </button>
       <div class="card-body">
-        <h3>Sevel Energy <span class="badge neutral">IoT</span></h3>
+        <h3>Sevel Energy <span class="badge neutral">IoT</span> <span class="badge neutral">iOS · Android</span></h3>
         <p class="tagline">La red de carga de vehículos eléctricos, con su propio CSMS.</p>
-        <p class="desc">Servidor OCPP 1.6J sobre WebSocket para cargadores MADIC, backoffice de estaciones, conectores, tarifas y transacciones con roles, y app iOS nativa para conductores con mapa e historial de sesiones. Uruguay.</p>
-        <ul class="stack"><li>.NET 9</li><li>OCPP 1.6J</li><li>React 19</li><li>SwiftUI</li><li>PostgreSQL</li></ul>
+        <p class="desc">Servidor OCPP 1.6J sobre WebSocket para cargadores MADIC, backoffice de estaciones, conectores, tarifas, pagos, incidencias y auditoría con dashboard en vivo, y app para conductores con mapa, escaneo QR del cargador, seguimiento de la carga e historial de sesiones. Uruguay.</p>
+        <ul class="stack"><li>.NET 10</li><li>OCPP 1.6J</li><li>React 19</li><li>Flutter</li><li>PostgreSQL</li></ul>
         <div class="card-foot"><span class="offline">En desarrollo — POC con cargadores reales</span></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="client" data-slug="sevel-showroom" data-name="Sevel Showroom">
+      <button class="card-media" aria-label="Ver capturas de Sevel Showroom">
+        <span class="desktop-frame"><img src="images/portfolio/sevel-showroom-desktop.jpg" alt="Tótem de Sevel Showroom con el Fiat Mobi en 3D" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/sevel-showroom-mobile.jpg" alt="Visor 3D y AR de Sevel Showroom en el celular" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>Sevel Showroom <span class="badge neutral">Retail</span> <span class="badge neutral">3D · AR</span></h3>
+        <p class="tagline">Tótems táctiles para los concesionarios de Grupo Sevel.</p>
+        <p class="desc">Showroom inteligente de Fiat, Jeep, Ram, Abarth y otras marcas del grupo: cada auto en 3D con colores, versiones, precio, interiores y ficha técnica; un QR lo abre en realidad aumentada en el celular del cliente, y "Me interesa" carga el lead en el CRM Pilot. Panel admin con catálogo por marca, tótems por sucursal, screensaver publicitario y métricas de uso por tótem.</p>
+        <ul class="stack"><li>.NET 8</li><li>React 19</li><li>model-viewer</li><li>WebXR / AR</li><li>Pilot CRM</li></ul>
+        <div class="card-foot"><span class="offline">En producción en los showrooms del cliente</span></div>
       </div>
     </article>
 

@@ -338,7 +338,7 @@ p { color: var(--text-2); }
 }
 
 /* ---------- footer / CTA ---------- */
-footer { max-width: 1180px; margin: clamp(3rem, 9vh, 6rem) auto 0; padding: 0 clamp(1.2rem, 4vw, 2.6rem) 4rem; }
+footer { max-width: 1180px; margin: clamp(3rem, 9vh, 6rem) auto 0; padding: 0 clamp(1.2rem, 4vw, 2.6rem) calc(clamp(4.5rem, 12vh, 7rem) + env(safe-area-inset-bottom)); }
 .cta {
   border: 1px solid var(--line); border-radius: calc(var(--radius) + 6px);
   background: linear-gradient(170deg, var(--surface), #101014);
@@ -467,6 +467,19 @@ html.js .reveal.in { opacity: 1; transform: none; }
   color: var(--text-3);
 }
 
+.card-body h3 .title-logo {
+  display: inline-grid; place-items: center; height: 34px; padding: 0 .6rem;
+  background: #f4f4f6; border-radius: 9px; flex-shrink: 0;
+}
+.card-body h3 .title-logo img { height: 20px; width: auto; max-width: 92px; object-fit: contain; }
+.card-body h3 .title-app { width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0; box-shadow: 0 0 0 1px rgba(255,255,255,.08); }
+.card-body h3 .title-mono {
+  display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0;
+  background: var(--surface-2); border: 1px solid var(--line);
+  font-size: .78rem; font-weight: 700; letter-spacing: .02em; color: var(--text-2);
+}
+.platform-icons { display: inline-flex; align-items: center; gap: .45rem; color: var(--text-2); }
+.platform-icons svg { width: 17px; height: 17px; fill: currentColor; }
 .card-media.logo-media { background: #f4f4f6; }
 .card-media.logo-media img { width: auto; max-width: 52%; max-height: 34%; object-fit: contain; }
 .card-body { padding: 1.25rem 1.35rem 1.45rem; display: flex; flex-direction: column; gap: .55rem; flex: 1; }
@@ -574,7 +587,6 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
   <div class="nav-links">
     <a href="#que-hacemos">Qué hacemos</a>
     <a href="#proyectos">Proyectos</a>
-    <a href="#mobile">Apps</a>
     <a href="#clientes">Clientes</a>
     <a href="#proceso">Proceso</a>
     <a class="nav-cta" href="https://wa.me/5491169370050" target="_blank" rel="noopener">Hablemos</a>
@@ -728,7 +740,6 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
 <div class="filters" role="group" aria-label="Filtrar proyectos">
   <button class="chip" aria-pressed="true" data-filter="all">Todos</button>
   <button class="chip" aria-pressed="false" data-filter="client">Para clientes</button>
-  <button class="chip" aria-pressed="false" data-filter="internal">Herramientas internas</button>
   <button class="chip" aria-pressed="false" data-filter="saas">SaaS propios</button>
 </div>
 
@@ -742,7 +753,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
     <article class="card reveal" data-cat="client" data-slug="hchb" data-name="Homecare Homebase">
       <div class="card-media no-shot logo-media" aria-hidden="true"><img src="images/images/clientes/hchb.svg" alt="" loading="lazy" decoding="async"></div>
       <div class="card-body">
-        <h3>Homecare Homebase <span class="badge neutral">Health-tech</span> <span class="badge neutral">EE.UU.</span></h3>
+        <h3><span class="title-logo"><img src="images/images/clientes/hchb.svg" alt="" loading="lazy" decoding="async"></span>Homecare Homebase <span class="badge neutral">Health-tech</span> <span class="badge neutral">EE.UU.</span></h3>
         <p class="tagline">La facturación de la plataforma líder de home health y hospice.</p>
         <p class="desc">Desarrollo del ecosistema de facturación: microservicios .NET que construyen y envían claims 837/X12 a través de clearinghouse, sobre un backoffice multi-tenant de escala nacional.</p>
         <ul class="stack"><li>.NET</li><li>SQL Server</li><li>X12 / EDI</li><li>Azure DevOps</li></ul>
@@ -753,7 +764,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
     <article class="card reveal" data-cat="client" data-slug="titleist" data-name="Titleist Performance Institute">
       <div class="card-media no-shot logo-media" aria-hidden="true"><img src="images/images/clientes/titleist.svg" alt="" loading="lazy" decoding="async"></div>
       <div class="card-body">
-        <h3>Titleist Performance Institute <span class="badge neutral">Sports-tech</span> <span class="badge neutral">EE.UU.</span></h3>
+        <h3><span class="title-logo"><img src="images/images/clientes/titleist.svg" alt="" loading="lazy" decoding="async"></span>Titleist Performance Institute <span class="badge neutral">Sports-tech</span> <span class="badge neutral">EE.UU.</span></h3>
         <p class="tagline">De la evaluación del golfista al programa de ejercicios.</p>
         <p class="desc">Desarrollo sobre la plataforma de assessment "Body-Swing Connection": microservicios .NET 10 y admin en Angular 20 que convierten evaluaciones físicas y de swing de golf en programas de ejercicios prescritos.</p>
         <ul class="stack"><li>.NET 10</li><li>Angular 20</li><li>EF Core</li><li>Datadog</li></ul>
@@ -767,7 +778,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <span class="phone-frame"><img src="images/portfolio/zoro-mobile.jpg" alt="Zoro en mobile" loading="lazy" decoding="async"></span>
       </button>
       <div class="card-body">
-        <h3>Zoro <span class="badge">Fintech</span></h3>
+        <h3><span class="title-logo"><img src="images/images/clientes/zoro.png" alt="" loading="lazy" decoding="async"></span>Zoro <span class="badge">Fintech</span></h3>
         <p class="tagline">Pagos internacionales para PyMEs argentinas.</p>
         <p class="desc">Plataforma B2B para pagar importaciones con SWIFT en menos de 48 horas: onboarding con KYC, 2FA, gestión de beneficiarios, sub-cuentas con CVU propio y panel admin con ledger centralizado. Construida sobre la API de Vita Wallet.</p>
         <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>Vita Wallet</li><li>KYC / 2FA</li></ul>
@@ -781,7 +792,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <span class="phone-frame"><img src="images/portfolio/ctrlauditor-mobile.jpg" alt="CTRL+Auditor en mobile" loading="lazy" decoding="async"></span>
       </button>
       <div class="card-body">
-        <h3>CTRL+Auditor <span class="badge">Multi-tenant</span></h3>
+        <h3><span class="title-logo"><img src="images/images/clientes/auditor.pgn.png" alt="" loading="lazy" decoding="async"></span>CTRL+Auditor <span class="badge">Multi-tenant</span></h3>
         <p class="tagline">Análisis contable automatizado para estudios.</p>
         <p class="desc">Carga sumas y saldos y balances (Excel/PDF), aplica criterios profesionales (RT 8/11/17/41, NIC 29, ajuste por inflación), calcula ratios, emite alertas y genera informes técnicos descargables. Integración con ARCA/AFIP y dashboards BCRA.</p>
         <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>ARCA / AFIP</li></ul>
@@ -795,7 +806,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <span class="phone-frame"><img src="images/portfolio/canje-envases-mobile.jpg" alt="Canje de Envases en mobile" loading="lazy" decoding="async"></span>
       </button>
       <div class="card-body">
-        <h3>Canje de Envases <span class="badge neutral">B2B</span></h3>
+        <h3><span class="title-logo"><img src="images/images/clientes/acc.png" alt="" loading="lazy" decoding="async"></span>Canje de Envases <span class="badge neutral">B2B</span></h3>
         <p class="tagline">Trazabilidad de garrafas entre fraccionadoras.</p>
         <p class="desc">Sistema multi-empresa para el rubro del gas envasado: cuentas corrientes de envases entre marcas, depósitos y fletes, stock por sucursal, rutas en mapa y auditoría completa del ciclo de canje.</p>
         <ul class="stack"><li>.NET 8</li><li>React 19</li><li>PostgreSQL</li><li>Leaflet</li></ul>
@@ -809,7 +820,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <span class="phone-frame"><img src="images/portfolio/asener-mobile.jpg" alt="Indicadores de producción del sistema de Asener en mobile" loading="lazy" decoding="async"></span>
       </button>
       <div class="card-body">
-        <h3>Asener <span class="badge neutral">Industria</span></h3>
+        <h3><span class="title-logo"><img src="images/images/clientes/asener.png" alt="" loading="lazy" decoding="async"></span>Asener <span class="badge neutral">Industria</span></h3>
         <p class="tagline">Gestión de planta para una fábrica de inyección plástica.</p>
         <p class="desc">Sistema de fábrica para una planta de Remedios de Escalada que produce tapones para garrafas, o-rings, baldes y botellas: parte por turno, plan de máquinas y matrices, materia prima por peso con lectura de balanza, lotes y pallets etiquetados con código de barras y trazabilidad hasta la máquina y la mezcla, mantenimiento preventivo y costeo por producto.</p>
         <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>Web Serial</li><li>IA</li><li>Code 128</li></ul>
@@ -823,7 +834,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <span class="phone-frame"><img src="images/portfolio/limpiashift-mobile.jpg" alt="CLE LimpiaShift en mobile" loading="lazy" decoding="async"></span>
       </button>
       <div class="card-body">
-        <h3>CLE · LimpiaShift <span class="badge neutral">ERP</span></h3>
+        <h3><span class="title-logo"><img src="images/images/clientes/clrarance.png" alt="" loading="lazy" decoding="async"></span>CLE · LimpiaShift <span class="badge neutral">ERP</span></h3>
         <p class="tagline">El sistema operativo de una empresa de limpieza.</p>
         <p class="desc">Digitaliza el parte diario, la programación semanal de turnos con detección de conflictos, compras con órdenes y recepción de mercadería, maquinaria, planillas ISO y trazabilidad de producción por lote.</p>
         <ul class="stack"><li>.NET 8</li><li>React + Tailwind</li><li>shadcn/ui</li><li>PostgreSQL</li></ul>
@@ -837,7 +848,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <span class="phone-frame"><img src="images/portfolio/casafiore-mobile.jpg" alt="Casa Fiore en mobile" loading="lazy" decoding="async"></span>
       </button>
       <div class="card-body">
-        <h3>Casa Fiore</h3>
+        <h3><span class="title-mono" aria-hidden="true">CF</span>Casa Fiore</h3>
         <p class="tagline">El hub digital de un grupo de belleza.</p>
         <p class="desc">Portal que centraliza la reserva online de los cuatro negocios del grupo — NR Peluquería, OPI, Head Spa y Salón Fiore — con agenda dedicada para cada uno.</p>
         <ul class="stack"><li>Reservas online</li><li>Multi-marca</li></ul>
@@ -851,7 +862,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <span class="phone-frame"><img src="images/portfolio/arqhernandeluca-mobile.jpg" alt="Sitio de Arq. Hernán De Luca en mobile" loading="lazy" decoding="async"></span>
       </button>
       <div class="card-body">
-        <h3>Arq. Hernán De Luca</h3>
+        <h3><span class="title-logo"><img src="images/images/clientes/arqhernandeluca.svg" alt="" loading="lazy" decoding="async"></span>Arq. Hernán De Luca</h3>
         <p class="tagline">La vidriera de 40 años de arquitectura.</p>
         <p class="desc">Sitio del estudio: portfolio de obras en Argentina, Uruguay y Estados Unidos — residencias, hoteles y condominios — con equipo, testimonios y contacto para nuevos proyectos.</p>
         <ul class="stack"><li>Sitio institucional</li><li>Portfolio de obras</li></ul>
@@ -865,7 +876,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <span class="phone-frame"><img src="images/portfolio/drokex-mobile.jpg" alt="Drokex en mobile" loading="lazy" decoding="async"></span>
       </button>
       <div class="card-body">
-        <h3>Drokex <span class="badge">Multi-tenant</span></h3>
+        <h3><span class="title-logo"><img src="images/images/clientes/drokex.png" alt="" loading="lazy" decoding="async"></span>Drokex <span class="badge">Multi-tenant</span></h3>
         <p class="tagline">Marketplaces regionales para LATAM.</p>
         <p class="desc">Plataforma que monta un marketplace independiente por país — Honduras, Guatemala, México y más — cada uno con su subdominio, admins de tenant y proveedores propios, bajo un super admin global.</p>
         <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li></ul>
@@ -879,7 +890,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <span class="phone-frame"><img src="images/portfolio/garage-pueyrredon-mobile.jpg" alt="Garage Pueyrredón en mobile" loading="lazy" decoding="async"></span>
       </button>
       <div class="card-body">
-        <h3>Garage Pueyrredón</h3>
+        <h3><span class="title-mono" aria-hidden="true">GP</span>Garage Pueyrredón</h3>
         <p class="tagline">La caja diaria de un garage, sin Excel.</p>
         <p class="desc">Registro simple de movimientos — efectivo, transferencias y gastos — con saldo automático y totalizadores por caja, para el día a día de un estacionamiento.</p>
         <ul class="stack"><li>.NET 8</li><li>React</li><li>PostgreSQL</li></ul>
@@ -888,9 +899,9 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
     </article>
 
     <article class="card reveal" data-cat="client" data-slug="casablanca" data-name="Casablanca BI">
-      <div class="card-media no-shot" aria-hidden="true"><span class="glyph">BI</span></div>
+      <div class="card-media no-shot logo-media" aria-hidden="true"><img src="images/images/clientes/casablanca.png" alt="" loading="lazy" decoding="async"></div>
       <div class="card-body">
-        <h3>Casablanca · Plataforma BI <span class="badge neutral">Data</span></h3>
+        <h3><span class="title-logo"><img src="images/images/clientes/casablanca.png" alt="" loading="lazy" decoding="async"></span>Casablanca · Plataforma BI <span class="badge neutral">Data</span></h3>
         <p class="tagline">Business intelligence multicanal sobre el ERP.</p>
         <p class="desc">ETL que replica el ERP Tango Gestión (SQL Server) a un modelo estrella en Postgres y lo expone en dashboards por canal — venta directa, e-commerce propio, Mercado Libre, Tienda Nube y locales — y por sociedad.</p>
         <ul class="stack"><li>.NET 8</li><li>ETL + Quartz</li><li>PostgreSQL 16</li><li>React + Tremor</li><li>AG Grid</li></ul>
@@ -904,7 +915,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <span class="phone-frame"><img src="images/portfolio/sevel-mobile.jpg" alt="App de Sevel Energy en mobile" loading="lazy" decoding="async"></span>
       </button>
       <div class="card-body">
-        <h3>Sevel Energy <span class="badge neutral">IoT</span> <span class="badge neutral">iOS · Android</span></h3>
+        <h3><span class="title-logo"><img src="images/images/clientes/sevel.svg" alt="" loading="lazy" decoding="async"></span>Sevel Energy <span class="badge neutral">IoT</span> <span class="platform-icons" role="img" aria-label="App para iOS y Android" title="App para iOS y Android"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><g transform="translate(0 1.5)"><path d="M7.6 8.2 6 5.4M16.4 8.2 18 5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><path fill="currentColor" fill-rule="evenodd" d="M2 17a10 10 0 0 1 20 0zm6-3.2a1.15 1.15 0 1 0 0-2.3 1.15 1.15 0 0 0 0 2.3zm8 0a1.15 1.15 0 1 0 0-2.3 1.15 1.15 0 0 0 0 2.3z"/></g></svg></span></h3>
         <p class="tagline">La red de carga de vehículos eléctricos, con su propio CSMS.</p>
         <p class="desc">Servidor OCPP 1.6J sobre WebSocket para cargadores MADIC, backoffice de estaciones, conectores, tarifas, pagos, incidencias y auditoría con dashboard en vivo, y app para conductores con mapa, escaneo QR del cargador, seguimiento de la carga e historial de sesiones. Uruguay.</p>
         <ul class="stack"><li>.NET 10</li><li>OCPP 1.6J</li><li>React 19</li><li>Flutter</li><li>PostgreSQL</li></ul>
@@ -918,56 +929,11 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <span class="phone-frame"><img src="images/portfolio/sevel-showroom-mobile.jpg" alt="Visor 3D y AR de Sevel Showroom en el celular" loading="lazy" decoding="async"></span>
       </button>
       <div class="card-body">
-        <h3>Sevel Showroom <span class="badge neutral">Retail</span> <span class="badge neutral">3D · AR</span></h3>
+        <h3><span class="title-logo"><img src="images/images/clientes/sevel.svg" alt="" loading="lazy" decoding="async"></span>Sevel Showroom <span class="badge neutral">Retail</span> <span class="badge neutral">3D · AR</span></h3>
         <p class="tagline">Tótems táctiles para los concesionarios de Grupo Sevel.</p>
         <p class="desc">Showroom inteligente de Fiat, Jeep, Ram, Abarth y otras marcas del grupo: cada auto en 3D con colores, versiones, precio, interiores y ficha técnica; un QR lo abre en realidad aumentada en el celular del cliente, y "Me interesa" carga el lead en el CRM Pilot. Panel admin con catálogo por marca, tótems por sucursal, screensaver publicitario y métricas de uso por tótem.</p>
         <ul class="stack"><li>.NET 8</li><li>React 19</li><li>model-viewer</li><li>WebXR / AR</li><li>Pilot CRM</li></ul>
         <div class="card-foot"><span class="offline">En producción en los showrooms del cliente</span></div>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<!-- ============================ INTERNO ============================ -->
-<section class="section" id="interno">
-  <div class="section-head reveal"><h2>Herramientas internas</h2><span class="count">la maquinaria detrás de los SaaS</span></div>
-
-  <div class="grid" id="grid-interno">
-
-    <article class="card reveal" data-cat="internal" data-slug="saleshub" data-name="SalesHub" data-url="https://sales.efcloud.tech" data-urllabel="sales.efcloud.tech">
-      <button class="card-media" aria-label="Ver capturas de SalesHub">
-        <span class="desktop-frame"><img src="images/portfolio/saleshub-desktop.jpg" alt="SalesHub en desktop" loading="lazy" decoding="async"></span>
-        <span class="phone-frame"><img src="images/portfolio/saleshub-mobile.jpg" alt="SalesHub en mobile" loading="lazy" decoding="async"></span>
-      </button>
-      <div class="card-body">
-        <h3>SalesHub</h3>
-        <p class="tagline">La máquina de ventas de EFCloud.</p>
-        <p class="desc">Orquesta scraping multi-fuente (Google Maps, Instagram, Meta Ads, TikTok vía Apify), deduplica y asigna leads round-robin al equipo de ventas, y envía WhatsApp humanizado — warmup, horarios activos, delays — vía Evolution API. Dashboards por vendedor y por producto.</p>
-        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>Apify</li><li>Evolution API</li><li>PostgreSQL 16</li></ul>
-        <div class="card-foot"><span class="offline">Uso interno · sales.efcloud.tech</span></div>
-      </div>
-    </article>
-
-    <article class="card reveal" data-cat="internal" data-slug="leadgen" data-name="Lead-Gen Engine">
-      <div class="card-media no-shot" aria-hidden="true"><span class="glyph">n8n</span></div>
-      <div class="card-body">
-        <h3>Lead-Gen Engine</h3>
-        <p class="tagline">Generación de leads multi-producto y multi-país.</p>
-        <p class="desc">Workflow de n8n totalmente parametrizado desde Google Sheets: un algoritmo determinístico elige la próxima ciudad y categoría a scrapear según población y antigüedad, con dedupe por producto e instancias de WhatsApp separadas para evitar bans.</p>
-        <ul class="stack"><li>n8n</li><li>Google Sheets</li><li>Evolution API</li><li>Google Places</li></ul>
-        <div class="card-foot"><span class="offline">Uso interno</span></div>
-      </div>
-    </article>
-
-    <article class="card reveal" data-cat="internal" data-slug="onboardingkit" data-name="Onboarding Kit">
-      <div class="card-media no-shot" aria-hidden="true"><span class="glyph">UX</span></div>
-      <div class="card-body">
-        <h3>Onboarding Kit</h3>
-        <p class="tagline">Un wizard de onboarding, seis productos.</p>
-        <p class="desc">Especificación canónica del wizard de onboarding compartido por toda la suite: anatomía, tokens de diseño, copy por producto y animaciones, con un componente React de referencia que cada SaaS copia y adapta.</p>
-        <ul class="stack"><li>React + TS</li><li>Design spec</li><li>Design tokens</li></ul>
-        <div class="card-foot"><span class="offline">Uso interno</span></div>
       </div>
     </article>
 
@@ -987,7 +953,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <span class="phone-frame"><img src="images/portfolio/gymhero-mobile.jpg" alt="GymHero en mobile" loading="lazy" decoding="async"></span>
       </button>
       <div class="card-body">
-        <h3>GymHero <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
+        <h3><img class="title-app" src="images/portfolio/icons/gymhero.png" alt="" width="34" height="34" loading="lazy" decoding="async">GymHero <span class="badge">Multi-tenant</span> <span class="platform-icons" role="img" aria-label="App para iOS y Android" title="App para iOS y Android"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><g transform="translate(0 1.5)"><path d="M7.6 8.2 6 5.4M16.4 8.2 18 5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><path fill="currentColor" fill-rule="evenodd" d="M2 17a10 10 0 0 1 20 0zm6-3.2a1.15 1.15 0 1 0 0-2.3 1.15 1.15 0 0 0 0 2.3zm8 0a1.15 1.15 0 1 0 0-2.3 1.15 1.15 0 0 0 0 2.3z"/></g></svg></span></h3>
         <p class="tagline">El gimnasio que cobra solo.</p>
         <p class="desc">Gestión completa para gimnasios y boxes: agenda y reservas de clases, cobros automáticos con MercadoPago, semáforo de morosos en recepción y control de acceso por QR, huella o reconocimiento facial.</p>
         <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MercadoPago</li><li>Next.js</li><li>Biometría</li></ul>
@@ -1001,7 +967,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <span class="phone-frame"><img src="images/portfolio/turnospro-mobile.jpg" alt="TurnosPro en mobile" loading="lazy" decoding="async"></span>
       </button>
       <div class="card-body">
-        <h3>TurnosPro <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
+        <h3><img class="title-app" src="images/portfolio/icons/turnospro.png" alt="" width="34" height="34" loading="lazy" decoding="async">TurnosPro <span class="badge">Multi-tenant</span> <span class="platform-icons" role="img" aria-label="App para iOS y Android" title="App para iOS y Android"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><g transform="translate(0 1.5)"><path d="M7.6 8.2 6 5.4M16.4 8.2 18 5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><path fill="currentColor" fill-rule="evenodd" d="M2 17a10 10 0 0 1 20 0zm6-3.2a1.15 1.15 0 1 0 0-2.3 1.15 1.15 0 0 0 0 2.3zm8 0a1.15 1.15 0 1 0 0-2.3 1.15 1.15 0 0 0 0 2.3z"/></g></svg></span></h3>
         <p class="tagline">Turnos con IA para barberías, peluquerías y estética.</p>
         <p class="desc">Sitio de reservas propio para cada negocio, señas anticipadas con MercadoPago y un agente de IA que confirma turnos por WhatsApp. Tres verticales con tema, terminología y servicios propios; cada tenant vive en su subdominio o dominio.</p>
         <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MercadoPago</li><li>WhatsApp</li><li>IA</li></ul>
@@ -1015,7 +981,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <span class="phone-frame"><img src="images/portfolio/bunker-mobile.jpg" alt="BUNKER en mobile" loading="lazy" decoding="async"></span>
       </button>
       <div class="card-body">
-        <h3>BUNKER <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
+        <h3><img class="title-app" src="images/portfolio/icons/bunker.png" alt="" width="34" height="34" loading="lazy" decoding="async">BUNKER <span class="badge">Multi-tenant</span> <span class="platform-icons" role="img" aria-label="App para iOS y Android" title="App para iOS y Android"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><g transform="translate(0 1.5)"><path d="M7.6 8.2 6 5.4M16.4 8.2 18 5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><path fill="currentColor" fill-rule="evenodd" d="M2 17a10 10 0 0 1 20 0zm6-3.2a1.15 1.15 0 1 0 0-2.3 1.15 1.15 0 0 0 0 2.3zm8 0a1.15 1.15 0 1 0 0-2.3 1.15 1.15 0 0 0 0 2.3z"/></g></svg></span></h3>
         <p class="tagline">Atletas, coaches y gimnasios en una sola plataforma.</p>
         <p class="desc">Planificación de entrenamientos individuales y por equipos con ciclos anuales, biblioteca de ejercicios con video, semáforo de lesiones, métricas de fatiga y asistencia, y mensajería interna entre coach y atleta.</p>
         <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>Google OAuth</li><li>MercadoPago</li></ul>
@@ -1029,7 +995,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <span class="phone-frame"><img src="images/portfolio/playcrew-mobile.jpg" alt="PlayCrew en mobile" loading="lazy" decoding="async"></span>
       </button>
       <div class="card-body">
-        <h3>PlayCrew <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
+        <h3><img class="title-app" src="images/portfolio/icons/playcrew.png" alt="" width="34" height="34" loading="lazy" decoding="async">PlayCrew <span class="badge">Multi-tenant</span> <span class="platform-icons" role="img" aria-label="App para iOS y Android" title="App para iOS y Android"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><g transform="translate(0 1.5)"><path d="M7.6 8.2 6 5.4M16.4 8.2 18 5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><path fill="currentColor" fill-rule="evenodd" d="M2 17a10 10 0 0 1 20 0zm6-3.2a1.15 1.15 0 1 0 0-2.3 1.15 1.15 0 0 0 0 2.3zm8 0a1.15 1.15 0 1 0 0-2.3 1.15 1.15 0 0 0 0 2.3z"/></g></svg></span></h3>
         <p class="tagline">El sistema operativo del pádel.</p>
         <p class="desc">Club manager con agenda de canchas, reservas y cobros; matchmaking de jugadores por nivel con chat; y software de torneos con fixtures y ranking. Marketplace sobre MercadoPago con split payments, suscripciones y onboarding OAuth de clubes.</p>
         <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MP Split Payments</li></ul>
@@ -1043,7 +1009,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <span class="phone-frame"><img src="images/portfolio/archicloud-mobile.jpg" alt="ArchiCloud en mobile" loading="lazy" decoding="async"></span>
       </button>
       <div class="card-body">
-        <h3>ArchiCloud <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
+        <h3><img class="title-app" src="images/portfolio/icons/archicloud.png" alt="" width="34" height="34" loading="lazy" decoding="async">ArchiCloud <span class="badge">Multi-tenant</span> <span class="platform-icons" role="img" aria-label="App para iOS y Android" title="App para iOS y Android"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><g transform="translate(0 1.5)"><path d="M7.6 8.2 6 5.4M16.4 8.2 18 5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><path fill="currentColor" fill-rule="evenodd" d="M2 17a10 10 0 0 1 20 0zm6-3.2a1.15 1.15 0 1 0 0-2.3 1.15 1.15 0 0 0 0 2.3zm8 0a1.15 1.15 0 1 0 0-2.3 1.15 1.15 0 0 0 0 2.3z"/></g></svg></span></h3>
         <p class="tagline">Gestión de obras para arquitectos y constructoras.</p>
         <p class="desc">Gastos, presupuestos, planos, contratistas, avances y comunicación con clientes de la obra en un solo sistema, con roles de arquitecto y cliente. Pensado para estudios y constructoras de LATAM.</p>
         <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MercadoPago</li></ul>
@@ -1057,7 +1023,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <span class="phone-frame"><img src="images/portfolio/unistock-mobile.jpg" alt="DashFlow en mobile" loading="lazy" decoding="async"></span>
       </button>
       <div class="card-body">
-        <h3>DashFlow <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
+        <h3><img class="title-app" src="images/portfolio/icons/unistock.png" alt="" width="34" height="34" loading="lazy" decoding="async">DashFlow <span class="badge">Multi-tenant</span> <span class="platform-icons" role="img" aria-label="App para iOS y Android" title="App para iOS y Android"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><g transform="translate(0 1.5)"><path d="M7.6 8.2 6 5.4M16.4 8.2 18 5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><path fill="currentColor" fill-rule="evenodd" d="M2 17a10 10 0 0 1 20 0zm6-3.2a1.15 1.15 0 1 0 0-2.3 1.15 1.15 0 0 0 0 2.3zm8 0a1.15 1.15 0 1 0 0-2.3 1.15 1.15 0 0 0 0 2.3z"/></g></svg></span></h3>
         <p class="tagline">Inventario multicanal para pymes.</p>
         <p class="desc">Control de stock con alertas de mínimos, dashboard de métricas y ventas, y sincronización multicanal con MercadoLibre y Tienda Nube en el roadmap. Modo SaaS por subdominio y modo Enterprise con dominio propio.</p>
         <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MercadoLibre</li><li>Tienda Nube</li></ul>
@@ -1071,7 +1037,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <span class="phone-frame"><img src="images/portfolio/paseoya-mobile.jpg" alt="PaseoYa en mobile" loading="lazy" decoding="async"></span>
       </button>
       <div class="card-body">
-        <h3>PaseoYa <span class="badge">Multi-tenant</span></h3>
+        <h3><span class="title-mono" aria-hidden="true">PY</span>PaseoYa <span class="badge">Multi-tenant</span></h3>
         <p class="tagline">La plataforma de los paseadores de perros.</p>
         <p class="desc">Cada paseador gestiona su cartera de clientes, perros y packs de paseos, con seguimiento GPS del paseo en tiempo real (SignalR) visible para el dueño, y dos flujos de cobro: suscripción del paseador y pago del pack.</p>
         <ul class="stack"><li>.NET 8</li><li>SignalR</li><li>React + TS</li><li>Next.js</li><li>PostgreSQL</li></ul>
@@ -1082,47 +1048,6 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
   </div>
 </section>
 </div>
-
-<!-- ============================ MOBILE ============================ -->
-<section class="section" id="mobile">
-  <div class="section-head reveal"><h2>Apps móviles nativas</h2><span class="count">6 productos × 2 plataformas</span></div>
-  <div class="mobile-band reveal">
-    <div>
-      <p class="eyebrow">Doble build nativo</p>
-      <p style="margin-top:.6rem; max-width:52ch;">Cada SaaS de la suite tiene su app compañera construida dos veces en nativo puro — nada de frameworks híbridos — hablando con el mismo backend multi-tenant. Capturas reales, corriendo contra producción.</p>
-      <div class="platforms">
-        <div><b>iOS</b><span>Swift + SwiftUI · iOS 16+</span></div>
-        <div><b>Android</b><span>Kotlin + Jetpack Compose</span></div>
-      </div>
-    </div>
-    <div class="app-gallery" aria-label="Capturas reales de las apps móviles">
-      <figure>
-        <span class="phone-static"><img src="images/portfolio/app-gymhero.jpg" alt="App iOS de GymHero — home del socio con membresía y accesos rápidos" loading="lazy" decoding="async"></span>
-        <figcaption>GymHero<span>Membresía, rutina y check-in del socio</span></figcaption>
-      </figure>
-      <figure>
-        <span class="phone-static"><img src="images/portfolio/app-turnospro.jpg" alt="App iOS de TurnosPro — agenda del dueño" loading="lazy" decoding="async"></span>
-        <figcaption>TurnosPro<span>Servicios y precios del negocio</span></figcaption>
-      </figure>
-      <figure>
-        <span class="phone-static"><img src="images/portfolio/app-bunker.jpg" alt="App iOS de BUNKER — el plan del día del atleta" loading="lazy" decoding="async"></span>
-        <figcaption>BUNKER<span>Métricas y progreso del atleta</span></figcaption>
-      </figure>
-      <figure>
-        <span class="phone-static"><img src="images/portfolio/app-playcrew.jpg" alt="App iOS de PlayCrew — buscador de partidos de pádel" loading="lazy" decoding="async"></span>
-        <figcaption>PlayCrew<span>Encontrá partido por nivel y zona</span></figcaption>
-      </figure>
-      <figure>
-        <span class="phone-static"><img src="images/portfolio/app-archicloud.jpg" alt="App iOS de ArchiCloud — listado de obras con avance" loading="lazy" decoding="async"></span>
-        <figcaption>ArchiCloud<span>La obra y su avance, en vivo</span></figcaption>
-      </figure>
-      <figure>
-        <span class="phone-static"><img src="images/portfolio/app-unistock.jpg" alt="App iOS de DashFlow — inventario y ventas" loading="lazy" decoding="async"></span>
-        <figcaption>DashFlow<span>Stock, ventas y reportes móvil</span></figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
 
 <!-- ============================ CTA ============================ -->
 
@@ -1241,35 +1166,6 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
   </div>
 </section>
 
-<!-- ============ POR QUÉ ============ -->
-<section class="section" id="por-que">
-  <p class="eyebrow reveal">Por qué EFCloud</p>
-  <h2 class="reveal">Operamos lo que construimos.</h2>
-
-  <div class="reasons">
-    <div class="reason reveal">
-      <b>No es nuestra primera vez</b>
-      <p>Dieciséis sistemas corriendo en producción hoy — nuestros y de clientes. Cada proyecto nuevo hereda todo lo aprendido operando los anteriores.</p>
-    </div>
-    <div class="reason reveal">
-      <b>Un solo stack, dominado a fondo</b>
-      <p>.NET + React + PostgreSQL en la nube, nativo puro en mobile. Menos experimentos, más velocidad y sistemas que se pueden mantener por años.</p>
-    </div>
-    <div class="reason reveal">
-      <b>Experiencia enterprise, agilidad de estudio</b>
-      <p>Quince años construyendo software en Estados Unidos — salud, deportes, facturación médica a escala nacional — aplicados a proyectos que arrancan en semanas.</p>
-    </div>
-    <div class="reason reveal">
-      <b>Precio y plazos claros</b>
-      <p>Alcance definido, precio cerrado y fecha de entrega antes de escribir una línea. Los cambios se conversan, no se facturan por sorpresa.</p>
-    </div>
-  </div>
-
-  <ul class="stack reveal" aria-label="Tecnologías">
-    <li>.NET 8</li><li>React + TypeScript</li><li>PostgreSQL</li><li>Swift · SwiftUI</li><li>Kotlin · Compose</li><li>MercadoPago</li><li>WhatsApp + IA</li><li>n8n</li><li>SignalR</li><li>DigitalOcean</li>
-  </ul>
-</section>
-
 <!-- ============ CTA ============ -->
 <footer id="contacto">
   <div class="cta reveal">
@@ -1327,7 +1223,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
   /* filtros */
   const chips = document.querySelectorAll('.chip');
   const cards = document.querySelectorAll('.card[data-cat]');
-  const sections = { saas: 'saas', client: 'para-clientes', internal: 'interno' };
+  const sections = { saas: 'saas', client: 'para-clientes' };
   chips.forEach(chip => {
     chip.addEventListener('click', () => {
       chips.forEach(c => c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'));

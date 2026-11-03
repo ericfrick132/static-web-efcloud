@@ -378,6 +378,13 @@ html.js .reveal.in { opacity: 1; transform: none; }
 
 /* ================= PROYECTOS (antes /portfolio) ================= */
 /* ---------- filtros: chips que responden al pointer-down (§1, §10) ---------- */
+.price-band { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.5rem; }
+.price-band div {
+  flex: 1 1 200px; padding: .95rem 1.15rem; border-radius: 14px;
+  border: 1px solid var(--line); background: var(--surface);
+}
+.price-band span { display: block; font-size: .8rem; color: var(--text-3); letter-spacing: .01em; }
+.price-band b { display: block; margin-top: .2rem; font-size: 1.25rem; font-weight: 650; letter-spacing: -0.01em; color: var(--text); font-variant-numeric: tabular-nums; }
 .filters {
   position: sticky; top: 3.4rem; z-index: 30;
   display: flex; gap: .5rem; flex-wrap: wrap;
@@ -694,6 +701,11 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
   <p class="eyebrow reveal">Proyectos</p>
   <h2 class="reveal">Algunos de nuestros proyectos.</h2>
   <p class="intro reveal">Más de 130 proyectos construidos. Acá una selección, todos en producción: tocá una tarjeta para ver las capturas en grande.</p>
+  <div class="price-band reveal" aria-label="Precios de referencia">
+    <div><span>Sitio web</span><b>desde USD 300</b></div>
+    <div><span>Sistema a medida</span><b>desde USD 15.000</b></div>
+    <div><span>App nativa iOS + Android</span><b>desde USD 28.000</b></div>
+  </div>
 </section>
 <div class="filters" role="group" aria-label="Filtrar proyectos">
   <button class="chip" aria-pressed="true" data-filter="all">Todos</button>

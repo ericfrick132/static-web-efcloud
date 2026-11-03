@@ -466,6 +466,8 @@ html.js .reveal.in { opacity: 1; transform: none; }
   color: var(--text-3);
 }
 
+.card-media.logo-media { background: #f4f4f6; }
+.card-media.logo-media img { width: auto; max-width: 52%; max-height: 34%; object-fit: contain; }
 .card-body { padding: 1.25rem 1.35rem 1.45rem; display: flex; flex-direction: column; gap: .55rem; flex: 1; }
 .card-body .tagline { color: var(--text); font-weight: 600; font-size: .98rem; letter-spacing: -0.005em; }
 .card-body h3 { display: flex; align-items: center; gap: .55rem; flex-wrap: wrap; }
@@ -513,11 +515,6 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .platforms div b { display: block; font-size: .95rem; }
 .platforms div span { font-size: .8rem; color: var(--text-3); }
 
-/* ---------- experiencia ---------- */
-.xp { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(min(420px,100%), 1fr)); margin-top: 1.6rem; }
-.xp article { border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem 1.6rem; background: var(--surface); }
-.xp article p { font-size: .92rem; margin-top: .5rem; }
-.xp article .eyebrow { margin-bottom: .3rem; }
 
 /* ---------- lightbox (§7: entra y sale por el mismo camino) ---------- */
 dialog.lightbox {
@@ -736,10 +733,32 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
 
 <!-- ============================ CLIENTES ============================ -->
 <section class="section" id="para-clientes">
-  <div class="section-head reveal"><h2>Proyectos para clientes</h2><span class="count">12 entregas</span></div>
+  <div class="section-head reveal"><h2>Proyectos para clientes</h2><span class="count">14 entregas</span></div>
   <p class="intro reveal">Desde fintech regulada hasta ERPs operativos a medida: software llave en mano, entregado y corriendo en producción.</p>
 
   <div class="grid" id="grid-clientes">
+
+    <article class="card reveal" data-cat="client" data-slug="hchb" data-name="Homecare Homebase">
+      <div class="card-media no-shot logo-media" aria-hidden="true"><img src="images/images/clientes/hchb.svg" alt="" loading="lazy" decoding="async"></div>
+      <div class="card-body">
+        <h3>Homecare Homebase <span class="badge neutral">Health-tech</span> <span class="badge neutral">EE.UU.</span></h3>
+        <p class="tagline">La facturación de la plataforma líder de home health y hospice.</p>
+        <p class="desc">Dev lead en el ecosistema de facturación: microservicios .NET que construyen y envían claims 837/X12 a través de clearinghouse, sobre un backoffice multi-tenant de escala nacional.</p>
+        <ul class="stack"><li>.NET</li><li>SQL Server</li><li>X12 / EDI</li><li>Azure DevOps</li></ul>
+        <div class="card-foot"><span class="offline">Equipo dedicado · Estados Unidos</span></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="client" data-slug="titleist" data-name="Titleist Performance Institute">
+      <div class="card-media no-shot logo-media" aria-hidden="true"><img src="images/images/clientes/titleist.svg" alt="" loading="lazy" decoding="async"></div>
+      <div class="card-body">
+        <h3>Titleist Performance Institute <span class="badge neutral">Sports-tech</span> <span class="badge neutral">EE.UU.</span></h3>
+        <p class="tagline">De la evaluación del golfista al programa de ejercicios.</p>
+        <p class="desc">Desarrollo sobre la plataforma de assessment "Body-Swing Connection": microservicios .NET 10 y admin en Angular 20 que convierten evaluaciones físicas y de swing de golf en programas de ejercicios prescritos.</p>
+        <ul class="stack"><li>.NET 10</li><li>Angular 20</li><li>EF Core</li><li>Datadog</li></ul>
+        <div class="card-foot"><span class="offline">Equipo dedicado · Estados Unidos</span></div>
+      </div>
+    </article>
 
     <article class="card reveal" data-cat="client" data-slug="zoro" data-name="Zoro" data-url="https://zoro.la" data-urllabel="zoro.la">
       <button class="card-media" aria-label="Ver capturas de Zoro">
@@ -1101,25 +1120,6 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <figcaption>DashFlow<span>Stock, ventas y reportes móvil</span></figcaption>
       </figure>
     </div>
-  </div>
-</section>
-
-<!-- ============================ EXPERIENCIA ============================ -->
-<section class="section" id="experiencia">
-  <div class="section-head reveal"><h2>Experiencia enterprise</h2></div>
-  <div class="xp">
-    <article class="reveal">
-      <p class="eyebrow">Estados Unidos · Health-tech</p>
-      <h3>Homecare Homebase</h3>
-      <p>Dev lead en el ecosistema de facturación de la plataforma líder de home health y hospice: microservicios .NET que construyen y envían claims 837/X12 a través de clearinghouse, sobre un backoffice multi-tenant de escala nacional.</p>
-      <ul class="stack" style="margin-top:.8rem;"><li>.NET</li><li>SQL Server</li><li>X12 / EDI</li><li>Azure DevOps</li></ul>
-    </article>
-    <article class="reveal">
-      <p class="eyebrow">Estados Unidos · Sports-tech</p>
-      <h3>Titleist Performance Institute</h3>
-      <p>Desarrollo sobre la plataforma de assessment "Body-Swing Connection": microservicios .NET 10 y admin en Angular 20 que convierten evaluaciones físicas y de swing de golf en programas de ejercicios prescritos.</p>
-      <ul class="stack" style="margin-top:.8rem;"><li>.NET 10</li><li>Angular 20</li><li>EF Core</li><li>Datadog</li></ul>
-    </article>
   </div>
 </section>
 

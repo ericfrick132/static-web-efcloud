@@ -729,118 +729,10 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
 </section>
 <div class="filters" role="group" aria-label="Filtrar proyectos">
   <button class="chip" aria-pressed="true" data-filter="all">Todos</button>
-  <button class="chip" aria-pressed="false" data-filter="saas">SaaS propios</button>
   <button class="chip" aria-pressed="false" data-filter="client">Para clientes</button>
   <button class="chip" aria-pressed="false" data-filter="internal">Herramientas internas</button>
+  <button class="chip" aria-pressed="false" data-filter="saas">SaaS propios</button>
 </div>
-
-<!-- ============================ SAAS ============================ -->
-<section class="section" id="saas">
-  <div class="section-head reveal"><h2>Productos propios</h2><span class="count">7 SaaS</span></div>
-  <p class="intro reveal">Suite de SaaS multi-tenant construida sobre una misma columna vertebral — .NET 8, React + TypeScript, PostgreSQL, MercadoPago — cada uno atacando un vertical distinto.</p>
-
-  <div class="grid" id="grid-saas">
-
-    <article class="card reveal" data-cat="saas" data-slug="gymhero" data-name="GymHero" data-url="https://gymhero.fitness" data-urllabel="gymhero.fitness">
-      <button class="card-media" aria-label="Ver capturas de GymHero">
-        <span class="desktop-frame"><img src="images/portfolio/gymhero-desktop.jpg" alt="Landing de GymHero en desktop" loading="lazy" decoding="async"></span>
-        <span class="phone-frame"><img src="images/portfolio/gymhero-mobile.jpg" alt="GymHero en mobile" loading="lazy" decoding="async"></span>
-      </button>
-      <div class="card-body">
-        <h3>GymHero <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
-        <p class="tagline">El gimnasio que cobra solo.</p>
-        <p class="desc">Gestión completa para gimnasios y boxes: agenda y reservas de clases, cobros automáticos con MercadoPago, semáforo de morosos en recepción y control de acceso por QR, huella o reconocimiento facial.</p>
-        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MercadoPago</li><li>Next.js</li><li>Biometría</li></ul>
-        <div class="card-foot"><a class="visit" href="https://gymhero.fitness" target="_blank" rel="noopener">gymhero.fitness</a></div>
-      </div>
-    </article>
-
-    <article class="card reveal" data-cat="saas" data-slug="turnospro" data-name="TurnosPro" data-url="https://turnos-pro.com" data-urllabel="turnos-pro.com">
-      <button class="card-media" aria-label="Ver capturas de TurnosPro">
-        <span class="desktop-frame"><img src="images/portfolio/turnospro-desktop.jpg" alt="Landing de TurnosPro en desktop" loading="lazy" decoding="async"></span>
-        <span class="phone-frame"><img src="images/portfolio/turnospro-mobile.jpg" alt="TurnosPro en mobile" loading="lazy" decoding="async"></span>
-      </button>
-      <div class="card-body">
-        <h3>TurnosPro <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
-        <p class="tagline">Turnos con IA para barberías, peluquerías y estética.</p>
-        <p class="desc">Sitio de reservas propio para cada negocio, señas anticipadas con MercadoPago y un agente de IA que confirma turnos por WhatsApp. Tres verticales con tema, terminología y servicios propios; cada tenant vive en su subdominio o dominio.</p>
-        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MercadoPago</li><li>WhatsApp</li><li>IA</li></ul>
-        <div class="card-foot"><a class="visit" href="https://turnos-pro.com" target="_blank" rel="noopener">turnos-pro.com</a></div>
-      </div>
-    </article>
-
-    <article class="card reveal" data-cat="saas" data-slug="bunker" data-name="BUNKER" data-url="https://bunker-app.com" data-urllabel="bunker-app.com">
-      <button class="card-media" aria-label="Ver capturas de BUNKER">
-        <span class="desktop-frame"><img src="images/portfolio/bunker-desktop.jpg" alt="Landing de BUNKER en desktop" loading="lazy" decoding="async"></span>
-        <span class="phone-frame"><img src="images/portfolio/bunker-mobile.jpg" alt="BUNKER en mobile" loading="lazy" decoding="async"></span>
-      </button>
-      <div class="card-body">
-        <h3>BUNKER <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
-        <p class="tagline">Atletas, coaches y gimnasios en una sola plataforma.</p>
-        <p class="desc">Planificación de entrenamientos individuales y por equipos con ciclos anuales, biblioteca de ejercicios con video, semáforo de lesiones, métricas de fatiga y asistencia, y mensajería interna entre coach y atleta.</p>
-        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>Google OAuth</li><li>MercadoPago</li></ul>
-        <div class="card-foot"><a class="visit" href="https://bunker-app.com" target="_blank" rel="noopener">bunker-app.com</a></div>
-      </div>
-    </article>
-
-    <article class="card reveal" data-cat="saas" data-slug="playcrew" data-name="PlayCrew" data-url="https://playcrewpadel.com" data-urllabel="playcrewpadel.com">
-      <button class="card-media" aria-label="Ver capturas de PlayCrew">
-        <span class="desktop-frame"><img src="images/portfolio/playcrew-desktop.jpg" alt="Landing de PlayCrew en desktop" loading="lazy" decoding="async"></span>
-        <span class="phone-frame"><img src="images/portfolio/playcrew-mobile.jpg" alt="PlayCrew en mobile" loading="lazy" decoding="async"></span>
-      </button>
-      <div class="card-body">
-        <h3>PlayCrew <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
-        <p class="tagline">El sistema operativo del pádel.</p>
-        <p class="desc">Club manager con agenda de canchas, reservas y cobros; matchmaking de jugadores por nivel con chat; y software de torneos con fixtures y ranking. Marketplace sobre MercadoPago con split payments, suscripciones y onboarding OAuth de clubes.</p>
-        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MP Split Payments</li></ul>
-        <div class="card-foot"><a class="visit" href="https://playcrewpadel.com" target="_blank" rel="noopener">playcrewpadel.com</a></div>
-      </div>
-    </article>
-
-    <article class="card reveal" data-cat="saas" data-slug="archicloud" data-name="ArchiCloud" data-url="https://archicloud.tech" data-urllabel="archicloud.tech">
-      <button class="card-media" aria-label="Ver capturas de ArchiCloud">
-        <span class="desktop-frame"><img src="images/portfolio/archicloud-desktop.jpg" alt="Landing de ArchiCloud en desktop" loading="lazy" decoding="async"></span>
-        <span class="phone-frame"><img src="images/portfolio/archicloud-mobile.jpg" alt="ArchiCloud en mobile" loading="lazy" decoding="async"></span>
-      </button>
-      <div class="card-body">
-        <h3>ArchiCloud <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
-        <p class="tagline">Gestión de obras para arquitectos y constructoras.</p>
-        <p class="desc">Gastos, presupuestos, planos, contratistas, avances y comunicación con clientes de la obra en un solo sistema, con roles de arquitecto y cliente. Pensado para estudios y constructoras de LATAM.</p>
-        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MercadoPago</li></ul>
-        <div class="card-foot"><a class="visit" href="https://archicloud.tech" target="_blank" rel="noopener">archicloud.tech</a></div>
-      </div>
-    </article>
-
-    <article class="card reveal" data-cat="saas" data-slug="unistock" data-name="DashFlow" data-url="https://dashflow.com.ar" data-urllabel="dashflow.com.ar">
-      <button class="card-media" aria-label="Ver capturas de DashFlow">
-        <span class="desktop-frame"><img src="images/portfolio/unistock-desktop.jpg" alt="DashFlow en desktop" loading="lazy" decoding="async"></span>
-        <span class="phone-frame"><img src="images/portfolio/unistock-mobile.jpg" alt="DashFlow en mobile" loading="lazy" decoding="async"></span>
-      </button>
-      <div class="card-body">
-        <h3>DashFlow <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
-        <p class="tagline">Inventario multicanal para pymes.</p>
-        <p class="desc">Control de stock con alertas de mínimos, dashboard de métricas y ventas, y sincronización multicanal con MercadoLibre y Tienda Nube en el roadmap. Modo SaaS por subdominio y modo Enterprise con dominio propio.</p>
-        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MercadoLibre</li><li>Tienda Nube</li></ul>
-        <div class="card-foot"><a class="visit" href="https://dashflow.com.ar" target="_blank" rel="noopener">Demo en vivo</a></div>
-      </div>
-    </article>
-
-    <article class="card reveal" data-cat="saas" data-slug="paseoya" data-name="PaseoYa" data-url="https://paseadores-app-m4wgc.ondigitalocean.app" data-urllabel="PaseoYa · demo en vivo">
-      <button class="card-media" aria-label="Ver capturas de PaseoYa">
-        <span class="desktop-frame"><img src="images/portfolio/paseoya-desktop.jpg" alt="PaseoYa en desktop" loading="lazy" decoding="async"></span>
-        <span class="phone-frame"><img src="images/portfolio/paseoya-mobile.jpg" alt="PaseoYa en mobile" loading="lazy" decoding="async"></span>
-      </button>
-      <div class="card-body">
-        <h3>PaseoYa <span class="badge">Multi-tenant</span></h3>
-        <p class="tagline">La plataforma de los paseadores de perros.</p>
-        <p class="desc">Cada paseador gestiona su cartera de clientes, perros y packs de paseos, con seguimiento GPS del paseo en tiempo real (SignalR) visible para el dueño, y dos flujos de cobro: suscripción del paseador y pago del pack.</p>
-        <ul class="stack"><li>.NET 8</li><li>SignalR</li><li>React + TS</li><li>Next.js</li><li>PostgreSQL</li></ul>
-        <div class="card-foot"><a class="visit" href="https://paseadores-app-m4wgc.ondigitalocean.app" target="_blank" rel="noopener">Demo en vivo</a></div>
-      </div>
-    </article>
-
-  </div>
-</section>
 
 <!-- ============================ CLIENTES ============================ -->
 <section class="section" id="para-clientes">
@@ -1056,6 +948,114 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
         <p class="desc">Especificación canónica del wizard de onboarding compartido por toda la suite: anatomía, tokens de diseño, copy por producto y animaciones, con un componente React de referencia que cada SaaS copia y adapta.</p>
         <ul class="stack"><li>React + TS</li><li>Design spec</li><li>Design tokens</li></ul>
         <div class="card-foot"><span class="offline">Uso interno</span></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================ SAAS ============================ -->
+<section class="section" id="saas">
+  <div class="section-head reveal"><h2>Productos propios</h2><span class="count">7 SaaS</span></div>
+  <p class="intro reveal">Suite de SaaS multi-tenant construida sobre una misma columna vertebral — .NET 8, React + TypeScript, PostgreSQL, MercadoPago — cada uno atacando un vertical distinto.</p>
+
+  <div class="grid" id="grid-saas">
+
+    <article class="card reveal" data-cat="saas" data-slug="gymhero" data-name="GymHero" data-url="https://gymhero.fitness" data-urllabel="gymhero.fitness">
+      <button class="card-media" aria-label="Ver capturas de GymHero">
+        <span class="desktop-frame"><img src="images/portfolio/gymhero-desktop.jpg" alt="Landing de GymHero en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/gymhero-mobile.jpg" alt="GymHero en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>GymHero <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
+        <p class="tagline">El gimnasio que cobra solo.</p>
+        <p class="desc">Gestión completa para gimnasios y boxes: agenda y reservas de clases, cobros automáticos con MercadoPago, semáforo de morosos en recepción y control de acceso por QR, huella o reconocimiento facial.</p>
+        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MercadoPago</li><li>Next.js</li><li>Biometría</li></ul>
+        <div class="card-foot"><a class="visit" href="https://gymhero.fitness" target="_blank" rel="noopener">gymhero.fitness</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="saas" data-slug="turnospro" data-name="TurnosPro" data-url="https://turnos-pro.com" data-urllabel="turnos-pro.com">
+      <button class="card-media" aria-label="Ver capturas de TurnosPro">
+        <span class="desktop-frame"><img src="images/portfolio/turnospro-desktop.jpg" alt="Landing de TurnosPro en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/turnospro-mobile.jpg" alt="TurnosPro en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>TurnosPro <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
+        <p class="tagline">Turnos con IA para barberías, peluquerías y estética.</p>
+        <p class="desc">Sitio de reservas propio para cada negocio, señas anticipadas con MercadoPago y un agente de IA que confirma turnos por WhatsApp. Tres verticales con tema, terminología y servicios propios; cada tenant vive en su subdominio o dominio.</p>
+        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MercadoPago</li><li>WhatsApp</li><li>IA</li></ul>
+        <div class="card-foot"><a class="visit" href="https://turnos-pro.com" target="_blank" rel="noopener">turnos-pro.com</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="saas" data-slug="bunker" data-name="BUNKER" data-url="https://bunker-app.com" data-urllabel="bunker-app.com">
+      <button class="card-media" aria-label="Ver capturas de BUNKER">
+        <span class="desktop-frame"><img src="images/portfolio/bunker-desktop.jpg" alt="Landing de BUNKER en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/bunker-mobile.jpg" alt="BUNKER en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>BUNKER <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
+        <p class="tagline">Atletas, coaches y gimnasios en una sola plataforma.</p>
+        <p class="desc">Planificación de entrenamientos individuales y por equipos con ciclos anuales, biblioteca de ejercicios con video, semáforo de lesiones, métricas de fatiga y asistencia, y mensajería interna entre coach y atleta.</p>
+        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>Google OAuth</li><li>MercadoPago</li></ul>
+        <div class="card-foot"><a class="visit" href="https://bunker-app.com" target="_blank" rel="noopener">bunker-app.com</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="saas" data-slug="playcrew" data-name="PlayCrew" data-url="https://playcrewpadel.com" data-urllabel="playcrewpadel.com">
+      <button class="card-media" aria-label="Ver capturas de PlayCrew">
+        <span class="desktop-frame"><img src="images/portfolio/playcrew-desktop.jpg" alt="Landing de PlayCrew en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/playcrew-mobile.jpg" alt="PlayCrew en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>PlayCrew <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
+        <p class="tagline">El sistema operativo del pádel.</p>
+        <p class="desc">Club manager con agenda de canchas, reservas y cobros; matchmaking de jugadores por nivel con chat; y software de torneos con fixtures y ranking. Marketplace sobre MercadoPago con split payments, suscripciones y onboarding OAuth de clubes.</p>
+        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MP Split Payments</li></ul>
+        <div class="card-foot"><a class="visit" href="https://playcrewpadel.com" target="_blank" rel="noopener">playcrewpadel.com</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="saas" data-slug="archicloud" data-name="ArchiCloud" data-url="https://archicloud.tech" data-urllabel="archicloud.tech">
+      <button class="card-media" aria-label="Ver capturas de ArchiCloud">
+        <span class="desktop-frame"><img src="images/portfolio/archicloud-desktop.jpg" alt="Landing de ArchiCloud en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/archicloud-mobile.jpg" alt="ArchiCloud en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>ArchiCloud <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
+        <p class="tagline">Gestión de obras para arquitectos y constructoras.</p>
+        <p class="desc">Gastos, presupuestos, planos, contratistas, avances y comunicación con clientes de la obra en un solo sistema, con roles de arquitecto y cliente. Pensado para estudios y constructoras de LATAM.</p>
+        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MercadoPago</li></ul>
+        <div class="card-foot"><a class="visit" href="https://archicloud.tech" target="_blank" rel="noopener">archicloud.tech</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="saas" data-slug="unistock" data-name="DashFlow" data-url="https://dashflow.com.ar" data-urllabel="dashflow.com.ar">
+      <button class="card-media" aria-label="Ver capturas de DashFlow">
+        <span class="desktop-frame"><img src="images/portfolio/unistock-desktop.jpg" alt="DashFlow en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/unistock-mobile.jpg" alt="DashFlow en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>DashFlow <span class="badge">Multi-tenant</span> <span class="badge neutral">iOS · Android</span></h3>
+        <p class="tagline">Inventario multicanal para pymes.</p>
+        <p class="desc">Control de stock con alertas de mínimos, dashboard de métricas y ventas, y sincronización multicanal con MercadoLibre y Tienda Nube en el roadmap. Modo SaaS por subdominio y modo Enterprise con dominio propio.</p>
+        <ul class="stack"><li>.NET 8</li><li>React + TS</li><li>PostgreSQL</li><li>MercadoLibre</li><li>Tienda Nube</li></ul>
+        <div class="card-foot"><a class="visit" href="https://dashflow.com.ar" target="_blank" rel="noopener">Demo en vivo</a></div>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cat="saas" data-slug="paseoya" data-name="PaseoYa" data-url="https://paseadores-app-m4wgc.ondigitalocean.app" data-urllabel="PaseoYa · demo en vivo">
+      <button class="card-media" aria-label="Ver capturas de PaseoYa">
+        <span class="desktop-frame"><img src="images/portfolio/paseoya-desktop.jpg" alt="PaseoYa en desktop" loading="lazy" decoding="async"></span>
+        <span class="phone-frame"><img src="images/portfolio/paseoya-mobile.jpg" alt="PaseoYa en mobile" loading="lazy" decoding="async"></span>
+      </button>
+      <div class="card-body">
+        <h3>PaseoYa <span class="badge">Multi-tenant</span></h3>
+        <p class="tagline">La plataforma de los paseadores de perros.</p>
+        <p class="desc">Cada paseador gestiona su cartera de clientes, perros y packs de paseos, con seguimiento GPS del paseo en tiempo real (SignalR) visible para el dueño, y dos flujos de cobro: suscripción del paseador y pago del pack.</p>
+        <ul class="stack"><li>.NET 8</li><li>SignalR</li><li>React + TS</li><li>Next.js</li><li>PostgreSQL</li></ul>
+        <div class="card-foot"><a class="visit" href="https://paseadores-app-m4wgc.ondigitalocean.app" target="_blank" rel="noopener">Demo en vivo</a></div>
       </div>
     </article>
 

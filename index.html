@@ -157,6 +157,12 @@ p { color: var(--text-2); }
   background: var(--surface); padding: 1.7rem 1.8rem;
   transition: transform .45s var(--spring), border-color .45s var(--spring);
 }
+.service { overflow: hidden; }
+.service .service-img {
+  display: block; width: calc(100% + 3.6rem); max-width: none;
+  margin: -1.7rem -1.8rem 1.3rem; aspect-ratio: 16 / 6.2; object-fit: cover;
+  filter: saturate(.9) brightness(.92);
+}
 @media (hover: hover) { .service:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.16); } }
 .service .glyph {
   display: inline-grid; place-items: center;
@@ -691,19 +697,19 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
 
   <div class="services">
     <article class="service reveal">
-      <span class="glyph" aria-hidden="true">▣</span>
+      <img class="service-img" src="images/servicios/plataformas.jpg" alt="Equipo trabajando con una tablet en un local" width="800" height="450" loading="lazy" decoding="async">
       <h3>Plataformas a medida, llave en mano</h3>
       <p>El sistema que tu negocio necesita y ningún software enlatado resuelve: operaciones, inventario, trazabilidad, business intelligence, fintech. Lo diseñamos con vos y lo entregamos funcionando, con tus datos y tu equipo arriba.</p>
       <p class="proof"><b>Construimos:</b> una fintech de pagos internacionales, un ERP de operaciones de limpieza, trazabilidad de envases de gas, análisis contable automatizado, BI sobre ERP Tango.</p>
     </article>
     <article class="service reveal">
-      <span class="glyph" aria-hidden="true">◈</span>
+      <img class="service-img" src="images/servicios/saas.jpg" alt="Barbero atendiendo a un cliente" width="800" height="450" loading="lazy" decoding="async">
       <h3>Productos SaaS de punta a punta</h3>
       <p>Sabemos lo que es lanzar y operar un SaaS porque lo hacemos con los nuestros: multi-tenant, suscripciones con MercadoPago, panel de administración, onboarding. Si tu idea es un producto, te acompañamos de la idea al primer cliente pago.</p>
       <p class="proof"><b>Operamos 7 SaaS propios:</b> gimnasios, turnos, pádel, obras, inventario, entrenamiento y paseadores.</p>
     </article>
     <article class="service reveal">
-      <span class="glyph" aria-hidden="true">◻</span>
+      <img class="service-img" src="images/servicios/apps.jpg" alt="Persona usando una app en el celular" width="800" height="450" loading="lazy" decoding="async">
       <h3>Apps móviles nativas</h3>
       <p>iOS en Swift y SwiftUI, Android en Kotlin y Jetpack Compose. Nada de frameworks híbridos que se sienten lentos: apps que se sienten de la plataforma, conectadas a tu backend, publicadas en las tiendas.</p>
       <p class="proof"><b>12 builds nativos</b> — 6 productos × iOS y Android, contra el mismo backend multi-tenant.</p>
@@ -713,7 +719,7 @@ dialog.lightbox.closing { animation: lb-out .3s var(--spring) forwards; }
       </div>
     </article>
     <article class="service reveal">
-      <span class="glyph" aria-hidden="true">⚡︎</span>
+      <img class="service-img" src="images/servicios/integraciones.jpg" alt="Pago con el celular en un lector" width="800" height="450" loading="lazy" decoding="async">
       <h3>Integraciones y automatización</h3>
       <p>Cobros automáticos y split payments con MercadoPago, agentes de WhatsApp con IA, scraping y generación de leads con n8n, control de acceso biométrico, GPS en tiempo real, protocolos industriales como OCPP para cargadores eléctricos.</p>
       <p class="proof"><b>Si tiene API, lo conectamos.</b> Y si no tiene, la construimos.</p>
